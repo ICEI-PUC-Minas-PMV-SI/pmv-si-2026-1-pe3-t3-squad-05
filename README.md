@@ -6,20 +6,20 @@
 
 `SEMESTRE: 3º`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Desenvolver um sistema digital para gestão de encomendas em panificadoras e confeitarias, integrado a um aplicativo de pedidos, que permita aos clientes realizar reservas e encomendas de produtos.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 5
-* Nome completo do aluno 6
+* Henrique Augusto Freire de Oliveira
+* Daniella Ferreira Coutinho
+* Antônio Vicente da Cruz
+* Ruano Barros Pereira
+* Leonardo Henrique Soares dos Reis
+* Guilherme Henrique Santos Arantes
 
 ## Orientador
 
-* Nome completo do professor 
+* Maria Ines Lage de Paula 
 
 # Planejamento
 

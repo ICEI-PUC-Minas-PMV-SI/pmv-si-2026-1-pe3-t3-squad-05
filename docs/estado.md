@@ -1,10 +1,6 @@
 # 2. ESTADO DA ARTE
-O estado da arte é um mapeamento de toda a produção acadêmica sobre um assunto específico, aqui especificamente sobre o tema escolhido para o seu trabalho. A ideia consiste em reunir as conclusões que outras pesquisas científicas chegaram sobre um determinado assunto. Neste momento você deverá buscar respostas para as seguintes perguntas:
 
-1.	Quais pesquisas estão sendo desenvolvidas sobre esse tema?
-2.	Quem está pesquisando e onde?
-3.	O que as atuais pesquisas científicas concluíram sobre o tema? 
-4.	Quais as divergências dos pesquisadores sobre o assunto? 
-5.	Quais aspectos carecem de maior abordagem?
-
-É importante referenciar estas pesquisas, fazendo as devidas citações de acordo com as normas da ABNT e colocando as referências completas ao final do trabalho.
+O presente trabalho aborda assuntos recorrentemente tomados como objetos de estudo de pesquisas. A literatura acadêmica é extensiva sobre os impactos de novas tecnologias como aplicativos de entrega, digitalização de pequenos negócios e desenvolvimento de sistemas de pedidos online. Apesar de ainda existir lacunas em relação à setores mais específicos, alguns autores já voltaram sua atenção para a análise deste tema no setor de padarias e confeitarias.
+Jang, Chong e Yoo (2021)[3] se preocuparam em entender os impactos da utilização de aplicativos próprios por padarias e confeitarias. Eles concluíram que o desenvolvimento de aplicativos por parte de estabelecimentos do setor possuem influência positiva no comportamento de consumo dos clientes. Recursos que incentivam a interação com a loja e funcionalidades como o acompanhamento de pedidos ou programas de fidelidade tendem a aumentar tanto a frequência quanto o valor das compras realizadas.
+Neste mesmo sentido, Razak (2023)[4] ao analisar sistemas de encomenda de bolos personalizados e sistemas de centralização de registros de pedidos tais comos Gooti Pastries e Caketisserie Bakery & Café Online Ordering System respectivamente, observou impactos positivos em comparação aos processos manuais antes utilizados.
+De forma geral, os estudos indicam que a digitalização pode melhorar a organização dos pedidos, reduzir falhas operacionais e facilitar a comunicação entre clientes e estabelecimentos. Entretanto, ainda existem poucos trabalhos voltados especificamente para a gestão de encomendas em padarias e confeitarias, principalmente considerando aspectos como personalização de produtos, agendamento de pedidos e integração entre pedido e produção, o que demonstra a relevância de novas soluções voltadas para esse contexto.
