@@ -1,15 +1,13 @@
 # 1. INTRODUÇÃO
 
-Os setores da panificação e da confeitaria são, sem dúvida, de extrema importância no cotidiano do brasileiro médio na atualidade. São altamente relevantes na economia e apresentam um crescimento constante: em 2025, foram abertos por volta de 26.400 pequenos negócios de janeiro a abril no setor de panificação[1], e no primeiro semestre de 2024, 25.743 empresas no ramo de confeitaria[2].
+Os setores da panificação e da confeitaria são, sem dúvida, de extrema importância no cotidiano do brasileiro médio na atualidade. São altamente relevantes na economia e apresentam um crescimento constante: em 2025, foram abertos por volta de 26.400 pequenos negócios de janeiro a abril no setor de panificação, e no primeiro semestre de 2024, 25.743 empresas no ramo de confeitaria.
 Ao mesmo tempo, o setor emergente de entregas por aplicativo tem rapidamente se estabelecido como parte quase fundamental da maioria das transações comerciais nos últimos anos. Fast food, supermercado, farmácia e muitos outros setores têm florescido mais do que nunca com o acesso a aplicativos que fazem a conexão entre o cliente, o comércio e, se necessário, um entregador terceirizado.
 Desta forma, a integração entre panificadoras e confeitarias com aplicativos de reservar uma encomenda e, caso necessário, haja uma entrega, se torna extremamente interessante e conveniente.
 
 
 ## 1.1. Problema
 
-Sistema de estoque híbrido, este é o maior desafio técnico, pois a panificadora vende o mesmo pão para quem está no balcão e para quem vai pedir pelo app. Isso ocasiona na ruptura de estoque, ocasionando a necessidade de avisar o cliente por falta de estoque.
-	Alta rotatividade, a panificadora tem um estoque que muda a cada minuto, a falta de integração entre a vitrine física e o estoque digital gera atrito, causando atraso no sistema e gerando problemas de falta de estoque.
-	Delivery, a panificadora enfrenta problemas nas entregas, falta de adaptação, erros no processamento dos pedidos, embalagens inadequadas, falta de interação e informação sobre o status do pedido em tempo real, ocasionando atraso.	.
+O principal desafio técnico enfrentado pelas panificadoras é a utilização de um Sistema de estoque híbrido, consistindo na disponibilização de um estoque único, tanto para o cliente físico quanto para o cliente online. Assim, o sistema,  requer a atualização em  tempo real de produtos e suas quantidades disponíveis. A falta de atualização da venda de produtos em estoque impacta na ruptura de estoque, ocasionando a necessidade de avisar o cliente online por falta de estoque e posteriormente gera insatisfação do mesmo. A alta rotatividade promove um cenário de mudança de estoque a cada minuto e a falta de integração entre a vitrine física e o estoque digital gera atrito, causando atraso no sistema e gerando problemas de falta de estoque. No delivery, a panificadora enfrenta problemas nas entregas, falta de adaptação, erros no processamento dos pedidos, embalagens inadequadas, falta de interação e informação sobre o status do pedido em tempo real, ocasionando atraso.
 
 
 ## 1.2. Objetivos do trabalho
@@ -30,8 +28,8 @@ A principal motivação reside na eliminação de falhas humanas comuns no model
 
 O público-alvo desta aplicação é composto por profissionais que atuam no cotidiano operacional e administrativo de panificadoras e confeitarias de pequeno a médio porte. Abaixo temos algumas das principais características do público-alvo:
 
- Gestores e Proprietários: Indivíduos responsáveis pela tomada de decisão estratégica e financeira. Possuem nível intermediário de familiaridade com ferramentas digitais, buscando no software rapidez e clareza de dados para controle de custos e lucratividade. A principal atividade será supervisionar a produção e o estoque.
+Gestores e Proprietários: Indivíduos responsáveis pela tomada de decisão estratégica e financeira. Possuem nível intermediário de familiaridade com ferramentas digitais, buscando no software rapidez e clareza de dados para controle de custos e lucratividade. A principal atividade será supervisionar a produção e o estoque.
 
- Atendentes e Recepcionistas: Responsáveis pelo contato direto com o cliente e pelo registro de encomendas personalizadas. Têm experiência no atendimento ao público consumidor do produto, mas podem apresentar dificuldades em processos de registros muito complexos. Necessitam de uma tecnologia de interface simples e intuitiva para evitar erros de digitação nos pedidos.
+Atendentes e Recepcionistas: Responsáveis pelo contato direto com o cliente e pelo registro de encomendas personalizadas. Têm experiência no atendimento ao público consumidor do produto, mas podem apresentar dificuldades em processos de registros muito complexos. Necessitam de uma tecnologia de interface simples e intuitiva para evitar erros de digitação nos pedidos.
 
-Confeiteiros e Padeiros: Profissionais focados na execução técnica das receitas e na manipulação de insumos. Possuem vasto conhecimento em produção, mas muitas vezes com baixo interesse em tarefas administrativas ou digitais. Para este grupo, a aplicação deve servir como um guia visual claro do que deve ser produzido, sem exigir interações complexas
+Confeiteiros e Padeiros: Profissionais focados na execução técnica das receitas e na manipulação de insumos. Possuem vasto conhecimento em produção, mas muitas vezes com baixo interesse em tarefas administrativas ou digitais. Para este grupo, a aplicação deve servir como um guia visual claro do que deve ser produzido, sem exigir interações complexas.
