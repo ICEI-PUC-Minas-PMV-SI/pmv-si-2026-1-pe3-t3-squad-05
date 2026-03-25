@@ -31,18 +31,30 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 
 | Código | Requisito Funcional (Funcionalidade) | Descrição |
 |--------------------|------------------------------------|----------------------------------------|
-| RF1 | Gerenciar Curso de Aperfeiçoamento |	Processamento de Inclusão, Alteração, Exclusão e Consulta de Cursos de Aperfeiçoamento |
-| RF2 |	Gerenciar Professor	| Processamento de Inclusão, Alteração, Exclusão e Consulta de professores |
-| RF3	| Gerenciar Matrícula |	Processamento de Inclusão, Alteração, Exclusão e Consulta de Matrículas de alunos em Cursos de Aperfeiçoamento |
-| ... |	...	| ... |
+| RF1 | Cadastro de Usuário | Coletar Nome completo, Documentos(CPF), Data de nascimento, E-mail e Número de telefone |
+| RF2 | Cadastro de Encomendas personalizadas | Permitir que o cliente faça encomendas personalizadas, Foto, descrição(Ex:Nome, Ano, Mensagem...) |
+| RF3 |	Catálogo de Produtos | Visualização de produtos com fotos, descrição, preço e disponibilidade em tempo real |
+| RF4 |	Gestão de Pedidos Perosonalizados | Opção de alteração no pedido, ponto do pedido(Bem Passado,Mal Passado...), retirar ingredientes ou adicionar ingredientes |
+| RF5 |	Carrinho de Compra | Opção de adicionar, remover e alterar quantidade de produtos no carrinho |
+| RF6 |	Agendamento de Entrega/Retirada	| Opção de entrega e retirada do pedido na loja |
+| RF7 |	Gestão de Estoque | O Sistema deve dar baixa automática no estoque de insumos ou produtos finalizados pós venda |
+| RF8 |	Integração de Pagamento | Opção de pagamento do pedido, Cartão de crédito, Pix e Dinheiro(Pagamento em dinheiro somente em caso de retirada na loja) |
+| RF9 |	Notificação em Tempo Real | O sistema deve enviar atualizações sobre o status do pedido(Ex:"Seu pedido está em preparo","O entregador está a caminho") |
+| ... |	... |	... |
 
 ### 3.3.2 Requisitos Não Funcionais
 
 | Código | Requisito Não Funcional (Restrição) |
 |--------------------|------------------------------------|
-| RNF1 | O ambiente operacional a ser utilizado é o Windows XP. |
-| RNF2 | O sistema deverá executar em um computador configurado com uma impressora de tecnologia laser ou de jato de tinta, a ser usada para impressão dos relatórios. |
-| RNF3 |	Segurança	O produto deve restringir o acesso por meio de senhas individuais para o usuário. |
+| RNF1 | O Sistema deve ter suporte a multiplataformas, com a interface intuitiva para facilitar a navegação e escolhas do pedido feito pelo cliente. |
+| RNF2 | O Sistema deve ser leve, para evitar atraso dos pedidos e atraso na troca de página. |
+| RNF3 | O Sistema deve ter um relatorio de estoque em tempo real. |
+| RNF3 | O Sistema deve gerar um relatório semanal de estoque de produtos e média de vendas em uma planilha Excel. |
+| RNF4 | O Sistema deve disponibilizar um relatório semanal em formato PDF com encomendas personalizadas. |
+| RNF5 | O Sistema deve estar em conformidade com a LGPD e garantir transações criptografadas. |
+| RNF6 | O Sistema deve impedir cadastros com e-mails inválidos ou CPFs incorretos em tempo real.|
+| RNF7 | Caso o usuário perca a conexão no preenchimento, os dados já digitados devem ser mantidos temporariamente no navegador(Cache). |
+| RNF8 | O Site deve suportar um aumento repentino de acessos. |
 | ... |	... |	... |
 
 ### 3.3.3 Usuários 
