@@ -32,7 +32,7 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 | Código | Requisito Funcional (Funcionalidade) | Descrição |
 |--------------------|------------------------------------|----------------------------------------|
 | RF1 | Cadastro de Usuário | Coletar Nome completo, Documentos(CPF), Data de nascimento, E-mail e Número de telefone |
-| RF2 | Cadastro de Encomendas personalizadas | Permitir que o cliente faça encomendas personalizadas, Foto, descrição(Ex:Nome, Ano, Mensagem...) |
+| RF2 | Cadastro de Encomendas Personalizadas | Permitir que o cliente faça encomendas personalizadas, Foto, descrição(Ex:Nome, Ano, Mensagem...) |
 | RF3 |	Catálogo de Produtos | Visualização de produtos com fotos, descrição, preço e disponibilidade em tempo real |
 | RF4 |	Gestão de Pedidos Perosonalizados | Opção de alteração no pedido, ponto do pedido(Bem Passado,Mal Passado...), retirar ingredientes ou adicionar ingredientes |
 | RF5 |	Carrinho de Compra | Opção de adicionar, remover e alterar quantidade de produtos no carrinho |
@@ -49,12 +49,12 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 | RNF1 | O Sistema deve ter suporte a multiplataformas, com a interface intuitiva para facilitar a navegação e escolhas do pedido feito pelo cliente. |
 | RNF2 | O Sistema deve ser leve, para evitar atraso dos pedidos e atraso na troca de página. |
 | RNF3 | O Sistema deve ter um relatorio de estoque em tempo real. |
-| RNF3 | O Sistema deve gerar um relatório semanal de estoque de produtos e média de vendas em uma planilha Excel. |
-| RNF4 | O Sistema deve disponibilizar um relatório semanal em formato PDF com encomendas personalizadas. |
-| RNF5 | O Sistema deve estar em conformidade com a LGPD e garantir transações criptografadas. |
-| RNF6 | O Sistema deve impedir cadastros com e-mails inválidos ou CPFs incorretos em tempo real.|
-| RNF7 | Caso o usuário perca a conexão no preenchimento, os dados já digitados devem ser mantidos temporariamente no navegador(Cache). |
-| RNF8 | O Site deve suportar um aumento repentino de acessos. |
+| RNF4 | O Sistema deve gerar um relatório semanal de estoque de produtos e média de vendas em uma planilha Excel. |
+| RNF5 | O Sistema deve disponibilizar um relatório semanal em formato PDF com encomendas personalizadas. |
+| RNF6 | O Sistema deve estar em conformidade com a LGPD e garantir transações criptografadas. |
+| RNF7 | O Sistema deve impedir cadastros com e-mails inválidos ou CPFs incorretos em tempo real.|
+| RNF8 | Caso o usuário perca a conexão no preenchimento, os dados já digitados devem ser mantidos temporariamente no navegador(Cache). |
+| RNF9 | O Site deve suportar um aumento repentino de acessos. |
 | ... |	... |	... |
 
 ### 3.3.3 Usuários 
