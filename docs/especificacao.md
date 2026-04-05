@@ -72,56 +72,75 @@ Como observado no diagrama de casos de uso da Figura 1, a secretária poderá ge
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 
-![dcu](https://github.com/user-attachments/assets/41f6b731-b44e-43aa-911f-423ad6198f47)
+![dcu](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-squad-05/blob/main/src/DiagCasosDeUso.png)
  
 ### 3.4.2 Descrições de Casos de Uso
 
-Cada caso de uso deve ter a sua descrição representada nesta seção. Exemplo:
+#### Pedir bolo customizado (CSU01)
 
-#### Gerenciar Professor (CSU01)
+Sumário: O cliente faz o pedido de um bolo, podendo alterar suas propriedades.
 
-Sumário: A Secretária realiza a gestão (inclusão, remoção, alteração e consulta) dos dados sobre professores.
+Ator Primário: Cliente.
 
-Ator Primário: Secretária.
-
-Ator Secundário: Coordenador.
-
-Pré-condições: A Secretária deve ser validada pelo Sistema.
+Pré-condições: O cliente deve ser validado pelo Sistema.
 
 Fluxo Principal:
 
-1) 	A Secretária requisita manutenção de professores.
-2) 	O Sistema apresenta as operações que podem ser realizadas: inclusão de um novo professor, alteração de um professor, a exclusão de um professor e a consulta de dados de um professor.
-3) 	A Secretária seleciona a operação desejada: Inclusão, Exclusão, Alteração ou Consulta, ou opta por finalizar o caso de uso.
-4) 	Se a Secretária desejar continuar com a gestão de professores, o caso de uso retorna ao passo 2; caso contrário o caso de uso termina.
+1) 	O cliente define o formato do bolo.
+2)  O cliente define as dimensões do bolo.
+3)  O cliente define o recheio do bolo.
+4) 	O cliente define a cobertura do bolo.
+5)  Se o cliente desejar, ele pode adicionar uma imagem ou desenho no bolo.
 
-Fluxo Alternativo (3): Inclusão
+#### Programar encomenda (CSU02)
 
-a)	A Secretária requisita a inclusão de um professor. <br>
-b)	O Sistema apresenta uma janela solicitando o CPF do professor a ser cadastrado. <br>
-c)	A Secretária fornece o dado solicitado. <br>
-d)	O Sistema verifica se o professor já está cadastrado. Se sim, o Sistema reporta o fato e volta ao início; caso contrário, apresenta um formulário em branco para que os detalhes do professor (Código, Nome, Endereço, CEP, Estado, Cidade, Bairro, Telefone, Identidade, Sexo, Fax, CPF, Data do Cadastro e Observação) sejam incluídos. <br>
-e)	A Secretária fornece os detalhes do novo professor. <br>
-f)	O Sistema verifica a validade dos dados. Se os dados forem válidos, inclui o novo professor e a grade listando os professores cadastrados é atualizada; caso contrário, o Sistema reporta o fato, solicita novos dados e repete a verificação. <br>
+Sumário: O cliente faz o pedido de uma encomenda, marcando o horário para receber.
 
-Fluxo Alternativo (3): Remoção
+Ator Primário: Cliente.
 
-a)	A Secretária seleciona um professor e requisita ao Sistema que o remova. <br>
-b)	Se o professor pode ser removido, o Sistema realiza a remoção; caso contrário, o Sistema reporta o fato. <br>
+Pré-condições: O cliente deve ser validado pelo Sistema.
 
-Fluxo Alternativo (3): Alteração
+Fluxo Principal:
 
-a)	A Secretária altera um ou mais dos detalhes do professor e requisita sua atualização. <br>
-b)	O Sistema verifica a validade dos dados e, se eles forem válidos, altera os dados na lista de professores, caso contrário, o erro é reportado. <br>
- 
-Fluxo Alternativo (3): Consulta
+1) 	O cliente define o conteúdo da encomenda e o horário a ser entregue.
+2) 	Se o cliente desejar, ele pode definir que a recomenda seja recorrente neste mesmo horário.
 
-a)	A Secretária opta por pesquisar pelo nome ou código e solicita a consulta sobre a lista de professores. <br>
-b)	O Sistema apresenta uma lista professores. <br>
-c)	A Secretária seleciona o professor. <br>
-d)	O Sistema apresenta os detalhes do professor no formulário de professores. <br>
+   
+#### Pedir um kit pré-pronto (CSU03)
 
-Pós-condições: Um professor foi inserido ou removido, seus dados foram alterados ou apresentados na tela.
+Sumário: O cliente faz o pedido de um kit pré-pronto definido pelo gerente.
+
+Ator Primário: Cliente.
+
+Pré-condições: O cliente deve ser validado pelo Sistema.
+
+Fluxo Principal:
+
+1) 	O cliente escolhe o kit a ser entregue.
+
+#### Definir um kit pré-pronto (CSU04)
+
+Sumário: O gerente define o conteúdo dos kits pré-prontos.
+
+Ator Primário: Gerente.
+
+Pré-condições: O gerente deve ser validado pelo Sistema.
+
+Fluxo Principal:
+
+1) 	O cliente define o conteúdo dos kits pré-prontos.
+
+#### Definir opções para bolos customizados (CSU05)
+
+Sumário: O gerente define as opções para as customizações de bolos.
+
+Ator Primário: Gerente.
+
+Pré-condições: O gerente deve ser validado pelo Sistema.
+
+Fluxo Principal:
+
+1) 	O cliente define as possibilidades para customizações dos bolos.
 
 ### 3.4.3 Diagrama de Classes 
 
