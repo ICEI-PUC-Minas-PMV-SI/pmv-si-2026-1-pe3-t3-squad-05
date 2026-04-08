@@ -143,20 +143,27 @@ Fluxo Principal:
 
 ### 3.4.3 Diagrama de Classes 
 
-A Figura 2 mostra o diagrama de classes do sistema. A Matrícula deve conter a identificação do funcionário responsável pelo registro, bem com os dados do aluno e turmas. Para uma disciplina podemos ter diversas turmas, mas apenas um professor responsável por ela.
+A Figura 2 mostra o diagrama de classes do sistema. O Pedido deve conter a identificação do Cliente responsável pela solicitação e do Funcionário que o gerencia. Utilizamos a classe ItemPedido para criar uma distinção no fluxo do sistema: se o produto for padrão, ele deverá constar no estoque geral e será referenciado diretamente na compra; se for uma Encomenda Personalizada, ela utilizará uma Receita específica que consome Insumos, e estes insumos devem constar no estoque. Se houver falta no estoque de qualquer um dos lados (produtos ou insumos), acionamos o fornecedor correspondente através das entidades de fornecimento.
 
 #### Figura 2: Diagrama de Classes do Sistema.
  
-![image](https://github.com/user-attachments/assets/abc7591a-b46f-4ea2-b8f0-c116b60eb24e)
-
+![dcu](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-squad-05/blob/main/src/DiagramaDeClasses.png)
 
 ### 3.4.4 Descrições das Classes 
 
 | # | Nome | Descrição |
 |--------------------|------------------------------------|----------------------------------------|
-| 1	|	Aluno |	Cadastro de informações relativas aos alunos. |
-| 2	| Curso |	Cadastro geral de cursos de aperfeiçoamento. |
-| 3 |	Matrícula |	Cadastro de Matrículas de alunos nos cursos. |
-| 4 |	Turma |	Cadastro de turmas.
-| 5	|	Professor |	Cadastro geral de professores que ministram as disciplinas. |
-| ... |	... |	... |
+| 1	|	Usuario |	Classe base que centraliza os dados de identificação e contato (Nome, CPF, E-mail) de quem acessa o sistema. |
+| 2	| Funcionario |	Especialização de Usuário para a equipe da loja, registrando cargo e turno de trabalho. |
+| 3 |	Cliente |	Especialização de Usuário para os consumidores, com registros de endereço e histórico de pedidos. |
+| 4 |	Pedido |	Registro central das transações de venda, vinculado a um Cliente (que compra) e a um Funcionário (que atende). |
+| 5	|	ItemPedido |	Relaciona os pedidos normais aos produtos de catálogo, definindo as quantidades e os preços unitários da venda. |
+| 6 |	EncomendaPersonalizada |	Especialização de Pedido voltada a itens customizados, exigindo foto de referência e detalhes descritivos. |
+| 7 |	Receita |	Estrutura vinculada a uma encomenda personalizada que dita o tempo de preparo e as instruções necessárias. |
+| 8 |	InsumoUsado |	Tabela associativa que conecta a Receita aos Insumos do estoque, definindo a quantidade exata de matéria-prima. |
+| 9 |	Produto |	Cadastro de produtos padronizados (prontos) do catálogo, incluindo controle de estoque, preço e categoria. |
+| 10 |	FornecimentoProduto |	Registra as transações de entrada e reabastecimento de produtos prontos oriundos dos fornecedores. |
+| 11 |	FornecedorProduto |	Cadastro dos dados empresariais (CNPJ, Nome Fantasia) dos fornecedores de produtos padronizados. |
+| 12 |	Insumo |	Cadastro das matérias-primas e ingredientes, gerenciando a quantidade disponível e a unidade de medida. |
+| 13 |	FornecimentoInsumo |	Registra as transações de entrada e reabastecimento de matérias-primas oriundas dos fornecedores. |
+| 14 |	FornecedorInsumo |	Cadastro dos dados empresariais dos fornecedores especializados na entrega de insumos/ingredientes. |
