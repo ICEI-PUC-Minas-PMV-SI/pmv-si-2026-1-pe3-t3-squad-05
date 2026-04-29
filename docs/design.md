@@ -13,37 +13,51 @@ Nesta seção você deve detalhar as personas do seu projeto. Deve-se documentar
 1. O que ele VÊ?
 
 -Descreve o ambiente e o mercado ao redor dele.
+
 -Muitas padarias lotadas com filas lentas pela manhã.
+
 -Trânsito aumentando enquanto ele ainda não tomou café. 
 
 2. O que ele OUVE?
 
 -Colegas dizendo: "Aquela padaria ali é rápida, o pão na chapa sai na hora". 
+
 -O barulho constante do rádio da central de entregas ou notificações do app no celular. 
+
 -Pessoas reclamando do preço alto de lanches simples. 
+
 3. O que ele PENSA e SENTE?
 
 -"Preciso comer algo que me sustente até o almoço, senão vou passar mal no sol".
+
 -"Se eu demorar mais de 10 minutos aqui, vou perder a primeira corrida do dia."
+
 -"Queria um lugar onde eu pudesse sentar 5 minutos e ser bem tratado, sem julgamento pela minha roupa de trabalho." 
 
 4. O que ele FALA e FAZ?
 
 -Chega de capacete no braço e celular na mão (sempre checando o app). 
+
 -Pergunta logo de cara: "O que tem pronto que sai rápido?". 
+
 -Costuma ser direto e educado, mas tem pressa. 
+
 -Come em pé no balcão para ganhar tempo.
 
 5. Quais são suas DORES? (Medos e frustrações)
 
 -Atraso: Ficar preso em uma fila atrás de alguém que está escolhendo 10 tipos de doces diferentes.
+
 -Custo-benefício: Gastar muito dinheiro e continuar com fome.
+
 -Insegurança: Não ter onde encostar a moto com facilidade na frente da padaria.
 
 6. Quais são seus GANHOS?
 
 -Agilidade: Entrar, comer e sair em tempo recorde. 
+
 -Energia: Sentir-se bem alimentado para aguentar o estresse do trânsito. 
+
 -Acolhimento: Ter um "pit stop" de confiança onde o atendimento é eficiente e amigável.
  
 Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A partir do mapa da empatia é possível detalhar a personalidade do cliente e compreendê-la melhor. O objetivo é obter um nível mais profundo de compreensão de uma persona. A seguir um exemplo de template que pode ser usado para o mapa de empatia. Para cada persona deverá ser apresentado o seu respectivo mapa de empatia. Sugere-se a utilização do template apresentado em https://www.rdstation.com/blog/marketing/mapa-da-empatia/.
