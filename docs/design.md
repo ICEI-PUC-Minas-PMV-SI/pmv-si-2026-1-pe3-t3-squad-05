@@ -10,6 +10,10 @@ Matheus Rodrigues, 29 anos, atua como motoboy. Ele busca otimizar sua rotina mat
 
 Carla Perez, 65 anos, é proprietária de uma confeitaria em Patos de Minas – MG. Com mais de 20 anos de experiência, construiu uma clientela fiel baseada na qualidade dos seus produtos. Hoje, seu principal desafio é organizar e acompanhar tudo sem perder vendas ou cometer erros.
 
+Persona: Matheus, o "Correr é Dinheiro"
+
+Matheus Rodrigues, 29 anos, atua como motoboy. Ele busca otimizar sua rotina matinal para poupar tempo e maximizar seus ganhos ao longo do dia. Matheus procura um estabelecimento prático onde possa tomar um café da manhã rápido e nutritivo, garantindo um bom começo para sua jornada de trabalho. 
+
 Nesta seção você deve detalhar as personas do seu projeto. Deve-se documentar uma persona por integrante do projeto. Para mais informações sobre personas consulte: https://www.rdstation.com/blog/marketing/persona-o-que-e/. Sugere-se a utilização de um template do Canva: https://www.canva.com/pt_br/modelos/s/persona/
 
 ## 4.2 Mapa de Empatia

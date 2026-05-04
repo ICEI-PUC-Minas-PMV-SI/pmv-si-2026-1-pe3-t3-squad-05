@@ -3,18 +3,18 @@
 Nesta parte do trabalho você deve detalhar a documentação dos requisitos do sistema proposto de acordo com as seções a seguir. Ressalta-se que aqui é utilizado como exemplo um sistema de gestão de cursos de aperfeiçoamento.
 
 ## 3.1 Objetivos deste documento
-Descrever e especificar as necessidades da Coordenação do Curso de Sistemas de Informação da PUC Minas que devem ser atendidas pelo projeto SCCA – Sistema de Cadastro de Cursos de Aperfeiçoamento.
+O objetivo desse sistema é auxiliar no gerenciamento de insumos, produtos, encomendas e vendas de panificadoras e confeitarias.
 
 ## 3.2 Escopo do produto
 
 ### 3.2.1 Nome do produto e seus componentes principais
-O produto será denominado SCCA – Sistema de Cadastro de Cursos de Aperfeiçoamento. Ele terá somente um componente (módulo) com os devidos elementos necessários à gestão de cursos.
+O produto será denominado SGP - Sistema Gerenciador de Produtos. Ele terá componentes com os devidos elementos necessários à gestão de controle de estoque de produtos e vendas.
 
 ### 3.2.2 Missão do produto
-Gerenciar informações sobre a oferta de cursos de aperfeiçoamento, gerenciar a composição das turmas, alunos, professores e matrículas. 
+Gerenciar informações de vendas, encomendas e estoque de insumos. 
 
 ### 3.2.3 Limites do produto
-O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcelas do curso, pagamento a professore e agendamentos. O SCCA não contempla o atendimento a vários cursos de Sistemas de Informação de outras unidades da PUC Minas.
+O SGP não contempla a gestão de recursos de outras categorias do ramo alimentício.
 
 ### 3.2.4 Benefícios do produto
 
@@ -22,8 +22,7 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 |--------------------|------------------------------------|----------------------------------------|
 |1	| Facilidade no cadastro de dados |	Essencial |
 |2 | Facilidade na recuperação de informações | Essencial | 
-|3 | Segurança no cadastro de matrículas | Essencial | 
-|4	| Melhoria na comunicação com os alunos	| Recomendável | 
+|3 | Melhoria na gestão dos insumos. | Essencial | 
 
 ## 3.3 Descrição geral do produto
 
@@ -31,26 +30,38 @@ O SCCA não fornece nenhuma forma de avaliação de alunos, pagamento de parcela
 
 | Código | Requisito Funcional (Funcionalidade) | Descrição |
 |--------------------|------------------------------------|----------------------------------------|
-| RF1 | Gerenciar Curso de Aperfeiçoamento |	Processamento de Inclusão, Alteração, Exclusão e Consulta de Cursos de Aperfeiçoamento |
-| RF2 |	Gerenciar Professor	| Processamento de Inclusão, Alteração, Exclusão e Consulta de professores |
-| RF3	| Gerenciar Matrícula |	Processamento de Inclusão, Alteração, Exclusão e Consulta de Matrículas de alunos em Cursos de Aperfeiçoamento |
-| ... |	...	| ... |
+| RF1 | Cadastro de Usuário | Coletar Nome completo, Documentos(CPF), Data de nascimento, E-mail e Número de telefone |
+| RF2 | Cadastro de Encomendas Personalizadas | Permitir que o cliente faça encomendas personalizadas, Foto, descrição(Ex:Nome, Ano, Mensagem...) |
+| RF3 |	Catálogo de Produtos | Visualização de produtos com fotos, descrição, preço e disponibilidade em tempo real |
+| RF4 |	Gestão de Pedidos Perosonalizados | Opção de alteração no pedido, ponto do pedido(Bem Passado,Mal Passado...), retirar ingredientes ou adicionar ingredientes |
+| RF5 |	Carrinho de Compra | Opção de adicionar, remover e alterar quantidade de produtos no carrinho |
+| RF6 |	Agendamento de Entrega/Retirada	| Opção de entrega e retirada do pedido na loja |
+| RF7 |	Gestão de Estoque | O Sistema deve dar baixa automática no estoque de insumos ou produtos finalizados pós venda |
+| RF8 |	Integração de Pagamento | Opção de pagamento do pedido, Cartão de crédito, Pix e Dinheiro(Pagamento em dinheiro somente em caso de retirada na loja) |
+| RF9 |	Notificação em Tempo Real | O sistema deve enviar atualizações sobre o status do pedido(Ex:"Seu pedido está em preparo","O entregador está a caminho") |
+| ... |	... |	... |
 
 ### 3.3.2 Requisitos Não Funcionais
 
 | Código | Requisito Não Funcional (Restrição) |
 |--------------------|------------------------------------|
-| RNF1 | O ambiente operacional a ser utilizado é o Windows XP. |
-| RNF2 | O sistema deverá executar em um computador configurado com uma impressora de tecnologia laser ou de jato de tinta, a ser usada para impressão dos relatórios. |
-| RNF3 |	Segurança	O produto deve restringir o acesso por meio de senhas individuais para o usuário. |
+| RNF1 | O Sistema deve ter suporte a multiplataformas, com a interface intuitiva para facilitar a navegação e escolhas do pedido feito pelo cliente. |
+| RNF2 | O Sistema deve ser leve, para evitar atraso dos pedidos e atraso na troca de página. |
+| RNF3 | O Sistema deve ter um relatorio de estoque em tempo real. |
+| RNF4 | O Sistema deve gerar um relatório semanal de estoque de produtos e média de vendas em uma planilha Excel. |
+| RNF5 | O Sistema deve disponibilizar um relatório semanal em formato PDF com encomendas personalizadas. |
+| RNF6 | O Sistema deve estar em conformidade com a LGPD e garantir transações criptografadas. |
+| RNF7 | O Sistema deve impedir cadastros com e-mails inválidos ou CPFs incorretos em tempo real.|
+| RNF8 | Caso o usuário perca a conexão no preenchimento, os dados já digitados devem ser mantidos temporariamente no navegador(Cache). |
+| RNF9 | O Site deve suportar um aumento repentino de acessos. |
 | ... |	... |	... |
 
 ### 3.3.3 Usuários 
 
 | Ator | Descrição |
 |--------------------|------------------------------------|
-| Coordenador |	Usuário gerente do sistema responsável pelo cadastro e manutenção de cursos de aperfeiçoamento. Possui acesso geral ao sistema. |
-| Secretaria |	Usuário responsável por registros de alunos, professores, turmas e gerência de matrículas. |
+| Cliente |	Usuário por realizar solicitações de encomendas. |
+| Gerente |	Usuário responsável por cadastro gerência de insumos e produtos. |
 | ... |	... |	... |
 
 ## 3.4 Modelagem do Sistema
@@ -60,73 +71,99 @@ Como observado no diagrama de casos de uso da Figura 1, a secretária poderá ge
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 
-![dcu](https://github.com/user-attachments/assets/41f6b731-b44e-43aa-911f-423ad6198f47)
+![dcu](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-squad-05/blob/main/src/DiagCasosDeUso.png)
  
 ### 3.4.2 Descrições de Casos de Uso
 
-Cada caso de uso deve ter a sua descrição representada nesta seção. Exemplo:
+#### Pedir bolo customizado (CSU01)
 
-#### Gerenciar Professor (CSU01)
+Sumário: O cliente faz o pedido de um bolo, podendo alterar suas propriedades.
 
-Sumário: A Secretária realiza a gestão (inclusão, remoção, alteração e consulta) dos dados sobre professores.
+Ator Primário: Cliente.
 
-Ator Primário: Secretária.
-
-Ator Secundário: Coordenador.
-
-Pré-condições: A Secretária deve ser validada pelo Sistema.
+Pré-condições: O cliente deve ser validado pelo Sistema.
 
 Fluxo Principal:
 
-1) 	A Secretária requisita manutenção de professores.
-2) 	O Sistema apresenta as operações que podem ser realizadas: inclusão de um novo professor, alteração de um professor, a exclusão de um professor e a consulta de dados de um professor.
-3) 	A Secretária seleciona a operação desejada: Inclusão, Exclusão, Alteração ou Consulta, ou opta por finalizar o caso de uso.
-4) 	Se a Secretária desejar continuar com a gestão de professores, o caso de uso retorna ao passo 2; caso contrário o caso de uso termina.
+1) 	O cliente define o formato do bolo.
+2)  O cliente define as dimensões do bolo.
+3)  O cliente define o recheio do bolo.
+4) 	O cliente define a cobertura do bolo.
+5)  Se o cliente desejar, ele pode adicionar uma imagem ou desenho no bolo.
 
-Fluxo Alternativo (3): Inclusão
+#### Programar encomenda (CSU02)
 
-a)	A Secretária requisita a inclusão de um professor. <br>
-b)	O Sistema apresenta uma janela solicitando o CPF do professor a ser cadastrado. <br>
-c)	A Secretária fornece o dado solicitado. <br>
-d)	O Sistema verifica se o professor já está cadastrado. Se sim, o Sistema reporta o fato e volta ao início; caso contrário, apresenta um formulário em branco para que os detalhes do professor (Código, Nome, Endereço, CEP, Estado, Cidade, Bairro, Telefone, Identidade, Sexo, Fax, CPF, Data do Cadastro e Observação) sejam incluídos. <br>
-e)	A Secretária fornece os detalhes do novo professor. <br>
-f)	O Sistema verifica a validade dos dados. Se os dados forem válidos, inclui o novo professor e a grade listando os professores cadastrados é atualizada; caso contrário, o Sistema reporta o fato, solicita novos dados e repete a verificação. <br>
+Sumário: O cliente faz o pedido de uma encomenda, marcando o horário para receber.
 
-Fluxo Alternativo (3): Remoção
+Ator Primário: Cliente.
 
-a)	A Secretária seleciona um professor e requisita ao Sistema que o remova. <br>
-b)	Se o professor pode ser removido, o Sistema realiza a remoção; caso contrário, o Sistema reporta o fato. <br>
+Pré-condições: O cliente deve ser validado pelo Sistema.
 
-Fluxo Alternativo (3): Alteração
+Fluxo Principal:
 
-a)	A Secretária altera um ou mais dos detalhes do professor e requisita sua atualização. <br>
-b)	O Sistema verifica a validade dos dados e, se eles forem válidos, altera os dados na lista de professores, caso contrário, o erro é reportado. <br>
- 
-Fluxo Alternativo (3): Consulta
+1) 	O cliente define o conteúdo da encomenda e o horário a ser entregue.
+2) 	Se o cliente desejar, ele pode definir que a recomenda seja recorrente neste mesmo horário.
 
-a)	A Secretária opta por pesquisar pelo nome ou código e solicita a consulta sobre a lista de professores. <br>
-b)	O Sistema apresenta uma lista professores. <br>
-c)	A Secretária seleciona o professor. <br>
-d)	O Sistema apresenta os detalhes do professor no formulário de professores. <br>
+   
+#### Pedir um kit pré-pronto (CSU03)
 
-Pós-condições: Um professor foi inserido ou removido, seus dados foram alterados ou apresentados na tela.
+Sumário: O cliente faz o pedido de um kit pré-pronto definido pelo gerente.
+
+Ator Primário: Cliente.
+
+Pré-condições: O cliente deve ser validado pelo Sistema.
+
+Fluxo Principal:
+
+1) 	O cliente escolhe o kit a ser entregue.
+
+#### Definir um kit pré-pronto (CSU04)
+
+Sumário: O gerente define o conteúdo dos kits pré-prontos.
+
+Ator Primário: Gerente.
+
+Pré-condições: O gerente deve ser validado pelo Sistema.
+
+Fluxo Principal:
+
+1) 	O cliente define o conteúdo dos kits pré-prontos.
+
+#### Definir opções para bolos customizados (CSU05)
+
+Sumário: O gerente define as opções para as customizações de bolos.
+
+Ator Primário: Gerente.
+
+Pré-condições: O gerente deve ser validado pelo Sistema.
+
+Fluxo Principal:
+
+1) 	O cliente define as possibilidades para customizações dos bolos.
 
 ### 3.4.3 Diagrama de Classes 
 
-A Figura 2 mostra o diagrama de classes do sistema. A Matrícula deve conter a identificação do funcionário responsável pelo registro, bem com os dados do aluno e turmas. Para uma disciplina podemos ter diversas turmas, mas apenas um professor responsável por ela.
+A Figura 2 mostra o diagrama de classes do sistema. O Pedido deve conter a identificação do Cliente responsável pela solicitação e do Funcionário que o gerencia. Utilizamos a classe ItemPedido para criar uma distinção no fluxo do sistema: se o produto for padrão, ele deverá constar no estoque geral e será referenciado diretamente na compra; se for uma Encomenda Personalizada, ela utilizará uma Receita específica que consome Insumos, e estes insumos devem constar no estoque. Se houver falta no estoque de qualquer um dos lados (produtos ou insumos), acionamos o fornecedor correspondente através das entidades de fornecimento.
 
 #### Figura 2: Diagrama de Classes do Sistema.
  
-![image](https://github.com/user-attachments/assets/abc7591a-b46f-4ea2-b8f0-c116b60eb24e)
-
+![dcu](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-squad-05/blob/main/src/DiagramaDeClasses.png)
 
 ### 3.4.4 Descrições das Classes 
 
 | # | Nome | Descrição |
 |--------------------|------------------------------------|----------------------------------------|
-| 1	|	Aluno |	Cadastro de informações relativas aos alunos. |
-| 2	| Curso |	Cadastro geral de cursos de aperfeiçoamento. |
-| 3 |	Matrícula |	Cadastro de Matrículas de alunos nos cursos. |
-| 4 |	Turma |	Cadastro de turmas.
-| 5	|	Professor |	Cadastro geral de professores que ministram as disciplinas. |
-| ... |	... |	... |
+| 1	|	Usuario |	Classe base que centraliza os dados de identificação e contato (Nome, CPF, E-mail) de quem acessa o sistema. |
+| 2	| Funcionario |	Especialização de Usuário para a equipe da loja, registrando cargo e turno de trabalho. |
+| 3 |	Cliente |	Especialização de Usuário para os consumidores, com registros de endereço e histórico de pedidos. |
+| 4 |	Pedido |	Registro central das transações de venda, vinculado a um Cliente (que compra) e a um Funcionário (que atende). |
+| 5	|	ItemPedido |	Relaciona os pedidos normais aos produtos de catálogo, definindo as quantidades e os preços unitários da venda. |
+| 6 |	EncomendaPersonalizada |	Especialização de Pedido voltada a itens customizados, exigindo foto de referência e detalhes descritivos. |
+| 7 |	Receita |	Estrutura vinculada a uma encomenda personalizada que dita o tempo de preparo e as instruções necessárias. |
+| 8 |	InsumoUsado |	Tabela associativa que conecta a Receita aos Insumos do estoque, definindo a quantidade exata de matéria-prima. |
+| 9 |	Produto |	Cadastro de produtos padronizados (prontos) do catálogo, incluindo controle de estoque, preço e categoria. |
+| 10 |	FornecimentoProduto |	Registra as transações de entrada e reabastecimento de produtos prontos oriundos dos fornecedores. |
+| 11 |	FornecedorProduto |	Cadastro dos dados empresariais (CNPJ, Nome Fantasia) dos fornecedores de produtos padronizados. |
+| 12 |	Insumo |	Cadastro das matérias-primas e ingredientes, gerenciando a quantidade disponível e a unidade de medida. |
+| 13 |	FornecimentoInsumo |	Registra as transações de entrada e reabastecimento de matérias-primas oriundas dos fornecedores. |
+| 14 |	FornecedorInsumo |	Cadastro dos dados empresariais dos fornecedores especializados na entrega de insumos/ingredientes. |
