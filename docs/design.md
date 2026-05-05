@@ -6,7 +6,7 @@
 
 Matheus Rodrigues, 29 anos, atua como motoboy. Ele busca otimizar sua rotina matinal para poupar tempo e maximizar seus ganhos ao longo do dia. Matheus procura um estabelecimento prático onde possa tomar um café da manhã rápido e nutritivo, garantindo um bom começo para sua jornada de trabalho. 
 
-2. Carla Perez, "trem bão demais"
+2. Persona: Carla Perez, "trem bão demais"
 
 Carla Perez, 65 anos, é proprietária de uma confeitaria em Patos de Minas – MG. Com mais de 20 anos de experiência, construiu uma clientela fiel baseada na qualidade dos seus produtos. Hoje, seu principal desafio é organizar e acompanhar tudo sem perder vendas ou cometer erros.
 
@@ -22,53 +22,53 @@ Mapa de Empatia: Matheus Rodrigues
 
 1. O que ele VÊ?
 
--Descreve o ambiente e o mercado ao redor dele.
+- Descreve o ambiente e o mercado ao redor dele.
 
--Muitas padarias lotadas com filas lentas pela manhã.
+- Muitas padarias lotadas com filas lentas pela manhã.
 
--Trânsito aumentando enquanto ele ainda não tomou café. 
+- Trânsito aumentando enquanto ele ainda não tomou café. 
 
 2. O que ele OUVE?
 
--Colegas dizendo: "Aquela padaria ali é rápida, o pão na chapa sai na hora". 
+- Colegas dizendo: "Aquela padaria ali é rápida, o pão na chapa sai na hora". 
 
--O barulho constante do rádio da central de entregas ou notificações do app no celular. 
+- O barulho constante do rádio da central de entregas ou notificações do app no celular. 
 
--Pessoas reclamando do preço alto de lanches simples. 
+- Pessoas reclamando do preço alto de lanches simples. 
 
 3. O que ele PENSA e SENTE?
 
--"Preciso comer algo que me sustente até o almoço, senão vou passar mal no sol".
+- "Preciso comer algo que me sustente até o almoço, senão vou passar mal no sol".
 
--"Se eu demorar mais de 10 minutos aqui, vou perder a primeira corrida do dia."
+- "Se eu demorar mais de 10 minutos aqui, vou perder a primeira corrida do dia."
 
--"Queria um lugar onde eu pudesse sentar 5 minutos e ser bem tratado, sem julgamento pela minha roupa de trabalho." 
+- "Queria um lugar onde eu pudesse sentar 5 minutos e ser bem tratado, sem julgamento pela minha roupa de trabalho." 
 
 4. O que ele FALA e FAZ?
 
--Chega de capacete no braço e celular na mão (sempre checando o app). 
+- Chega de capacete no braço e celular na mão (sempre checando o app). 
 
--Pergunta logo de cara: "O que tem pronto que sai rápido?". 
+- Pergunta logo de cara: "O que tem pronto que sai rápido?". 
 
--Costuma ser direto e educado, mas tem pressa. 
+- Costuma ser direto e educado, mas tem pressa. 
 
--Come em pé no balcão para ganhar tempo.
+- Come em pé no balcão para ganhar tempo.
 
 5. Quais são suas DORES? (Medos e frustrações)
 
--Atraso: Ficar preso em uma fila atrás de alguém que está escolhendo 10 tipos de doces diferentes.
+- Atraso: Ficar preso em uma fila atrás de alguém que está escolhendo 10 tipos de doces diferentes.
 
--Custo-benefício: Gastar muito dinheiro e continuar com fome.
+- Custo-benefício: Gastar muito dinheiro e continuar com fome.
 
--Insegurança: Não ter onde encostar a moto com facilidade na frente da padaria.
+- Insegurança: Não ter onde encostar a moto com facilidade na frente da padaria.
 
 6. Quais são seus GANHOS?
 
--Agilidade: Entrar, comer e sair em tempo recorde. 
+- Agilidade: Entrar, comer e sair em tempo recorde. 
 
--Energia: Sentir-se bem alimentado para aguentar o estresse do trânsito. 
+- Energia: Sentir-se bem alimentado para aguentar o estresse do trânsito. 
 
--Acolhimento: Ter um "pit stop" de confiança onde o atendimento é eficiente e amigável.
+- Acolhimento: Ter um "pit stop" de confiança onde o atendimento é eficiente e amigável.
 
 Mapa de Empatia: Carla Perez
 
