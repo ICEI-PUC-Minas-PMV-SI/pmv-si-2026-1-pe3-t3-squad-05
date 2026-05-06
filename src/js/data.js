@@ -26,7 +26,7 @@ const SGP_DATA = {
     produtos: [
         {
             id: 101,
-            nome: "Pão Francês Artesanal",
+            nome: "Pão Artesanal",
             descricao: "Pão de fermentação curta, assado em fornadas frequentes durante a manhã.",
             detalhes: "Indicado para consumo imediato. Produto com controle de disponibilidade por fornada.",
             preco: 0.75,
