@@ -81,10 +81,10 @@ const SGP_DATA = {
         },
         {
             id: 106,
-            nome: "Brigadeiros Sortidos",
-            descricao: "Caixa com brigadeiros tradicionais, chocolate branco e granulado.",
+            nome: "Panna Cotta",
+            descricao: "Sobremesa italiana tradicional feita com creme de leite, leite, açúcar, baunilha e gelatina.",
             detalhes: "Produto de confeitaria com quantidade limitada por dia.",
-            preco: 28.0,
+            preco: 18.0,
             categoria: "Confeitaria",
             imagem: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80",
             disponibilidade: true,
