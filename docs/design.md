@@ -10,6 +10,9 @@ Matheus Rodrigues, 29 anos, atua como motoboy. Ele busca otimizar sua rotina mat
 
 Carla Perez, 65 anos, é proprietária de uma confeitaria em Patos de Minas – MG. Com mais de 20 anos de experiência, construiu uma clientela fiel baseada na qualidade dos seus produtos. Hoje, seu principal desafio é organizar e acompanhar tudo sem perder vendas ou cometer erros.
 
+3. Persona: Lúcio Costa, o Detalhista
+
+Lúcio, 34 anos, é arquiteto autônomo e trabalha em sistema de home office. Morador de um bairro central, ele é o "organizador oficial" dos aniversários da família e dos happy hours entre amigos. Praticante de ciclismo urbano, ele preza pela estética e tem pavor de processos burocráticos ou analógicos.
 
 Nesta seção você deve detalhar as personas do seu projeto. Deve-se documentar uma persona por integrante do projeto. Para mais informações sobre personas consulte: https://www.rdstation.com/blog/marketing/persona-o-que-e/. Sugere-se a utilização de um template do Canva: https://www.canva.com/pt_br/modelos/s/persona/
 
@@ -131,6 +134,67 @@ Mapa de Empatia: Carla Perez
   
 - Trabalhar com menos estresse e menos erros.
 
+Mapa de Empatia: Lúcio Costa
+
+1. O que ele VÊ?
+
+- Instagram: Segue perfis de gastronomia e espera que o catálogo online da padaria tenha qualidade visual.
+
+- Vitrine Digital: Prefere navegar pelo cardápio no celular enquanto espera uma renderização de projeto terminar.
+
+- Detalhes Técnicos: Repara na descrição dos ingredientes.
+
+- Status de Entrega: Monitora a entrega de olho nos prazos.
+
+2. O que ele OUVE?
+
+- Podcasts de Tendências: Está sempre atento a novos ingredientes ou métodos de preparo.
+
+- Indicações de outros consumidores: "A coxinha daquela padaria é ótima, mas o sistema de encomenda deles é uma bagunça".
+
+- Feedback dos convidados: Fica orgulhoso quando ouve "Nossa, onde você encomendou esse bolo? É lindo!".
+
+- Silêncio Digital: Valoriza não precisar ligar para um telefone ocupado; prefere notificações sonoras de "Pedido Confirmado".
+
+3. O que ele PENSA e SENTE?
+
+- Ansiedade de Performance: Como ele organiza os eventos, sente que um erro da padaria é um erro dele perante os convidados.
+
+- Praticidade é Luxo: Para ele, poder personalizar um bolo sem precisar falar com ninguém é o ápice da eficiência.
+
+- Insegurança com o "Combinei no Zap": Sente medo de que a mensagem com a alteração do recheio se perca no histórico da conversa da atendente.
+
+- Aversão a Ruído: Detesta ter que ligar para confirmar se o pedido foi aceito.
+
+4. O que ele FALA e FAZ?
+
+- Personaliza tudo: Não quer o "Bolo nº 2", ele quer o "Bolo nº 2 com massa de baunilha e menos açúcar".
+
+- Printa e Compara: Monta carrinhos em dois lugares diferentes para comparar o custo-benefício e a taxa de entrega.
+
+- Agenda com Precisão: Define o horário de retirada para coincidir com sua agenda.
+
+- É Promotor (ou Detrator): Se o sistema funciona bem, ele compartilha o link direto no grupo da família.
+
+5. Quais são suas DORES? (Medos e frustrações)
+
+- O "Vácuo" da Confirmação: Mandar uma encomenda e ficar horas sem saber se a produção recebeu.
+
+- Surpresas de Última Hora: Receber um aviso de que "não tem o morango" faltando 30 minutos para a festa.
+
+- Falta de Padronização: O bolo vir diferente da foto que estava no site.
+
+- Interface "Poluída": Sites que não funcionam bem no celular o fazem desistir da compra.
+
+6. Quais são seus GANHOS?
+
+- Autonomia Total: Resolver a festa da empresa em 5 minutos pelo celular.
+
+- Histórico Prático: "Quero repetir exatamente o pedido do mês passado".
+
+- Segurança Visual: Poder anexar uma foto de referência para o confeiteiro e saber que ela está salva no sistema.
+
+- Previsibilidade: Saber exatamente quanto vai pagar, sem taxas escondidas de última hora.
  
 Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A partir do mapa da empatia é possível detalhar a personalidade do cliente e compreendê-la melhor. O objetivo é obter um nível mais profundo de compreensão de uma persona. A seguir um exemplo de template que pode ser usado para o mapa de empatia. Para cada persona deverá ser apresentado o seu respectivo mapa de empatia. Sugere-se a utilização do template apresentado em https://www.rdstation.com/blog/marketing/mapa-da-empatia/.
 
