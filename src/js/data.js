@@ -42,7 +42,7 @@ const SGP_DATA = {
             detalhes: "Produto pronto do catálogo, com baixa automática simulada após a finalização do pedido.",
             preco: 32.9,
             categoria: "Confeitaria",
-            imagem: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=900&q=80",
+            imagem: "https://lodivino.com.br/images/receitas/bolo-de-cenoura.jpg",
             disponibilidade: true,
             estoque: 12
         },
@@ -64,7 +64,7 @@ const SGP_DATA = {
             detalhes: "Produto padronizado para retirada ou entrega agendada.",
             preco: 46.0,
             categoria: "Salgados",
-            imagem: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=900&q=80",
+            imagem: "https://lodivino.com.br/images/receitas/torta-de-frango.jpg",
             disponibilidade: true,
             estoque: 8
         },
@@ -81,12 +81,12 @@ const SGP_DATA = {
         },
         {
             id: 106,
-            nome: "Panna Cotta",
-            descricao: "Sobremesa italiana tradicional feita com creme de leite, leite, açúcar, baunilha e gelatina.",
+            nome: "Brigadeiros Sortidos",
+            descricao: "Caixa com brigadeiros tradicionais, chocolate branco e granulado.",
             detalhes: "Produto de confeitaria com quantidade limitada por dia.",
-            preco: 18.0,
+            preco: 28.0,
             categoria: "Confeitaria",
-            imagem: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80",
+            imagem: "https://commons.wikimedia.org/wiki/Special:FilePath/Brigadeiro.jpg?width=900",
             disponibilidade: true,
             estoque: 18
         }
