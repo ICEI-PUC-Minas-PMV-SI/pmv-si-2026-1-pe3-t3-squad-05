@@ -14,6 +14,10 @@ Carla Perez, 65 anos, é proprietária de uma confeitaria em Patos de Minas – 
 
 Lúcio, 34 anos, é arquiteto autônomo e trabalha em sistema de home office. Morador de um bairro central, ele é o "organizador oficial" dos aniversários da família e dos happy hours entre amigos. Praticante de ciclismo urbano, ele preza pela estética e tem pavor de processos burocráticos ou analógicos.
 
+4. Persona: Eusébio Oliveira, o Chato.
+
+Eusébio, 82 anos, é aposentado. Mora com sua esposa e tem problemas no joelho. Mora nos arredores de Contagem, numa área mais distante de grandes centros comerciais. Não tem muita paciência para tecnologia atual. Devido a seu impedimento de mobilidade, distância e avançada idade, precisa de algo intuitivo e simples.
+
 Nesta seção você deve detalhar as personas do seu projeto. Deve-se documentar uma persona por integrante do projeto. Para mais informações sobre personas consulte: https://www.rdstation.com/blog/marketing/persona-o-que-e/. Sugere-se a utilização de um template do Canva: https://www.canva.com/pt_br/modelos/s/persona/
 
 ## 4.2 Mapa de Empatia
@@ -195,6 +199,44 @@ Mapa de Empatia: Lúcio Costa
 - Segurança Visual: Poder anexar uma foto de referência para o confeiteiro e saber que ela está salva no sistema.
 
 - Previsibilidade: Saber exatamente quanto vai pagar, sem taxas escondidas de última hora.
+
+Mapa de Empatia: Eusébio Oliveira
+
+1. O que ele VÊ?
+
+- Um mundo cada vez mais tecnológico e confuso
+- Poucas opções perto de casa, sendo inviável um deslocamento longo.
+- Outras pessoas abraçando cada vez mais a "appificação" de todos os serviços os quais estava acostumado.
+
+2. O que ele OUVE?
+
+- Amigos e parentes da mesma idade reclamando da quantidade excessiva de aplicativos para qualquer serviço.
+- "É só baixar o app!", dito pelos jovens e propagandas ao seu redor.
+- Reclamações de familiares sobre ele não saber usar aplicativos.
+
+3. O que ele PENSA e SENTE?
+
+- Sente-se estúpido por não conseguir utilizar aplicativos.
+- Pensa que as coisas eram mais simples antes.
+- Sente medo ao não saber diferenciar aplicativos seguros de duvidosos.
+
+4. O que ele FALA e FAZ?
+
+- "Na minha época era mais fácil!"
+- Evita usar apps o máximo possível.
+- Pede ajuda à esposa ou familiares para utilizar o celular.
+
+5. Quais são suas DORES? (Medos e frustrações)
+
+- Dificuldade de se locomover por causa do joelho, inviabilizando caminhar até padarias um pouco mais distantes.
+- Sente-se "deixado para trás" por não conseguir acompanhar a tecnologia.
+- Medo de tomar algum golpe online.
+
+6. Quais são seus GANHOS?
+
+- Navegação simples e fácil pelo aplicativo.
+- Entrega em casa - não precisaria se locomover.
+- Autonomia para solucionar a necessidade de um lanche rápido para si e sua esposa.
  
 Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A partir do mapa da empatia é possível detalhar a personalidade do cliente e compreendê-la melhor. O objetivo é obter um nível mais profundo de compreensão de uma persona. A seguir um exemplo de template que pode ser usado para o mapa de empatia. Para cada persona deverá ser apresentado o seu respectivo mapa de empatia. Sugere-se a utilização do template apresentado em https://www.rdstation.com/blog/marketing/mapa-da-empatia/.
 
