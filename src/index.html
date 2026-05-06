@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGP - Sistema Gerenciador de Produtos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="container header-content">
+            <a class="brand" href="#home" aria-label="Ir para o início">
+                <span class="brand-mark">SGP</span>
+                <span>
+                    <strong>Sistema Gerenciador de Produtos</strong>
+                    <small>Panificadora e Confeitaria</small>
+                </span>
+            </a>
+
+            <div class="header-actions">
+                <span id="user-greeting" class="user-greeting">Visitante</span>
+                <a class="cart-pill" href="#carrinho" aria-label="Abrir carrinho">
+                    <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+                    <span>Carrinho</span>
+                    <strong id="cart-count">0</strong>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="app-nav" aria-label="Navegação principal">
+        <div class="container nav-scroll">
+            <a href="#home" data-route="home"><i class="fa-solid fa-house" aria-hidden="true"></i> Início</a>
+            <a href="#cadastro" data-route="cadastro"><i class="fa-solid fa-user-plus" aria-hidden="true"></i> Cadastro</a>
+            <a href="#catalogo" data-route="catalogo"><i class="fa-solid fa-bread-slice" aria-hidden="true"></i> Catálogo</a>
+            <a href="#encomenda" data-route="encomenda"><i class="fa-solid fa-cake-candles" aria-hidden="true"></i> Encomenda</a>
+            <a href="#status" data-route="status"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i> Status</a>
+            <span class="nav-separator" aria-hidden="true"></span>
+            <a href="#dashboard" data-route="dashboard"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Gerente</a>
+            <a href="#pedidos" data-route="pedidos"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> Pedidos</a>
+            <a href="#produtos" data-route="produtos"><i class="fa-solid fa-tags" aria-hidden="true"></i> Produtos</a>
+            <a href="#estoque" data-route="estoque"><i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i> Estoque</a>
+            <a href="#relatorios" data-route="relatorios"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Relatórios</a>
+        </div>
+    </nav>
+
+    <main id="main-content" class="main-content container" tabindex="-1">
+        <section class="loading-state">
+            <p>Carregando protótipo...</p>
+        </section>
+    </main>
+
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+    <footer class="app-footer">
+        <div class="container footer-content">
+            <span>SGP - Protótipo acadêmico de alta fidelidade</span>
+            <span>PUC Minas - 2026</span>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
