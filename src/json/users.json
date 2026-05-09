@@ -1,0 +1,37 @@
+[
+	{
+		"nome": "teste",
+		"email": "teste.com.br",
+		"senha": 1
+	},
+	{
+		"nome": "teste",
+		"email": "testa.com.br",
+		"senha": 1
+	},
+	{
+		"nome": "teste",
+		"email": "teseta.com.br",
+		"senha": 1
+	},
+	{
+		"nome": "teste",
+		"email": "tesesdadta.com.br",
+		"senha": 1
+	},
+	{
+		"nome": "teste",
+		"email": "tesaesdadta.com.br",
+		"senha": 1
+	},
+	{
+		"nome": "teste",
+		"email": "tedsasaesdadta.com.br",
+		"senha": 1
+	},
+	{
+		"nome": "teste",
+		"email": "tedsasaesdaedta.com.br",
+		"senha": 1
+	}
+]

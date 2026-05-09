@@ -1,0 +1,16 @@
+{
+  "name": "SGP",
+  "version": "1.0.0",
+  "description": "Sistema Gerenciador de Produtos",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node ./src/js/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {}
+}
