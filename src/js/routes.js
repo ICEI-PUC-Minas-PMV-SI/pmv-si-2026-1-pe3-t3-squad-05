@@ -59,7 +59,6 @@ const Router = {
         return `
             <section class="page-layout narrow">
                 <div class="section-heading">
-                    <span class="eyebrow">RF1 e RNF7</span>
                     <h2>Cadastro de usuário</h2>
                     <p>Preencha os dados para simular a entrada no sistema. Os campos validam formato de e-mail e CPF.</p>
                 </div>
@@ -115,7 +114,6 @@ const Router = {
                     <p>${produto.descricao}</p>
                     <div class="product-meta">
                         <strong>${formatCurrency(produto.preco)}</strong>
-                        <span>${produto.estoque} un. em estoque</span>
                     </div>
                     <div class="card-actions">
                         <button class="btn btn-ghost" data-action="go" data-route="produto" data-id="${produto.id}">
@@ -133,7 +131,6 @@ const Router = {
         return `
             <section class="page-layout">
                 <div class="section-heading">
-                    <span class="eyebrow">RF3 e RF5</span>
                     <h2>Catálogo de produtos</h2>
                     <p>Produtos com foto, descrição, preço e disponibilidade para demonstrar a experiência do cliente.</p>
                 </div>
@@ -167,7 +164,6 @@ const Router = {
                     <p>${produto.detalhes}</p>
                     <dl class="summary-list">
                         <div><dt>Preço</dt><dd>${formatCurrency(produto.preco)}</dd></div>
-                        <div><dt>Estoque</dt><dd>${produto.estoque} unidades</dd></div>
                         <div><dt>Status</dt><dd>${produto.disponibilidade ? "Disponível" : "Indisponível"}</dd></div>
                     </dl>
                     <button class="btn btn-primary" data-action="add-cart" data-id="${produto.id}" ${produto.disponibilidade ? "" : "disabled"}>
@@ -185,7 +181,6 @@ const Router = {
         return `
             <section class="page-layout narrow">
                 <div class="section-heading">
-                    <span class="eyebrow">RF2 e RF4</span>
                     <h2>Encomenda personalizada</h2>
                     <p>Configure um bolo sob encomenda. O preço é estimado para fins de protótipo.</p>
                 </div>
@@ -245,7 +240,6 @@ const Router = {
         return `
             <section class="page-layout">
                 <div class="section-heading">
-                    <span class="eyebrow">RF5</span>
                     <h2>Carrinho</h2>
                     <p>Revise itens, ajuste quantidades e avance para entrega ou retirada.</p>
                 </div>
@@ -274,7 +268,6 @@ const Router = {
         return `
             <section class="page-layout narrow">
                 <div class="section-heading">
-                    <span class="eyebrow">RF6 e RF8</span>
                     <h2>Entrega ou retirada</h2>
                     <p>Escolha como o pedido será recebido. As informações ficam apenas no protótipo.</p>
                 </div>
@@ -309,7 +302,6 @@ const Router = {
         return `
             <section class="page-layout narrow">
                 <div class="section-heading">
-                    <span class="eyebrow">RF8</span>
                     <h2>Pagamento simulado</h2>
                     <p>Selecione uma forma de pagamento. Nenhuma transação real será realizada.</p>
                 </div>
@@ -364,7 +356,6 @@ const Router = {
         return `
             <section class="page-layout">
                 <div class="section-heading">
-                    <span class="eyebrow">RF9</span>
                     <h2>Status do pedido</h2>
                     <p>Acompanhe as etapas do pedido com feedback visual em tempo real simulado.</p>
                 </div>
@@ -396,7 +387,6 @@ const Router = {
         return `
             <section class="page-layout">
                 <div class="section-heading">
-                    <span class="eyebrow">RF7 e RNF3</span>
                     <h2>Painel do gerente</h2>
                     <p>Resumo administrativo para monitorar pedidos, catálogo e estoque.</p>
                 </div>
@@ -430,7 +420,6 @@ const Router = {
         return `
             <section class="page-layout">
                 <div class="section-heading">
-                    <span class="eyebrow">RF4 e RF9</span>
                     <h2>Gestão de pedidos</h2>
                     <p>Visualize pedidos e altere o status para demonstrar o fluxo administrativo.</p>
                 </div>
@@ -443,7 +432,6 @@ const Router = {
         return `
             <section class="page-layout">
                 <div class="section-heading">
-                    <span class="eyebrow">RF3 e RF7</span>
                     <h2>Gestão de produtos</h2>
                     <p>Cadastro e disponibilidade são simulados para demonstrar o uso pelo gerente.</p>
                 </div>
@@ -481,7 +469,6 @@ const Router = {
         return `
             <section class="page-layout">
                 <div class="section-heading">
-                    <span class="eyebrow">RNF3</span>
                     <h2>Estoque de insumos</h2>
                     <p>Itens abaixo do nível crítico são destacados para apoiar a gestão da panificadora.</p>
                 </div>
@@ -496,7 +483,6 @@ const Router = {
         return `
             <section class="page-layout">
                 <div class="section-heading">
-                    <span class="eyebrow">RNF4 e RNF5</span>
                     <h2>Relatórios simulados</h2>
                     <p>Representação visual dos relatórios previstos na especificação, sem geração real de arquivos.</p>
                 </div>
