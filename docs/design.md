@@ -18,7 +18,6 @@ Lúcio, 34 anos, é arquiteto autônomo e trabalha em sistema de home office. Mo
 
 Eusébio, 82 anos, é aposentado. Mora com sua esposa e tem problemas no joelho. Mora nos arredores de Contagem, numa área mais distante de grandes centros comerciais. Não tem muita paciência para tecnologia atual. Devido a seu impedimento de mobilidade, distância e avançada idade, precisa de algo intuitivo e simples.
 
-Nesta seção você deve detalhar as personas do seu projeto. Deve-se documentar uma persona por integrante do projeto. Para mais informações sobre personas consulte: https://www.rdstation.com/blog/marketing/persona-o-que-e/. Sugere-se a utilização de um template do Canva: https://www.canva.com/pt_br/modelos/s/persona/
 
 ## 4.2 Mapa de Empatia
 
@@ -237,8 +236,6 @@ Mapa de Empatia: Eusébio Oliveira
 - Navegação simples e fácil pelo aplicativo.
 - Entrega em casa - não precisaria se locomover.
 - Autonomia para solucionar a necessidade de um lanche rápido para si e sua esposa.
- 
-Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A partir do mapa da empatia é possível detalhar a personalidade do cliente e compreendê-la melhor. O objetivo é obter um nível mais profundo de compreensão de uma persona. A seguir um exemplo de template que pode ser usado para o mapa de empatia. Para cada persona deverá ser apresentado o seu respectivo mapa de empatia. Sugere-se a utilização do template apresentado em https://www.rdstation.com/blog/marketing/mapa-da-empatia/.
 
 ## 4.3 Protótipos das Interfaces
 
@@ -333,10 +330,76 @@ Também foram aplicadas recomendações ergonômicas de legibilidade, reconhecim
 Assim, o protótipo de alta fidelidade está adequado para a etapa seguinte de testes com usuários. Ele permite observar se clientes conseguem encontrar produtos, montar pedidos, personalizar encomendas e acompanhar status, além de permitir avaliar se o gerente compreende a gestão de pedidos, produtos e estoque. As limitações identificadas, como persistência real, relatórios efetivos, segurança/LGPD e controle transacional de estoque, devem ser tratadas em versões posteriores do sistema.
 
 ## 4.4 Testes com Protótipos
-Nesta seção você deve apresentar os testes realizados com usuários utilizando os protótipos de alta fidelidade desenvolvidos na seção anterior. O objetivo é avaliar a usabilidade, a clareza das informações e a adequação do design às necessidades das personas definidas no projeto.
 
-Cada integrante do grupo deverá aplicar o teste com um usuário distinto, preferencialmente alinhado ao perfil das personas criadas. Devem ser definidas previamente as tarefas que o usuário deverá executar no protótipo (por exemplo: realizar um cadastro, buscar um produto, concluir uma compra).
+Os testes com o protótipo de alta fidelidade foram planejados para verificar se os usuários conseguem compreender a proposta do SGP, navegar pelas principais áreas e concluir tarefas relacionadas aos requisitos definidos na especificação. A avaliação combina dois métodos: teste com usuário, por observação de sessão de uso, e avaliação heurística, por inspeção das interfaces com base nas heurísticas de Nielsen.
 
-Durante a aplicação do teste, registre observações sobre comportamentos, dúvidas, erros e comentários feitos pelo usuário, bem como o tempo necessário para a execução de cada tarefa. Ao final, colete o feedback do participante, destacando pontos positivos e aspectos a serem melhorados.
+O [teste com usuário](docs/testes/Relatorio_de_Testes_com_Usuario.docx) foi preenchido com o cenário de uso, tarefas, caminhos esperados, critérios de sucesso e questões finais. O objetivo é observar usuários representativos das personas do projeto, incluindo clientes com pressa, clientes que desejam personalizar encomendas, usuários com menor familiaridade tecnológica e gerentes responsáveis por pedidos e estoque.
 
-Os resultados obtidos por todos os integrantes devem ser consolidados, apresentando uma análise geral com os principais problemas encontrados, oportunidades de melhoria e as ações previstas para o projeto final. 
+### 4.4.1 Objetivos da avaliação
+
+| Objetivo | Relação com o protótipo |
+|---|---|
+| Verificar se o usuário entende a finalidade do SGP ao acessar a tela inicial. | Tela Início, navegação principal e resumo do sistema. |
+| Avaliar se o cliente consegue localizar produtos e montar um pedido. | Catálogo, busca, filtros, detalhe do produto e carrinho. |
+| Avaliar se o cliente consegue criar uma encomenda personalizada. | Tela Encomenda, preço estimado, imagem de referência e carrinho. |
+| Avaliar se o cliente entende o fluxo de entrega, pagamento e acompanhamento. | Entrega/retirada, pagamento simulado, confirmação e status. |
+| Avaliar se o gerente compreende as funções administrativas. | Painel do gerente, gestão de pedidos, produtos, estoque e relatórios. |
+| Identificar problemas de usabilidade antes da evolução para uma versão funcional completa. | Mensagens de erro, feedbacks, organização visual, prevenção de erros e clareza dos fluxos. |
+
+### 4.4.2 Perfil dos participantes
+
+Os participantes indicados para a aplicação dos testes devem representar as personas já descritas neste documento:
+
+| Perfil | Persona associada | Foco da observação |
+|---|---|---|
+| Cliente com pouco tempo disponível | Matheus Rodrigues | Rapidez para encontrar produto, adicionar ao carrinho e finalizar pedido. |
+| Gerente/proprietária da confeitaria | Carla Perez | Clareza do painel gerencial, pedidos, produtos e estoque. |
+| Cliente detalhista que organiza eventos | Lúcio Costa | Facilidade para personalizar encomenda, conferir preço e acompanhar status. |
+| Cliente com baixa familiaridade digital | Eusébio Oliveira | Simplicidade da navegação, compreensão dos botões e segurança percebida. |
+
+### 4.4.3 Tarefas propostas
+
+As tarefas foram definidas para cobrir os principais RF e RNF demonstrados pelo protótipo:
+
+| Tarefa | Descrição para o participante | Fluxo esperado | Requisitos avaliados |
+|---|---|---|---|
+| Tarefa 1 - Cadastro e entrada no sistema | Criar um cadastro de cliente e acessar o sistema. | Início > Entre > Criar novo cadastro > preencher dados válidos > criar cadastro. | RF1, RNF1, RNF7 |
+| Tarefa 2 - Compra de produto do catálogo | Encontrar um produto disponível, adicioná-lo ao carrinho e revisar o pedido. | Catálogo > buscar/filtrar produto > adicionar > Carrinho > ajustar quantidade/remover se necessário. | RF2, RF3, RNF1, RNF2 |
+| Tarefa 3 - Encomenda personalizada | Montar uma encomenda de bolo personalizada com data e horário de retirada ou entrega. | Encomenda > selecionar opções > adicionar ao carrinho > Entrega/retirada > Pagamento simulado > Confirmação. | RF4, RF5, RF6, RF8 |
+| Tarefa 4 - Acompanhamento de pedido | Consultar o status de um pedido confirmado. | Status > visualizar linha do tempo do pedido e etapa atual. | RF9 |
+| Tarefa 5 - Gestão administrativa | Acessar a área gerencial, verificar estoque crítico e alterar o status de um pedido. | Gerente > Estoque/Pedidos > consultar informações > alterar status. | RF7, RF9, RNF3 |
+| Tarefa 6 - Relatórios simulados | Localizar os relatórios semanais previstos no sistema. | Relatórios > identificar pré-visualização de Excel e PDF. | RNF4, RNF5 |
+
+### 4.4.4 Critérios de registro
+
+Durante cada sessão, o avaliador deve registrar o caminho utilizado pelo participante, o grau de sucesso da tarefa, dúvidas, comentários, erros de navegação, tempo aproximado e sugestões espontâneas. O relatório usa a seguinte escala:
+
+| Nota | Critério |
+|---|---|
+| 0 | O participante não completou a tarefa. |
+| 1 | O participante completou com dificuldade, demora excessiva ou ajuda do avaliador. |
+| 2 | O participante completou facilmente, sem ajuda relevante. |
+
+Também devem ser registradas as respostas às questões introdutórias e finais, principalmente a impressão geral do sistema, o que o participante mais gostou, o que menos gostou e quais funções sentiu falta.
+
+### 4.4.5 Avaliação heurística
+
+A [avaliação heurística](docs/testes/Avaliacao_Heuristica.xlsx) foi preenchida considerando as dez heurísticas de Nielsen: visibilidade do status, correspondência com o mundo real, controle e liberdade, consistência, prevenção de erros, reconhecimento em vez de memorização, flexibilidade, design minimalista, recuperação de erros e ajuda/documentação.
+
+Os principais pontos positivos identificados foram a navegação direta, a consistência visual entre telas, o uso de feedback por mensagens, a organização por cards e tabelas e a presença de estados de disponibilidade e status. Os principais pontos de melhoria foram a ausência de ajuda contextual, a simulação de relatórios sem explicar o limite da funcionalidade em todas as telas, a falta de persistência temporária dos formulários em caso de perda de conexão e a necessidade de reforçar o controle de acesso entre cliente e gerente.
+
+### 4.4.6 Síntese dos resultados esperados
+
+Com base na inspeção do protótipo e nos fluxos previstos, espera-se que os usuários consigam concluir com facilidade as tarefas de catálogo, carrinho e encomenda personalizada, pois essas telas apresentam botões claros, informações agrupadas e feedback imediato. As tarefas administrativas podem exigir mais atenção, principalmente para usuários que não tenham familiaridade com estoque, pedidos e relatórios.
+
+As melhorias recomendadas para a próxima versão são:
+
+- incluir data de nascimento e perfil no cadastro, conforme RF1;
+- diferenciar permissões de cliente e gerente;
+- implementar persistência temporária para dados digitados, conforme RNF8;
+- transformar relatórios simulados em geração real de Excel e PDF;
+- reforçar mensagens de ajuda nas telas de pagamento, relatórios e área gerencial;
+- implementar persistência real de pedidos, produtos, estoque e encomendas;
+- melhorar segurança técnica com HTTPS, criptografia adequada e proteção de dados pessoais, conforme RNF6.
+
+Com esses registros, o protótipo fica preparado para aplicação com participantes reais e para consolidação dos resultados observados na etapa de testes.

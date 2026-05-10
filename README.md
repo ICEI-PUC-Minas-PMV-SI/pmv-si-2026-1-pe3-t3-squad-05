@@ -17,7 +17,7 @@ Desenvolver um sistema digital para gestão de encomendas em panificadoras e con
 * Leonardo Henrique Soares dos Reis
 * Guilherme Henrique Santos Arantes
 
-## Orientador
+## Orientadora
 
 * Maria Ines Lage de Paula 
 
