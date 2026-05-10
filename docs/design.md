@@ -272,33 +272,33 @@ As principais interfaces implementadas são:
 
 O protótipo demonstra os requisitos funcionais da seguinte forma:
 
-| Requisito | Como aparece no protótipo | Situação |
-|---|---|---|
-| RF1 - Cadastro de usuário | Tela de cadastro com nome, CPF, e-mail, telefone e senha; login com e-mail e senha. | Parcialmente demonstrado, pois não há data de nascimento nem diferenciação completa entre cliente e funcionário no cadastro. |
-| RF2 - Catálogo de produtos | Catálogo com fotos, descrição, preço, categoria, disponibilidade, busca e filtros. | Demonstrado. |
-| RF3 - Carrinho de compra | Inclusão, remoção e alteração de quantidade de produtos antes da finalização. | Demonstrado. |
-| RF4 - Customização de produtos | Formulário de encomenda com formato, tamanho, recheio, cobertura, mensagem, imagem de referência e observações. | Demonstrado em fluxo específico de bolo personalizado. |
-| RF5 - Cadastro de encomendas personalizadas | Encomenda personalizada é adicionada ao carrinho e, após confirmação, vira pedido no protótipo. | Parcialmente demonstrado, pois os detalhes de produção e persistência definitiva ainda são simulados. |
-| RF6 - Agendamento de entrega ou retirada | Tela de entrega/retirada com data e horário. | Demonstrado. |
-| RF7 - Gestão de estoque híbrido | Painel e tela de estoque permitem consultar e alterar quantidades de produtos e insumos. | Parcialmente demonstrado, pois não há reserva, baixa automática, reposição real nem sincronização entre venda física e online. |
-| RF8 - Integração de pagamento | Tela de pagamento apresenta Pix, cartão de crédito e dinheiro na retirada. | Demonstrado como simulação visual, sem transação real. |
-| RF9 - Notificação em tempo real | Acompanhamento de status por linha do tempo e alteração de status no painel do gerente. | Parcialmente demonstrado, pois as atualizações acontecem no estado local do protótipo, sem notificação push ou serviço em tempo real. |
+| Requisito | Como aparece no protótipo |
+|---|---|
+| RF1 - Cadastro de usuário | Tela de cadastro com nome, CPF, e-mail, telefone e senha; login com e-mail e senha. |
+| RF2 - Catálogo de produtos | Catálogo com fotos, descrição, preço, categoria, disponibilidade, busca e filtros. |
+| RF3 - Carrinho de compra | Inclusão, remoção e alteração de quantidade de produtos antes da finalização. |
+| RF4 - Customização de produtos | Formulário de encomenda com formato, tamanho, recheio, cobertura, mensagem, imagem de referência e observações. |
+| RF5 - Cadastro de encomendas personalizadas | Encomenda personalizada é adicionada ao carrinho e, após confirmação, vira pedido no protótipo. |
+| RF6 - Agendamento de entrega ou retirada | Tela de entrega/retirada com data e horário. |
+| RF7 - Gestão de estoque híbrido | Painel e tela de estoque permitem consultar e alterar quantidades de produtos e insumos. |
+| RF8 - Integração de pagamento | Tela de pagamento apresenta Pix, cartão de crédito e dinheiro na retirada. |
+| RF9 - Notificação em tempo real | Acompanhamento de status por linha do tempo e alteração de status no painel do gerente. |
 
 ### 4.3.3 Demonstração dos Requisitos Não Funcionais
 
 Os requisitos não funcionais também foram considerados no protótipo, principalmente como demonstrações de interface e comportamento esperado:
 
-| Requisito | Como aparece no protótipo | Situação |
-|---|---|---|
-| RNF1 - Multiplataforma e interface intuitiva | Aplicação web responsiva, com navegação por menus, botões claros, filtros, cards e formulários organizados. | Demonstrado. |
-| RNF2 - Bom desempenho | O protótipo usa páginas renderizadas em JavaScript, dados locais e navegação por hash, o que reduz atrasos percebidos durante os testes. | Demonstrado parcialmente, sem medição formal de desempenho. |
-| RNF3 - Consulta de estoque em tempo real | Estoque de produtos e insumos é exibido e atualizado imediatamente na interface. | Parcialmente demonstrado, pois a atualização é local e simulada. |
-| RNF4 - Relatório semanal em Excel | Tela de relatórios contém a opção de pré-visualização de Excel para estoque e consumo. | Simulado. |
-| RNF5 - Relatório semanal em PDF | Tela de relatórios contém a opção de pré-visualização de PDF para encomendas personalizadas. | Simulado. |
-| RNF6 - LGPD e transações criptografadas | A tela de pagamento informa que segurança e criptografia são requisitos previstos. | Não implementado no protótipo; precisa de evolução técnica com HTTPS, proteção de dados e senhas seguras. |
-| RNF7 - Validação de e-mail e CPF | O cadastro bloqueia envio com e-mail ou CPF inválido e exibe mensagens de erro. | Parcialmente demonstrado, pois a validação ocorre no envio do formulário, não continuamente durante a digitação. |
-| RNF8 - Manutenção temporária de dados em perda de conexão | Não há armazenamento temporário em `localStorage` ou mecanismo equivalente. | Não demonstrado. |
-| RNF9 - Suporte a aumento repentino de acessos | A arquitetura final deve prever escalabilidade; o protótipo local não testa carga. | Não demonstrado. |
+| Requisito | Como aparece no protótipo |
+|---|---|
+| RNF1 - Multiplataforma e interface intuitiva | Aplicação web responsiva, com navegação por menus, botões claros, filtros, cards e formulários organizados. |
+| RNF2 - Bom desempenho | O protótipo usa páginas renderizadas em JavaScript, dados locais e navegação por hash, o que reduz atrasos percebidos durante os testes. |
+| RNF3 - Consulta de estoque em tempo real | Estoque de produtos e insumos é exibido e atualizado imediatamente na interface. |
+| RNF4 - Relatório semanal em Excel | Tela de relatórios contém a opção de pré-visualização de Excel para estoque e consumo. |
+| RNF5 - Relatório semanal em PDF | Tela de relatórios contém a opção de pré-visualização de PDF para encomendas personalizadas. |
+| RNF6 - LGPD e transações criptografadas | A tela de pagamento informa que segurança e criptografia são requisitos previstos. |
+| RNF7 - Validação de e-mail e CPF | O cadastro bloqueia envio com e-mail ou CPF inválido e exibe mensagens de erro. |
+| RNF8 - Manutenção temporária de dados em perda de conexão |  A arquitetura final contará com armazenamento temporário em `localStorage` ou mecanismo equivalente. |
+| RNF9 - Suporte a aumento repentino de acessos | A arquitetura final deve prever escalabilidade; o protótipo local não testa carga. |
 
 ### 4.3.4 Princípios de design incorporados
 
