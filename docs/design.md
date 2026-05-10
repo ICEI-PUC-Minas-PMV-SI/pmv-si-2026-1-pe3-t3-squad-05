@@ -333,7 +333,7 @@ Assim, o protótipo de alta fidelidade está adequado para a etapa seguinte de t
 
 Os testes com o protótipo de alta fidelidade foram planejados para verificar se os usuários conseguem compreender a proposta do SGP, navegar pelas principais áreas e concluir tarefas relacionadas aos requisitos definidos na especificação. A avaliação combina dois métodos: teste com usuário, por observação de sessão de uso, e avaliação heurística, por inspeção das interfaces com base nas heurísticas de Nielsen.
 
-O [teste com usuário](./testes/Relatorio_de_Testes_com_Usuario.docx) foi preenchido com o cenário de uso, tarefas, caminhos esperados, critérios de sucesso e questões finais. O objetivo é observar usuários representativos das personas do projeto, incluindo clientes com pressa, clientes que desejam personalizar encomendas, usuários com menor familiaridade tecnológica e gerentes responsáveis por pedidos e estoque.
+O [teste com usuário](./testes/Relatorio_de_Testes_com_Usuario.docx) foi preenchido com o cenário de uso, tarefas, caminhos esperados, critérios de sucesso e questões finais. O objetivo é observar o [fluxo das tarefas](./testes/Fluxo.pptx) sendo seguido pelos usuários representativos das personas do projeto, incluindo clientes com pressa, clientes que desejam personalizar encomendas, usuários com menor familiaridade tecnológica e gerentes responsáveis por pedidos e estoque.
 
 ### 4.4.1 Objetivos da avaliação
 
