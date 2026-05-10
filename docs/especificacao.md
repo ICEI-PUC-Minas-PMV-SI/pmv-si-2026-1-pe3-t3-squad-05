@@ -1,26 +1,28 @@
 # 3. DOCUMENTO DE ESPECIFICAÇÃO DE REQUISITOS DE SOFTWARE
 
-Nesta parte do trabalho você deve detalhar a documentação dos requisitos do sistema proposto de acordo com as seções a seguir. Ressalta-se que aqui é utilizado como exemplo um sistema de gestão de cursos de aperfeiçoamento.
-
 ## 3.1 Objetivos deste documento
-O objetivo desse sistema é auxiliar no gerenciamento de insumos, produtos, encomendas e vendas de panificadoras e confeitarias.
+
+Este documento descreve os requisitos do Sistema Gerenciador de Produtos, uma solução voltada para auxiliar no gerenciamento de insumos, produtos, encomendas e vendas de panificadoras e confeitarias.
 
 ## 3.2 Escopo do produto
 
 ### 3.2.1 Nome do produto e seus componentes principais
+
 O produto será denominado SGP - Sistema Gerenciador de Produtos. Ele terá componentes com os devidos elementos necessários à gestão de controle de estoque de produtos e vendas.
 
 ### 3.2.2 Missão do produto
-Gerenciar informações de vendas, encomendas e estoque de insumos. 
+
+Auxiliar panificadoras e confeitarias no controle integrado de produtos, insumos, encomendas e vendas, reduzindo falhas operacionais e mantendo a disponibilidade atualizada para clientes presenciais e online.
 
 ### 3.2.3 Limites do produto
-O SGP não contempla a gestão de recursos de outras categorias do ramo alimentício.
+
+O sistema não contempla gestão financeira completa, folha de pagamento, contabilidade, delivery terceirizado próprio ou gestão de recursos de outros segmentos alimentícios.
 
 ### 3.2.4 Benefícios do produto
 
 | # | Benefício | Valor para o Cliente |
 |--------------------|------------------------------------|----------------------------------------|
-|1	| Facilidade no cadastro de dados |	Essencial |
+|1 | Facilidade no cadastro de dados |	Essencial |
 |2 | Facilidade na recuperação de informações | Essencial | 
 |3 | Melhoria na gestão dos insumos. | Essencial | 
 
@@ -28,40 +30,39 @@ O SGP não contempla a gestão de recursos de outras categorias do ramo aliment�
 
 ### 3.3.1 Requisitos Funcionais
 
-| Código | Requisito Funcional (Funcionalidade) | Descrição |
-|--------------------|------------------------------------|----------------------------------------|
-| RF1 | Cadastro de Usuário | Coletar Nome completo, Documentos(CPF), Data de nascimento, E-mail e Número de telefone |
-| RF2 | Cadastro de Encomendas Personalizadas | Permitir que o cliente faça encomendas personalizadas, Foto, descrição(Ex:Nome, Ano, Mensagem...) |
-| RF3 |	Catálogo de Produtos | Visualização de produtos com fotos, descrição, preço e disponibilidade em tempo real |
-| RF4 |	Gestão de Pedidos Perosonalizados | Opção de alteração no pedido, ponto do pedido(Bem Passado,Mal Passado...), retirar ingredientes ou adicionar ingredientes |
-| RF5 |	Carrinho de Compra | Opção de adicionar, remover e alterar quantidade de produtos no carrinho |
-| RF6 |	Agendamento de Entrega/Retirada	| Opção de entrega e retirada do pedido na loja |
-| RF7 |	Gestão de Estoque | O Sistema deve dar baixa automática no estoque de insumos ou produtos finalizados pós venda |
-| RF8 |	Integração de Pagamento | Opção de pagamento do pedido, Cartão de crédito, Pix e Dinheiro(Pagamento em dinheiro somente em caso de retirada na loja) |
-| RF9 |	Notificação em Tempo Real | O sistema deve enviar atualizações sobre o status do pedido(Ex:"Seu pedido está em preparo","O entregador está a caminho") |
-| ... |	... |	... |
+| Código | Requisito Funcional | Descrição |
+|---|---|---|
+| RF1 | Cadastro de usuário | Permitir o cadastro de clientes e funcionários com nome completo, CPF, data de nascimento, e-mail e telefone. |
+| RF2 | Catálogo de produtos | Exibir produtos da panificadora com foto, descrição, preço, categoria e disponibilidade atualizada. |
+| RF3 | Carrinho de compra | Permitir adicionar, remover e alterar a quantidade de produtos antes da finalização do pedido. |
+| RF4 | Customização de produtos | Permitir que o cliente personalize produtos, informando formato, tamanho, recheio, cobertura, ingredientes, mensagem, imagem de referência e observações. |
+| RF5 | Cadastro de encomendas personalizadas | Registrar pedidos sob encomenda com data, horário, forma de retirada ou entrega e detalhes de produção. |
+| RF6 | Agendamento de entrega ou retirada | Permitir que o cliente selecione data e horário para entrega ou retirada no estabelecimento. |
+| RF7 | Gestão de estoque híbrido | Controlar o mesmo estoque para vendas físicas e encomendas online, atualizando reservas, baixas e reposições em tempo real. |
+| RF8 | Integração de pagamento | Permitir pagamento por cartão de crédito, Pix e dinheiro, sendo dinheiro permitido apenas para retirada na loja. |
+| RF9 | Notificação em tempo real | Enviar atualizações de status do pedido, como confirmado, em preparo, pronto para retirada, saiu para entrega ou cancelado. |
 
 ### 3.3.2 Requisitos Não Funcionais
 
-| Código | Requisito Não Funcional (Restrição) |
-|--------------------|------------------------------------|
-| RNF1 | O Sistema deve ter suporte a multiplataformas, com a interface intuitiva para facilitar a navegação e escolhas do pedido feito pelo cliente. |
-| RNF2 | O Sistema deve ser leve, para evitar atraso dos pedidos e atraso na troca de página. |
-| RNF3 | O Sistema deve ter um relatorio de estoque em tempo real. |
-| RNF4 | O Sistema deve gerar um relatório semanal de estoque de produtos e média de vendas em uma planilha Excel. |
-| RNF5 | O Sistema deve disponibilizar um relatório semanal em formato PDF com encomendas personalizadas. |
-| RNF6 | O Sistema deve estar em conformidade com a LGPD e garantir transações criptografadas. |
-| RNF7 | O Sistema deve impedir cadastros com e-mails inválidos ou CPFs incorretos em tempo real.|
-| RNF8 | Caso o usuário perca a conexão no preenchimento, os dados já digitados devem ser mantidos temporariamente no navegador(Cache). |
-| RNF9 | O Site deve suportar um aumento repentino de acessos. |
-| ... |	... |	... |
+| Código | Requisito Funcional | Descrição |
+|---|---|---|
+| RF1 | Cadastro de usuário | Permitir o cadastro de clientes e funcionários com nome completo, CPF, data de nascimento, e-mail e telefone. |
+| RF2 | Catálogo de produtos | Exibir produtos da panificadora com foto, descrição, preço, categoria e disponibilidade atualizada. |
+| RF3 | Carrinho de compra | Permitir adicionar, remover e alterar a quantidade de produtos antes da finalização do pedido. |
+| RF4 | Customização de produtos | Permitir que o cliente personalize produtos, informando formato, tamanho, recheio, cobertura, ingredientes, mensagem, imagem de referência e observações. |
+| RF5 | Cadastro de encomendas personalizadas | Registrar pedidos sob encomenda com data, horário, forma de retirada ou entrega e detalhes de produção. |
+| RF6 | Agendamento de entrega ou retirada | Permitir que o cliente selecione data e horário para entrega ou retirada no estabelecimento. |
+| RF7 | Gestão de estoque híbrido | Controlar o mesmo estoque para vendas físicas e encomendas online, atualizando reservas, baixas e reposições em tempo real. |
+| RF8 | Integração de pagamento | Permitir pagamento por cartão de crédito, Pix e dinheiro, sendo dinheiro permitido apenas para retirada na loja. |
+| RF9 | Notificação em tempo real | Enviar atualizações de status do pedido, como confirmado, em preparo, pronto para retirada, saiu para entrega ou cancelado. |
+| RF10 | Definição de kits prontos | Permitir que o gerente crie e atualize kits com produtos do catálogo, preço, validade e disponibilidade. |
 
 ### 3.3.3 Usuários 
 
 | Ator | Descrição |
-|--------------------|------------------------------------|
-| Cliente |	Usuário por realizar solicitações de encomendas. |
-| Gerente |	Usuário responsável por cadastro gerência de insumos e produtos. |
+|---|---|
+| Cliente | Usuário que consulta produtos, realiza pedidos, personaliza encomendas, agenda retirada ou entrega e acompanha o status. |
+| Gerente | Usuário responsável por cadastrar produtos, opções de customização, insumos, fornecedores e regras de estoque. |
 | ... |	... |	... |
 
 ## 3.4 Modelagem do Sistema
@@ -127,7 +128,7 @@ Pré-condições: O gerente deve ser validado pelo Sistema.
 
 Fluxo Principal:
 
-1) 	O cliente define o conteúdo dos kits pré-prontos.
+1) 	O gerente define o conteúdo dos kits pré-prontos.
 
 #### Definir opções para bolos customizados (CSU05)
 
@@ -139,7 +140,25 @@ Pré-condições: O gerente deve ser validado pelo Sistema.
 
 Fluxo Principal:
 
-1) 	O cliente define as possibilidades para customizações dos bolos.
+1) 	O gerente define as possibilidades para customizações dos bolos.
+
+#### Customizar produto para encomenda personalizada (CSU06)
+
+Sumário: O cliente personaliza um produto para uma encomenda especial.
+
+Ator Primário: Cliente.
+
+Pré-condições: O cliente deve estar cadastrado e o produto deve permitir customização.
+
+Fluxo Principal:
+
+1) O cliente seleciona um produto com opção de customização.
+2) O sistema exibe as opções configuradas pelo gerente para aquele tipo de produto.
+3) O cliente escolhe as opções desejadas e informa observações de preparo.
+4) O cliente anexa uma imagem de referência, quando necessário.
+5) O sistema calcula o valor estimado e o prazo mínimo de produção.
+6) O sistema consulta o estoque de produtos e insumos necessários.
+7) O cliente confirma a customização e adiciona o item personalizado ao pedido.
 
 ### 3.4.3 Diagrama de Classes 
 
@@ -152,18 +171,19 @@ A Figura 2 mostra o diagrama de classes do sistema. O Pedido deve conter a ident
 ### 3.4.4 Descrições das Classes 
 
 | # | Nome | Descrição |
-|--------------------|------------------------------------|----------------------------------------|
-| 1	|	Usuario |	Classe base que centraliza os dados de identificação e contato (Nome, CPF, E-mail) de quem acessa o sistema. |
-| 2	| Funcionario |	Especialização de Usuário para a equipe da loja, registrando cargo e turno de trabalho. |
-| 3 |	Cliente |	Especialização de Usuário para os consumidores, com registros de endereço e histórico de pedidos. |
-| 4 |	Pedido |	Registro central das transações de venda, vinculado a um Cliente (que compra) e a um Funcionário (que atende). |
-| 5	|	ItemPedido |	Relaciona os pedidos normais aos produtos de catálogo, definindo as quantidades e os preços unitários da venda. |
-| 6 |	EncomendaPersonalizada |	Especialização de Pedido voltada a itens customizados, exigindo foto de referência e detalhes descritivos. |
-| 7 |	Receita |	Estrutura vinculada a uma encomenda personalizada que dita o tempo de preparo e as instruções necessárias. |
-| 8 |	InsumoUsado |	Tabela associativa que conecta a Receita aos Insumos do estoque, definindo a quantidade exata de matéria-prima. |
-| 9 |	Produto |	Cadastro de produtos padronizados (prontos) do catálogo, incluindo controle de estoque, preço e categoria. |
-| 10 |	FornecimentoProduto |	Registra as transações de entrada e reabastecimento de produtos prontos oriundos dos fornecedores. |
-| 11 |	FornecedorProduto |	Cadastro dos dados empresariais (CNPJ, Nome Fantasia) dos fornecedores de produtos padronizados. |
-| 12 |	Insumo |	Cadastro das matérias-primas e ingredientes, gerenciando a quantidade disponível e a unidade de medida. |
-| 13 |	FornecimentoInsumo |	Registra as transações de entrada e reabastecimento de matérias-primas oriundas dos fornecedores. |
-| 14 |	FornecedorInsumo |	Cadastro dos dados empresariais dos fornecedores especializados na entrega de insumos/ingredientes. |
+|---|---|---|
+| 1 | Usuario | Classe base que centraliza os dados de identificação e contato de quem acessa o sistema, como nome, CPF, e-mail e telefone. |
+| 2 | Funcionario | Especialização de usuário para a equipe da loja, registrando cargo, turno e permissões. |
+| 3 | Cliente | Especialização de usuário para consumidores, com endereço, histórico de pedidos e preferências. |
+| 4 | Pedido | Registro central das transações, vinculado ao cliente, aos itens comprados, à origem da venda e ao status de atendimento. |
+| 5 | ItemPedido | Representa cada item de um pedido, registrando produto, quantidade, preço unitário, customização associada e subtotal. |
+| 6 | Produto | Cadastro de produtos padronizados do catálogo, incluindo preço, categoria, foto, disponibilidade e indicação de customização. |
+| 7 | EncomendaPersonalizada | Registro dos detalhes específicos de um item personalizado, como mensagem, formato, imagem de referência, observações e prazo. |
+| 8 | Receita | Estrutura vinculada a produtos e encomendas, contendo instruções de preparo, tempo estimado e insumos necessários. |
+| 9 | InsumoUsado | Classe associativa que conecta receita e insumo, informando quantidade e unidade de medida utilizada. |
+| 10 | Insumo | Cadastro das matérias-primas e ingredientes usados na produção, como farinha, fermento, recheios e embalagens. |
+| 11 | Estoque | Controla saldo disponível, saldo reservado, estoque mínimo e operações de reserva, baixa, reposição e sincronização entre canais. |
+| 12 | ReservaEstoque | Registra a quantidade reservada para um pedido online ou encomenda, permitindo confirmar consumo ou liberar reserva em cancelamentos. |
+| 13 | MovimentoEstoque | Histórico de entradas, saídas, baixas por venda presencial, consumo por encomenda, ajustes e reposições. |
+| 14 | Fornecedor | Cadastro de fornecedores de produtos prontos, insumos e embalagens, com dados de contato e identificação fiscal. |
+| 15 | Fornecimento | Registro de compras e reposições feitas junto aos fornecedores, atualizando o estoque conforme o recebimento. |
