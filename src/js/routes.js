@@ -55,6 +55,37 @@ const Router = {
         `;
     },
 
+    login() {
+        return `
+            <section class="page-layout narrow">
+                <div class="section-heading">
+                    <h2>Entrar</h2>
+                    <p>Acesse com e-mail e senha cadastrados para continuar usando o sistema.</p>
+                </div>
+
+                <form id="login-form" class="form-card" novalidate>
+                    <label>
+                        E-mail
+                        <input type="email" name="email" placeholder="nome@email.com" required>
+                        <small data-error-for="email"></small>
+                    </label>
+                    <label>
+                        Senha
+                        <input type="password" name="senha" placeholder="Digite sua senha" required>
+                        <small data-error-for="senha"></small>
+                    </label>
+                    <button class="btn btn-primary full-width" type="submit">
+                        <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>
+                        Entrar
+                    </button>
+                    <button class="btn btn-ghost full-width" type="button" data-action="go" data-route="cadastro">
+                        Criar novo cadastro
+                    </button>
+                </form>
+            </section>
+        `;
+    },
+
     cadastro() {
         return `
             <section class="page-layout narrow">
@@ -84,9 +115,14 @@ const Router = {
                         <input type="tel" name="telefone" placeholder="(31) 99999-9999" required>
                         <small data-error-for="telefone"></small>
                     </label>
+                    <label>
+                        Senha
+                        <input type="password" name="senha" placeholder="Mínimo de 4 caracteres" required>
+                        <small data-error-for="senha"></small>
+                    </label>
                     <button class="btn btn-primary full-width" type="submit">
                         <i class="fa-solid fa-check" aria-hidden="true"></i>
-                        Salvar cadastro simulado
+                        Criar cadastro
                     </button>
                 </form>
             </section>
@@ -349,16 +385,16 @@ const Router = {
     },
 
     status() {
-        const pedido = AppState.ultimoPedido || SGP_DATA.pedidos[0];
-        const etapas = ["Recebido", "Em preparo", "Pronto para retirada", "Saiu para entrega", "Finalizado"];
-        const statusAtual = etapas.includes(pedido.status) ? etapas.indexOf(pedido.status) : 0;
+        const usuarioLogado = AppState.usuarioLogado;
+        const pedidosUsuario = usuarioLogado
+            ? SGP_DATA.pedidos.filter((pedido) => pedido.clienteEmail === usuarioLogado.email)
+            : [];
 
-        return `
-            <section class="page-layout">
-                <div class="section-heading">
-                    <h2>Status do pedido</h2>
-                    <p>Acompanhe as etapas do pedido com feedback visual em tempo real simulado.</p>
-                </div>
+        const statusCards = pedidosUsuario.map((pedido) => {
+            const etapas = orderStatusSteps(pedido);
+            const statusAtual = etapas.includes(pedido.status) ? etapas.indexOf(pedido.status) : 0;
+
+            return `
                 <div class="status-card">
                     <div class="status-header">
                         <div>
@@ -376,6 +412,18 @@ const Router = {
                         `).join("")}
                     </div>
                 </div>
+            `;
+        }).join("");
+
+        return `
+            <section class="page-layout">
+                <div class="section-heading">
+                    <h2>Status dos pedidos</h2>
+                    <p>Acompanhe apenas os pedidos vinculados ao usuário logado.</p>
+                </div>
+                ${usuarioLogado
+                    ? statusCards || emptyState("Nenhum pedido encontrado.", "Faça uma compra ou encomenda para acompanhar o status por aqui.")
+                    : emptyState("Entre para acompanhar seus pedidos.", "O status mostra somente os pedidos do usuário logado.")}
             </section>
         `;
     },
@@ -451,8 +499,8 @@ const Router = {
                                     <tr>
                                         <td>${produto.nome}</td>
                                         <td>${produto.categoria}</td>
-                                        <td>${formatCurrency(produto.preco)}</td>
-                                        <td>${produto.estoque}</td>
+                                        <td>${priceControl(produto.id, produto.preco, `Preço de ${produto.nome}`)}</td>
+                                        <td>${inventoryControl("produto", produto.id, produto.estoque, "un", `Estoque de ${produto.nome}`)}</td>
                                         <td><span class="badge ${produto.disponibilidade ? "success" : "danger"}">${produto.disponibilidade ? "Disponível" : "Esgotado"}</span></td>
                                         <td><button class="btn btn-ghost" data-action="toggle-product" data-id="${produto.id}">${produto.disponibilidade ? "Indisponibilizar" : "Disponibilizar"}</button></td>
                                     </tr>
@@ -542,7 +590,7 @@ function ordersTable(pedidos, editable = false) {
                             ${editable ? `
                                 <td>
                                     <select data-action="status-change" data-id="${pedido.id}" aria-label="Alterar status do pedido ${pedido.id}">
-                                        ${["Recebido", "Em preparo", "Pronto para retirada", "Saiu para entrega", "Finalizado"].map((status) => `
+                                        ${orderStatusSteps(pedido).map((status) => `
                                             <option value="${status}" ${pedido.status === status ? "selected" : ""}>${status}</option>
                                         `).join("")}
                                     </select>
@@ -556,6 +604,11 @@ function ordersTable(pedidos, editable = false) {
     `;
 }
 
+function orderStatusSteps(pedido) {
+    const finalizacao = pedido.tipoEntrega === "Entrega" ? "Saiu para entrega" : "Pronto para retirada";
+    return ["Recebido", "Em preparo", finalizacao, "Finalizado"];
+}
+
 function stockRow(insumo, detailed = false) {
     const critico = insumo.quantidade <= insumo.nivelCritico;
 
@@ -565,9 +618,46 @@ function stockRow(insumo, detailed = false) {
                 <h3>${insumo.nome}</h3>
                 <p>${detailed ? `Fornecedor: ${insumo.fornecedor}` : `Nível crítico: ${insumo.nivelCritico} ${insumo.unidade}`}</p>
             </div>
-            <strong>${insumo.quantidade} ${insumo.unidade}</strong>
+            ${detailed
+                ? inventoryControl("insumo", insumo.id, insumo.quantidade, insumo.unidade, `Quantidade de ${insumo.nome}`)
+                : `<strong>${insumo.quantidade} ${insumo.unidade}</strong>`}
             <span class="badge ${critico ? "danger" : "success"}">${critico ? "Crítico" : "Adequado"}</span>
         </article>
+    `;
+}
+
+function inventoryControl(kind, id, value, unit, label) {
+    return `
+        <div class="admin-quantity-control" aria-label="${label}">
+            <input
+                type="number"
+                min="0"
+                step="1"
+                value="${value}"
+                data-action="inventory-change"
+                data-kind="${kind}"
+                data-id="${id}"
+                aria-label="${label}"
+            >
+            <span>${unit}</span>
+        </div>
+    `;
+}
+
+function priceControl(id, value, label) {
+    return `
+        <label class="admin-price-control">
+            <span>R$</span>
+            <input
+                type="number"
+                min="0"
+                step="0.01"
+                value="${Number(value).toFixed(2)}"
+                data-action="price-change"
+                data-id="${id}"
+                aria-label="${label}"
+            >
+        </label>
     `;
 }
 

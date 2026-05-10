@@ -16,7 +16,7 @@
     --shadow: 0 18px 45px rgba(68, 43, 30, 0.11);
     --radius: 8px;
     --radius-sm: 6px;
-    --container: 1180px;
+    --container: 1420px;
 }
 
 * {
@@ -28,8 +28,11 @@ html {
 }
 
 body {
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
     margin: 0;
     min-height: 100vh;
+    min-height: 100dvh;
     background: var(--bg);
     color: var(--text);
     font-family: Arial, Helvetica, sans-serif;
@@ -58,7 +61,7 @@ a {
 }
 
 .container {
-    width: min(var(--container), calc(100% - 32px));
+    width: min(var(--container), calc(100% - 48px));
     margin: 0 auto;
 }
 
@@ -189,8 +192,8 @@ a {
 }
 
 .main-content {
-    min-height: 66vh;
-    padding: 36px 0 48px;
+    min-height: 0;
+    padding: clamp(28px, 3vw, 42px) 0 48px;
     transition: opacity 160ms ease, transform 160ms ease;
 }
 
@@ -290,7 +293,7 @@ a {
 
 .section-heading {
     max-width: 760px;
-    margin-bottom: 22px;
+    margin-bottom: 0;
 }
 
 .section-heading h2 {
@@ -299,10 +302,14 @@ a {
     line-height: 1.1;
 }
 
+.section-heading p {
+    margin: 0;
+}
+
 .page-layout,
 .content-band {
     display: grid;
-    gap: 24px;
+    gap: 16px;
 }
 
 .page-layout.narrow {
@@ -541,6 +548,7 @@ a {
     border-radius: 999px;
     font-size: 0.78rem;
     font-weight: 800;
+    white-space: nowrap;
 }
 
 .product-image .badge {
@@ -697,6 +705,87 @@ label small {
 .quantity-control span {
     text-align: center;
     font-weight: 800;
+}
+
+.admin-quantity-control {
+    display: inline-grid;
+    grid-template-columns: 4ch 2.4ch;
+    align-items: center;
+    width: max-content;
+    gap: 2px;
+}
+
+.admin-quantity-control input {
+    width: 4ch;
+    min-height: 30px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text);
+    padding: 0;
+    text-align: center;
+    font-weight: 400;
+    appearance: textfield;
+    cursor: text;
+}
+
+.admin-quantity-control input:focus {
+    border-color: var(--accent);
+    outline: 3px solid rgba(200, 85, 61, 0.18);
+    background: var(--surface);
+}
+
+.admin-quantity-control input::-webkit-outer-spin-button,
+.admin-quantity-control input::-webkit-inner-spin-button {
+    margin: 0;
+    appearance: none;
+}
+
+.admin-quantity-control span {
+    min-width: 2.4ch;
+    padding: 0;
+    color: var(--muted);
+    font-weight: 400;
+}
+
+.admin-price-control {
+    display: inline-grid;
+    grid-template-columns: auto 6.5ch;
+    align-items: center;
+    width: max-content;
+    gap: 4px;
+    color: var(--text);
+    font-weight: 400;
+}
+
+.admin-price-control span {
+    color: var(--muted);
+}
+
+.admin-price-control input {
+    width: 6.5ch;
+    min-height: 30px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text);
+    padding: 0;
+    text-align: left;
+    font-weight: 400;
+    appearance: textfield;
+    cursor: text;
+}
+
+.admin-price-control input:focus {
+    border-color: var(--accent);
+    outline: 3px solid rgba(200, 85, 61, 0.18);
+    background: var(--surface);
+}
+
+.admin-price-control input::-webkit-outer-spin-button,
+.admin-price-control input::-webkit-inner-spin-button {
+    margin: 0;
+    appearance: none;
 }
 
 .summary-list {

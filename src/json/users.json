@@ -1,5 +1,10 @@
 [
 	{
+		"nome": "Cliente Teste",
+		"email": "cliente@sgp.com",
+		"senha": "1234"
+	},
+	{
 		"nome": "teste",
 		"email": "teste.com.br",
 		"senha": 1

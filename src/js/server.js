@@ -1,11 +1,21 @@
 const http = require("http");
 const fs = require("fs");
+const path = require("path");
 var url = require('url');
+
+const usersFilePath = path.join(__dirname, "..", "json", "users.json");
+const produtosFilePath = path.join(__dirname, "..", "json", "produtos.json");
 
 const server = http.createServer(async (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers","*");
     res.setHeader("Access-Control-Allow-Methods","*");
+
+    if (req.method === "OPTIONS") {
+        res.writeHead(204);
+        res.end();
+        return;
+    }
 
     if (req.url.startsWith('/signup')){
         if(req.method === 'POST') {
@@ -16,9 +26,9 @@ const server = http.createServer(async (req, res) => {
             });
             req.on('end', async () => {
                 const users = await carregaUsers()
-                input = JSON.parse(body)
-                if(verificaUserEmail(input.email,users)){
-                    res.writeHead(401, { "Content-Type": "text/plain" });
+                const input = JSON.parse(body)
+                if(verificaUserEmail(input.email,users) !== -1){
+                    res.writeHead(401, { "Content-Type": "application/json" });
                     res.end(JSON.stringify({
                             success: false,
                             message: "Email já em uso."
@@ -26,14 +36,14 @@ const server = http.createServer(async (req, res) => {
                 }
                 else {
                     if(await criaNovoUser(input,users)){
-                        res.writeHead(200, { "Content-Type": "text/plain" });
+                        res.writeHead(200, { "Content-Type": "application/json" });
                         res.end(JSON.stringify({
                             success: true,
                             message: "Conta criada com sucesso!"
                         }));
                     }
                     else {
-                        res.writeHead(401, { "Content-Type": "text/plain" });
+                        res.writeHead(401, { "Content-Type": "application/json" });
                         res.end(JSON.stringify({
                                 success: false,
                                 message: "Erro ao acessar arquivo json."
@@ -54,16 +64,16 @@ const server = http.createServer(async (req, res) => {
             req.on('end', async () => {
                 try {
                     const users = await carregaUsers()
-                    input = JSON.parse(body)
+                    const input = JSON.parse(body)
                     if(fazerLogin(input,users)){
-                        res.writeHead(200, { "Content-Type": "text/plain" });
+                        res.writeHead(200, { "Content-Type": "application/json" });
                         res.end(JSON.stringify({
                             success: true,
                             message: "Login aprovado"
                         }));
                     }
                     else {
-                        res.writeHead(401, { "Content-Type": "text/plain" });
+                        res.writeHead(401, { "Content-Type": "application/json" });
                         res.end(JSON.stringify({
                             success: false,
                             message: "Email ou senha inválidos"
@@ -236,7 +246,7 @@ function gerarId(vetorClientes) {
 
 async function carregaProdutos() {
     return new Promise((resolve,reject) => {
-        fs.readFile('.src/json/produtos.json', "utf8", (error, data) => {
+        fs.readFile(produtosFilePath, "utf8", (error, data) => {
             if (error) {
               reject(error);
             }
@@ -251,7 +261,7 @@ async function carregaProdutos() {
 
 async function atualizarProdutos(vetorProdutos) {
     return new Promise((resolve,reject) => {
-        fs.writeFile('./src/json/produtos.json', JSON.stringify(vetorProdutos, null, "\t"), "utf8", err => {
+        fs.writeFile(produtosFilePath, JSON.stringify(vetorProdutos, null, "\t"), "utf8", err => {
             if (err) {
               console.error("Erro ao atualizar o arquivo de produtos");
             } else {
@@ -263,7 +273,7 @@ async function atualizarProdutos(vetorProdutos) {
 
 async function carregaUsers() {
     return new Promise((resolve,reject) => {
-        fs.readFile('./src/json/users.json', "utf8", (error, data) => {
+        fs.readFile(usersFilePath, "utf8", (error, data) => {
             if (error) {
               reject(error);
             }
@@ -279,7 +289,7 @@ async function carregaUsers() {
 
 async function atualizarUsers(vetorUsers) {
     return new Promise((resolve,reject) => {
-        fs.writeFile('./src/json/users.json', JSON.stringify(vetorUsers, null, "\t"), "utf8", err => {
+        fs.writeFile(usersFilePath, JSON.stringify(vetorUsers, null, "\t"), "utf8", err => {
             if (err) {
               reject("Erro ao atualizar o arquivo de users");
             } else {
@@ -295,7 +305,7 @@ function verificaUserEmail(email, vetorUsers) {
             return i;
         }
     }
-    return false;
+    return -1;
 }
 
 async function criaNovoUser(novoUser,vetorUsers){
@@ -312,8 +322,8 @@ async function criaNovoUser(novoUser,vetorUsers){
 
 function fazerLogin(input,users){
     let i = verificaUserEmail(input.email, users)
-    if(i){
-        if(input.senha === users[i].senha){
+    if(i !== -1){
+        if(String(input.senha) === String(users[i].senha)){
             return true;
         }
         else return false;

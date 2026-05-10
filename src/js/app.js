@@ -6,8 +6,12 @@ const AppState = {
     busca: "",
     restoreSearchFocus: false,
     entrega: null,
-    ultimoPedido: null
+    ultimoPedido: null,
+    usuarioLogado: null,
+    redirectAfterAuth: null
 };
+
+const API_BASE_URL = "http://localhost:3000";
 
 document.addEventListener("DOMContentLoaded", () => {
     const hashRoute = normalizeRoute(window.location.hash);
@@ -28,6 +32,10 @@ document.addEventListener("click", (event) => {
 
     if (action === "go") {
         navigateTo(target.dataset.route, target.dataset.id);
+    }
+
+    if (action === "logout") {
+        logout();
     }
 
     if (action === "filter") {
@@ -53,6 +61,18 @@ document.addEventListener("click", (event) => {
 
     if (action === "toggle-product") {
         toggleProduct(Number(target.dataset.id));
+    }
+
+    if (action === "inventory-step") {
+        updateInventoryQuantity(target.dataset.kind, Number(target.dataset.id), Number(target.dataset.delta));
+    }
+
+    if (action === "inventory-change") {
+        target.select();
+    }
+
+    if (action === "price-change") {
+        target.select();
     }
 
     if (action === "simulate-save") {
@@ -92,9 +112,24 @@ document.addEventListener("change", (event) => {
                 : "Upload simulado: o arquivo não será enviado.";
         }
     }
+
+    const inventoryInput = event.target.closest("[data-action='inventory-change']");
+    if (inventoryInput) {
+        setInventoryQuantity(inventoryInput.dataset.kind, Number(inventoryInput.dataset.id), Number(inventoryInput.value));
+    }
+
+    const priceInput = event.target.closest("[data-action='price-change']");
+    if (priceInput) {
+        setProductPrice(Number(priceInput.dataset.id), Number(priceInput.value));
+    }
 });
 
 document.addEventListener("submit", (event) => {
+    if (event.target.id === "login-form") {
+        event.preventDefault();
+        submitLogin(event.target);
+    }
+
     if (event.target.id === "cadastro-form") {
         event.preventDefault();
         submitCadastro(event.target);
@@ -162,15 +197,62 @@ function markActiveRoute() {
 
 function updateHeader() {
     const greeting = document.getElementById("user-greeting");
+    const authAction = document.getElementById("auth-action");
     const count = document.getElementById("cart-count");
+    const usuarioLogado = getUsuarioLogado();
 
     if (greeting) {
-        greeting.textContent = `${SGP_DATA.usuarioAtual.nome} (${SGP_DATA.usuarioAtual.perfil})`;
+        greeting.textContent = usuarioLogado
+            ? `${usuarioLogado.nome} (${usuarioLogado.perfil})`
+            : "Visitante";
+    }
+
+    if (authAction) {
+        const icon = authAction.querySelector("i");
+        const label = authAction.querySelector("span");
+
+        authAction.dataset.action = usuarioLogado ? "logout" : "go";
+        authAction.dataset.route = usuarioLogado ? "" : "login";
+        authAction.href = usuarioLogado ? "#home" : "#login";
+        authAction.setAttribute("aria-label", usuarioLogado ? "Sair do sistema" : "Entrar no sistema");
+
+        if (icon) {
+            icon.className = `fa-solid ${usuarioLogado ? "fa-right-from-bracket" : "fa-right-to-bracket"}`;
+        }
+
+        if (label) {
+            label.textContent = usuarioLogado ? "Sair" : "Entre";
+        }
     }
 
     if (count) {
         count.textContent = cartQuantity();
     }
+}
+
+function getUsuarioLogado() {
+    return AppState.usuarioLogado;
+}
+
+function setUsuarioLogado(usuario) {
+    AppState.usuarioLogado = usuario;
+    SGP_DATA.usuarioAtual = usuario || { nome: "Visitante", perfil: "Cliente" };
+}
+
+function logout() {
+    setUsuarioLogado(null);
+    AppState.carrinho = [];
+    AppState.entrega = null;
+    AppState.ultimoPedido = null;
+    AppState.redirectAfterAuth = null;
+    showToast("Sessão encerrada.", "success");
+    navigateTo("home");
+}
+
+function redirectAfterAuth(defaultRoute = "catalogo") {
+    const redirect = AppState.redirectAfterAuth;
+    AppState.redirectAfterAuth = null;
+    navigateTo(redirect ? redirect.route : defaultRoute, redirect ? redirect.param : null);
 }
 
 function restoreSearchFocus() {
@@ -183,28 +265,84 @@ function restoreSearchFocus() {
     AppState.restoreSearchFocus = false;
 }
 
-function submitCadastro(form) {
+async function submitLogin(form) {
     clearFormErrors(form);
     const formData = new FormData(form);
-    const nome = formData.get("nome").trim();
-    const cpf = formData.get("cpf").trim();
     const email = formData.get("email").trim();
-    const telefone = formData.get("telefone").trim();
+    const senha = formData.get("senha").trim();
     let valid = true;
 
-    if (nome.length < 3) valid = setFieldError(form, "nome", "Informe o nome completo.");
-    if (!isValidCpf(cpf)) valid = setFieldError(form, "cpf", "Use o formato 000.000.000-00.");
     if (!isValidEmail(email)) valid = setFieldError(form, "email", "Informe um e-mail válido.");
-    if (telefone.length < 10) valid = setFieldError(form, "telefone", "Informe um telefone para contato.");
+    if (!senha) valid = setFieldError(form, "senha", "Informe sua senha.");
 
     if (!valid) {
         showToast("Revise os campos destacados.", "error");
         return;
     }
 
-    SGP_DATA.usuarioAtual = { nome, perfil: "Cliente" };
-    showToast("Cadastro simulado salvo com sucesso.", "success");
-    navigateTo("catalogo");
+    try {
+        const response = await fetch(`${API_BASE_URL}/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, senha })
+        });
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            showToast(result.message || "E-mail ou senha inválidos.", "error");
+            return;
+        }
+
+        setUsuarioLogado({ nome: email, email, perfil: "Cliente" });
+        updateHeader();
+        showToast(result.message || "Login realizado com sucesso.", "success");
+        redirectAfterAuth();
+    } catch (error) {
+        showToast("Não foi possível conectar ao servidor.", "error");
+    }
+}
+
+async function submitCadastro(form) {
+    clearFormErrors(form);
+    const formData = new FormData(form);
+    const nome = formData.get("nome").trim();
+    const cpf = formData.get("cpf").trim();
+    const email = formData.get("email").trim();
+    const telefone = formData.get("telefone").trim();
+    const senha = formData.get("senha").trim();
+    let valid = true;
+
+    if (nome.length < 3) valid = setFieldError(form, "nome", "Informe o nome completo.");
+    if (!isValidCpf(cpf)) valid = setFieldError(form, "cpf", "Use o formato 000.000.000-00.");
+    if (!isValidEmail(email)) valid = setFieldError(form, "email", "Informe um e-mail válido.");
+    if (telefone.length < 10) valid = setFieldError(form, "telefone", "Informe um telefone para contato.");
+    if (senha.length < 4) valid = setFieldError(form, "senha", "Informe uma senha com pelo menos 4 caracteres.");
+
+    if (!valid) {
+        showToast("Revise os campos destacados.", "error");
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/signup`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nome, cpf, email, telefone, senha })
+        });
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            showToast(result.message || "Não foi possível criar o cadastro.", "error");
+            return;
+        }
+
+        setUsuarioLogado({ nome, email, perfil: "Cliente" });
+        updateHeader();
+        showToast(result.message || "Cadastro criado com sucesso.", "success");
+        redirectAfterAuth();
+    } catch (error) {
+        showToast("Não foi possível conectar ao servidor.", "error");
+    }
 }
 
 function submitEncomenda(form) {
@@ -256,10 +394,22 @@ function submitEntrega(form) {
 }
 
 function submitPagamento(form) {
+    if (!getUsuarioLogado()) {
+        AppState.redirectAfterAuth = {
+            route: AppState.route,
+            param: AppState.routeParam
+        };
+        showToast("Entre com sua conta para finalizar o pedido.", "error");
+        navigateTo("login");
+        return;
+    }
+
     const formData = new FormData(form);
+    const usuarioLogado = getUsuarioLogado();
     const pedido = {
         id: `PED-${Math.floor(3000 + Math.random() * 6000)}`,
-        cliente: SGP_DATA.usuarioAtual.nome,
+        cliente: usuarioLogado ? usuarioLogado.nome : SGP_DATA.usuarioAtual.nome,
+        clienteEmail: usuarioLogado ? usuarioLogado.email : null,
         tipo: AppState.carrinho.some((item) => item.tipo === "Encomenda personalizada") ? "Encomenda personalizada" : "Compra comum",
         data: new Date().toLocaleDateString("pt-BR"),
         horario: AppState.entrega ? AppState.entrega.horario : "--:--",
@@ -329,6 +479,57 @@ function toggleProduct(id) {
     if (!produto) return;
     produto.disponibilidade = !produto.disponibilidade;
     showToast("Disponibilidade do produto alterada.", "success");
+    render();
+}
+
+function updateInventoryQuantity(kind, id, delta) {
+    const item = findInventoryItem(kind, id);
+    if (!item) return;
+    const currentValue = kind === "produto" ? item.estoque : item.quantidade;
+    setInventoryQuantity(kind, id, currentValue + delta);
+}
+
+function setInventoryQuantity(kind, id, value) {
+    const item = findInventoryItem(kind, id);
+    if (!item) return;
+
+    const quantity = Math.max(0, Math.floor(Number.isFinite(value) ? value : 0));
+
+    if (kind === "produto") {
+        item.estoque = quantity;
+        if (quantity === 0) {
+            item.disponibilidade = false;
+        } else if (!item.disponibilidade) {
+            item.disponibilidade = true;
+        }
+        showToast(`Estoque de ${item.nome} atualizado para ${quantity}.`, "success");
+    } else {
+        item.quantidade = quantity;
+        showToast(`Quantidade de ${item.nome} atualizada para ${quantity} ${item.unidade}.`, "success");
+    }
+
+    render();
+}
+
+function findInventoryItem(kind, id) {
+    if (kind === "produto") {
+        return SGP_DATA.produtos.find((produto) => produto.id === id);
+    }
+
+    if (kind === "insumo") {
+        return SGP_DATA.insumos.find((insumo) => insumo.id === id);
+    }
+
+    return null;
+}
+
+function setProductPrice(id, value) {
+    const produto = SGP_DATA.produtos.find((item) => item.id === id);
+    if (!produto) return;
+
+    const price = Math.max(0, Number.isFinite(value) ? value : 0);
+    produto.preco = Math.round(price * 100) / 100;
+    showToast(`Preço de ${produto.nome} atualizado para ${formatCurrency(produto.preco)}.`, "success");
     render();
 }
 
