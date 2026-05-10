@@ -44,18 +44,19 @@ O sistema não contempla gestão financeira completa, folha de pagamento, contab
 
 ### 3.3.2 Requisitos Não Funcionais
 
-| Código | Requisito Funcional | Descrição |
-|---|---|---|
-| RF1 | Cadastro de usuário | Permitir o cadastro de clientes e funcionários com nome completo, CPF, data de nascimento, e-mail e telefone. |
-| RF2 | Catálogo de produtos | Exibir produtos da panificadora com foto, descrição, preço, categoria e disponibilidade atualizada. |
-| RF3 | Carrinho de compra | Permitir adicionar, remover e alterar a quantidade de produtos antes da finalização do pedido. |
-| RF4 | Customização de produtos | Permitir que o cliente personalize produtos, informando formato, tamanho, recheio, cobertura, ingredientes, mensagem, imagem de referência e observações. |
-| RF5 | Cadastro de encomendas personalizadas | Registrar pedidos sob encomenda com data, horário, forma de retirada ou entrega e detalhes de produção. |
-| RF6 | Agendamento de entrega ou retirada | Permitir que o cliente selecione data e horário para entrega ou retirada no estabelecimento. |
-| RF7 | Gestão de estoque híbrido | Controlar o mesmo estoque para vendas físicas e encomendas online, atualizando reservas, baixas e reposições em tempo real. |
-| RF8 | Integração de pagamento | Permitir pagamento por cartão de crédito, Pix e dinheiro, sendo dinheiro permitido apenas para retirada na loja. |
-| RF9 | Notificação em tempo real | Enviar atualizações de status do pedido, como confirmado, em preparo, pronto para retirada, saiu para entrega ou cancelado. |
-| RF10 | Definição de kits prontos | Permitir que o gerente crie e atualize kits com produtos do catálogo, preço, validade e disponibilidade. |
+| Código | Requisito Não Funcional |
+|---|---|
+| RNF1 | O sistema deve ser multiplataforma e possuir interface intuitiva para facilitar a navegação e a escolha dos produtos pelo cliente. |
+| RNF2 | O sistema deve ter bom desempenho, evitando atrasos no carregamento das páginas e na atualização de pedidos. |
+| RNF3 | O sistema deve disponibilizar consulta de estoque em tempo real para produtos prontos e insumos. |
+| RNF4 | O sistema deve gerar relatório semanal de estoque de produtos, consumo de insumos e média de vendas em planilha Excel. |
+| RNF5 | O sistema deve disponibilizar relatório semanal em PDF com encomendas personalizadas e respectivos status. |
+| RNF6 | O sistema deve estar em conformidade com a LGPD e garantir transações criptografadas. |
+| RNF7 | O sistema deve validar e-mail e CPF em tempo real, exibindo uma notificação clara ao usuário. Cadastros com CPF inválido ou e-mail inválido devem ser impedidos até a correção dos dados. |
+| RNF8 | Caso o usuário perca a conexão durante o preenchimento, os dados já digitados devem ser mantidos temporariamente no navegador. |
+| RNF9 | O sistema deve suportar aumento repentino de acessos em horários de maior demanda, como manhãs, finais de semana e datas comemorativas. |
+| RNF10 | As operações de reserva, baixa e reposição de estoque devem preservar a integridade dos dados, impedindo saldo negativo e conflitos entre venda física e pedido online. |
+
 
 ### 3.3.3 Usuários 
 
