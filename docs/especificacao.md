@@ -55,8 +55,6 @@ O sistema não contempla gestão financeira completa, folha de pagamento, contab
 | RNF7 | O sistema deve validar e-mail e CPF em tempo real, exibindo uma notificação clara ao usuário. Cadastros com CPF inválido ou e-mail inválido devem ser impedidos até a correção dos dados. |
 | RNF8 | Caso o usuário perca a conexão durante o preenchimento, os dados já digitados devem ser mantidos temporariamente no navegador. |
 | RNF9 | O sistema deve suportar aumento repentino de acessos em horários de maior demanda, como manhãs, finais de semana e datas comemorativas. |
-| RNF10 | As operações de reserva, baixa e reposição de estoque devem preservar a integridade dos dados, impedindo saldo negativo e conflitos entre venda física e pedido online. |
-
 
 ### 3.3.3 Usuários 
 
@@ -69,7 +67,8 @@ O sistema não contempla gestão financeira completa, folha de pagamento, contab
 ## 3.4 Modelagem do Sistema
 
 ### 3.4.1 Diagrama de Casos de Uso
-Como observado no diagrama de casos de uso da Figura 1, a secretária poderá gerenciar as matrículas e professores no sistema, enquanto o coordenador, além dessas funções, poderá gerenciar os cursos de aperfeiçoamento.
+
+O diagrama de casos de uso representa as interações entre clientes e equipe da panificadora. O cliente pode consultar o catálogo, montar carrinho, customizar produtos, programar encomendas, escolher kits prontos e acompanhar pedidos. O gerente mantém produtos, kits, opções de customização e regras de estoque. O atendente registra vendas presenciais e o confeiteiro ou padeiro acompanha a produção dos pedidos personalizados.
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 

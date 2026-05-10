@@ -241,7 +241,96 @@ Mapa de Empatia: Eusébio Oliveira
 Mapa da Empatia é um material utilizado para conhecer melhor o seu cliente. A partir do mapa da empatia é possível detalhar a personalidade do cliente e compreendê-la melhor. O objetivo é obter um nível mais profundo de compreensão de uma persona. A seguir um exemplo de template que pode ser usado para o mapa de empatia. Para cada persona deverá ser apresentado o seu respectivo mapa de empatia. Sugere-se a utilização do template apresentado em https://www.rdstation.com/blog/marketing/mapa-da-empatia/.
 
 ## 4.3 Protótipos das Interfaces
-Apresente nesta seção os protótipos de alta fidelidade do sistema proposto. A fidelidade do protótipo refere-se ao nível de detalhes e funcionalidades incorporadas a ele. Assim, um protótipo de alta fidelidade é uma representação interativa do produto, baseada no computador ou em dispositivos móveis. Esse protótipo já apresenta maior semelhança com o design final em termos de detalhes e funcionalidades. No desenvolvimento dos protótipos, devem ser considerados os princípios gestálticos, as recomendações ergonômicas e as regras de design (como as 8 regras de ouro). É importante descrever no texto do relatório como os princípios gestálticos e as regras de ouro foram seguidas no projeto das interfaces. Nesta etapa deve-se dar uma ênfase na implementação do software de modo que possam ser realizados os testes com usuários na etapa seguinte.
+
+O protótipo de alta fidelidade do SGP - Sistema Gerenciador de Produtos foi desenvolvido com a proposta de permitir a avaliação dos principais fluxos previstos na especificação: consulta ao catálogo, cadastro e autenticação, montagem de carrinho, encomenda personalizada, agendamento de entrega ou retirada, pagamento simulado, acompanhamento de status e uso de um painel gerencial para pedidos, produtos, estoque e relatórios.
+
+Por se tratar de protótipo de alta fidelidade, as telas foram implementadas com identidade visual próxima à versão final esperada, incluindo navegação superior, cards de produtos, formulários, botões de ação, indicadores de status, mensagens de retorno, tabelas administrativas e estados vazios. O protótipo não se limita a imagens estáticas: ele permite interação real com filtros, busca, carrinho, alteração de quantidade, inclusão de encomenda personalizada, atualização visual de estoque, alteração de preço, mudança de disponibilidade e mudança de status de pedidos.
+
+### 4.3.1 Telas e fluxos representados
+
+As principais interfaces implementadas são:
+
+| Tela/fluxo | Descrição no protótipo | Requisitos relacionados |
+|---|---|---|
+| Início | Apresenta o objetivo do sistema, atalhos para catálogo e área gerencial, além de indicadores de produtos disponíveis, pedidos simulados e alertas de estoque. | RNF1, RNF2 |
+| Login | Permite acesso por e-mail e senha, consumindo a rota `/login` do servidor local. | RF1, RNF6 |
+| Cadastro de usuário | Permite cadastrar nome completo, CPF, e-mail, telefone e senha, com validações visuais antes do envio. | RF1, RNF7 |
+| Catálogo de produtos | Exibe produtos com imagem, descrição, preço, categoria, disponibilidade, busca textual e filtro por categoria. | RF2, RNF1 |
+| Detalhe do produto | Mostra informações complementares do produto e permite adicioná-lo ao carrinho quando disponível. | RF2, RF3 |
+| Carrinho | Permite revisar produtos, alterar quantidades, remover itens e visualizar subtotal/total antes de avançar. | RF3 |
+| Encomenda personalizada | Permite configurar bolo com formato, tamanho, recheio, cobertura, mensagem, observações e imagem de referência simulada. | RF4, RF5 |
+| Entrega ou retirada | Permite selecionar retirada na loja ou entrega, além de informar data, horário e endereço quando necessário. | RF5, RF6 |
+| Pagamento simulado | Apresenta Pix, cartão de crédito e dinheiro na retirada como opções de pagamento. | RF8 |
+| Confirmação e status | Registra o pedido no estado do protótipo e permite acompanhar etapas como recebido, em preparo, pronto para retirada/saiu para entrega e finalizado. | RF9 |
+| Painel do gerente | Mostra métricas de pedidos ativos, produtos disponíveis, alertas de estoque e receita simulada. | RF7, RNF3 |
+| Gestão de pedidos | Lista pedidos e permite alterar seu status, demonstrando o fluxo administrativo. | RF9 |
+| Gestão de produtos | Permite ajustar preço, estoque e disponibilidade dos produtos cadastrados. | RF2, RF7, RNF3 |
+| Estoque de insumos | Exibe insumos, fornecedores, quantidade atual e indicação de nível crítico. | RF7, RNF3 |
+| Relatórios simulados | Representa relatórios semanais de estoque e encomendas, com pré-visualização simulada de Excel e PDF. | RNF4, RNF5 |
+
+### 4.3.2 Demonstração dos Requisitos Funcionais
+
+O protótipo demonstra os requisitos funcionais da seguinte forma:
+
+| Requisito | Como aparece no protótipo | Situação |
+|---|---|---|
+| RF1 - Cadastro de usuário | Tela de cadastro com nome, CPF, e-mail, telefone e senha; login com e-mail e senha. | Parcialmente demonstrado, pois não há data de nascimento nem diferenciação completa entre cliente e funcionário no cadastro. |
+| RF2 - Catálogo de produtos | Catálogo com fotos, descrição, preço, categoria, disponibilidade, busca e filtros. | Demonstrado. |
+| RF3 - Carrinho de compra | Inclusão, remoção e alteração de quantidade de produtos antes da finalização. | Demonstrado. |
+| RF4 - Customização de produtos | Formulário de encomenda com formato, tamanho, recheio, cobertura, mensagem, imagem de referência e observações. | Demonstrado em fluxo específico de bolo personalizado. |
+| RF5 - Cadastro de encomendas personalizadas | Encomenda personalizada é adicionada ao carrinho e, após confirmação, vira pedido no protótipo. | Parcialmente demonstrado, pois os detalhes de produção e persistência definitiva ainda são simulados. |
+| RF6 - Agendamento de entrega ou retirada | Tela de entrega/retirada com data e horário. | Demonstrado. |
+| RF7 - Gestão de estoque híbrido | Painel e tela de estoque permitem consultar e alterar quantidades de produtos e insumos. | Parcialmente demonstrado, pois não há reserva, baixa automática, reposição real nem sincronização entre venda física e online. |
+| RF8 - Integração de pagamento | Tela de pagamento apresenta Pix, cartão de crédito e dinheiro na retirada. | Demonstrado como simulação visual, sem transação real. |
+| RF9 - Notificação em tempo real | Acompanhamento de status por linha do tempo e alteração de status no painel do gerente. | Parcialmente demonstrado, pois as atualizações acontecem no estado local do protótipo, sem notificação push ou serviço em tempo real. |
+
+### 4.3.3 Demonstração dos Requisitos Não Funcionais
+
+Os requisitos não funcionais também foram considerados no protótipo, principalmente como demonstrações de interface e comportamento esperado:
+
+| Requisito | Como aparece no protótipo | Situação |
+|---|---|---|
+| RNF1 - Multiplataforma e interface intuitiva | Aplicação web responsiva, com navegação por menus, botões claros, filtros, cards e formulários organizados. | Demonstrado. |
+| RNF2 - Bom desempenho | O protótipo usa páginas renderizadas em JavaScript, dados locais e navegação por hash, o que reduz atrasos percebidos durante os testes. | Demonstrado parcialmente, sem medição formal de desempenho. |
+| RNF3 - Consulta de estoque em tempo real | Estoque de produtos e insumos é exibido e atualizado imediatamente na interface. | Parcialmente demonstrado, pois a atualização é local e simulada. |
+| RNF4 - Relatório semanal em Excel | Tela de relatórios contém a opção de pré-visualização de Excel para estoque e consumo. | Simulado. |
+| RNF5 - Relatório semanal em PDF | Tela de relatórios contém a opção de pré-visualização de PDF para encomendas personalizadas. | Simulado. |
+| RNF6 - LGPD e transações criptografadas | A tela de pagamento informa que segurança e criptografia são requisitos previstos. | Não implementado no protótipo; precisa de evolução técnica com HTTPS, proteção de dados e senhas seguras. |
+| RNF7 - Validação de e-mail e CPF | O cadastro bloqueia envio com e-mail ou CPF inválido e exibe mensagens de erro. | Parcialmente demonstrado, pois a validação ocorre no envio do formulário, não continuamente durante a digitação. |
+| RNF8 - Manutenção temporária de dados em perda de conexão | Não há armazenamento temporário em `localStorage` ou mecanismo equivalente. | Não demonstrado. |
+| RNF9 - Suporte a aumento repentino de acessos | A arquitetura final deve prever escalabilidade; o protótipo local não testa carga. | Não demonstrado. |
+
+### 4.3.4 Princípios de design incorporados
+
+O protótipo incorpora princípios gestálticos para facilitar a compreensão das telas e reduzir esforço cognitivo:
+
+- Proximidade: informações relacionadas ficam agrupadas, como preço, status e ação dentro de cada card de produto; no carrinho, nome, descrição, quantidade e subtotal aparecem no mesmo bloco.
+- Similaridade: botões, badges, cards, tabelas e campos de formulário seguem estilos consistentes, permitindo que o usuário reconheça rapidamente elementos com a mesma função.
+- Continuidade: a navegação superior mantém os fluxos em ordem previsível, conduzindo o cliente de catálogo para carrinho, entrega, pagamento, confirmação e status.
+- Figura-fundo: cards, painéis e áreas administrativas usam contraste, espaçamento e hierarquia visual para destacar conteúdo principal em relação ao fundo.
+- Fechamento: cada tela organiza uma tarefa completa, como cadastrar, montar carrinho ou alterar estoque, evitando que o usuário precise procurar partes dispersas da ação.
+- Pregnância: a interface privilegia formas simples, textos diretos, ícones conhecidos e organização em grades, facilitando reconhecimento rápido mesmo por usuários com menor familiaridade tecnológica.
+
+Além dos princípios gestálticos, o protótipo considera as necessidades das personas. Para Matheus, prioriza rapidez no catálogo, busca e compra. Para Carla, oferece visão gerencial de pedidos e estoque. Para Lúcio, apresenta customização detalhada, imagem de referência, preço estimado e acompanhamento de status. Para Eusébio, mantém navegação simples, botões visíveis, textos objetivos e feedback imediato.
+
+### 4.3.5 Recomendações ergonômicas e regras de design
+
+As recomendações ergonômicas foram incorporadas por meio de uma interface orientada a tarefas, com linguagem simples, agrupamento visual, feedback imediato e redução de passos desnecessários. Os formulários usam campos específicos para data, horário, e-mail, telefone, arquivo e senha, o que ajuda o navegador a oferecer controles adequados em computadores e celulares. A navegação principal permanece disponível durante todo o uso, permitindo que o usuário retorne rapidamente a qualquer área do sistema.
+
+As 8 regras de ouro de Shneiderman foram consideradas da seguinte forma:
+
+1. Buscar consistência: o protótipo usa o mesmo padrão visual para botões, cards, tabelas, formulários, badges de status e mensagens em todas as telas.
+2. Permitir atalhos para usuários frequentes: a navegação fixa oferece acesso direto a catálogo, encomenda, status, gerente, pedidos, produtos, estoque e relatórios; o catálogo também possui busca e filtros por categoria.
+3. Oferecer feedback informativo: ações como adicionar item ao carrinho, remover produto, alterar status, atualizar estoque, criar cadastro e confirmar pedido exibem mensagens de retorno por toast.
+4. Projetar diálogos com início, meio e fim: os fluxos de compra e encomenda seguem etapas claras: escolha do produto, carrinho, entrega/retirada, pagamento e confirmação.
+5. Prevenir erros: produtos indisponíveis têm botão desabilitado; campos obrigatórios são validados; CPF e e-mail inválidos bloqueiam o cadastro; quantidades de estoque são ajustadas para não ficarem negativas.
+6. Permitir reversão de ações: o usuário pode remover itens do carrinho, diminuir quantidades, voltar ao catálogo, alterar opções antes da confirmação e trocar o status de pedidos no painel gerencial.
+7. Manter o usuário no controle: a interface evita passos automáticos irreversíveis; o usuário escolhe filtros, forma de recebimento, forma de pagamento, itens do carrinho e momento de confirmar o pedido.
+8. Reduzir carga de memória: informações importantes ficam visíveis durante a tarefa, como resumo do carrinho, total do pedido, status de disponibilidade, preço estimado da encomenda e etapas do acompanhamento.
+
+Também foram aplicadas recomendações ergonômicas de legibilidade, reconhecimento e prevenção de sobrecarga: os textos são curtos, os ícones reforçam ações principais, os estados vazios explicam o que aconteceu, as tabelas organizam dados administrativos e os indicadores coloridos ajudam a diferenciar itens disponíveis, esgotados, críticos ou adequados.
+
+Assim, o protótipo de alta fidelidade está adequado para a etapa seguinte de testes com usuários. Ele permite observar se clientes conseguem encontrar produtos, montar pedidos, personalizar encomendas e acompanhar status, além de permitir avaliar se o gerente compreende a gestão de pedidos, produtos e estoque. As limitações identificadas, como persistência real, relatórios efetivos, segurança/LGPD e controle transacional de estoque, devem ser tratadas em versões posteriores do sistema.
 
 ## 4.4 Testes com Protótipos
 Nesta seção você deve apresentar os testes realizados com usuários utilizando os protótipos de alta fidelidade desenvolvidos na seção anterior. O objetivo é avaliar a usabilidade, a clareza das informações e a adequação do design às necessidades das personas definidas no projeto.
