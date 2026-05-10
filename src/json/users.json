@@ -38,5 +38,23 @@
 		"nome": "teste",
 		"email": "tedsasaesdaedta.com.br",
 		"senha": 1
+	},
+	{
+		"cpf": "1",
+		"nome": "aaa Testea",
+		"email": "aaaaaa.com",
+		"senha": "1234",
+		"telefone": "1"
+	},
+	{
+		"nome": "testestestestestes",
+		"email": "asdsasaas.com",
+		"senha": "1234"
+	},
+	{
+		"nome": "testestestestestes",
+		"email": "asdsasasdsaaas.com",
+		"senha": "1234",
+		"id": 0
 	}
 ]
