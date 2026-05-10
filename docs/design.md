@@ -333,7 +333,7 @@ Assim, o protótipo de alta fidelidade está adequado para a etapa seguinte de t
 
 Os testes com o protótipo de alta fidelidade foram planejados para verificar se os usuários conseguem compreender a proposta do SGP, navegar pelas principais áreas e concluir tarefas relacionadas aos requisitos definidos na especificação. A avaliação combina dois métodos: teste com usuário, por observação de sessão de uso, e avaliação heurística, por inspeção das interfaces com base nas heurísticas de Nielsen.
 
-O [teste com usuário](docs/testes/Relatorio_de_Testes_com_Usuario.docx) foi preenchido com o cenário de uso, tarefas, caminhos esperados, critérios de sucesso e questões finais. O objetivo é observar usuários representativos das personas do projeto, incluindo clientes com pressa, clientes que desejam personalizar encomendas, usuários com menor familiaridade tecnológica e gerentes responsáveis por pedidos e estoque.
+O [teste com usuário](./testes/Relatorio_de_Testes_com_Usuario.docx) foi preenchido com o cenário de uso, tarefas, caminhos esperados, critérios de sucesso e questões finais. O objetivo é observar usuários representativos das personas do projeto, incluindo clientes com pressa, clientes que desejam personalizar encomendas, usuários com menor familiaridade tecnológica e gerentes responsáveis por pedidos e estoque.
 
 ### 4.4.1 Objetivos da avaliação
 
@@ -384,7 +384,7 @@ Também devem ser registradas as respostas às questões introdutórias e finais
 
 ### 4.4.5 Avaliação heurística
 
-A [avaliação heurística](docs/testes/Avaliacao_Heuristica.xlsx) foi preenchida considerando as dez heurísticas de Nielsen: visibilidade do status, correspondência com o mundo real, controle e liberdade, consistência, prevenção de erros, reconhecimento em vez de memorização, flexibilidade, design minimalista, recuperação de erros e ajuda/documentação.
+A [avaliação heurística](./testes/Avaliacao_Heuristica.xlsx) foi preenchida considerando as dez heurísticas de Nielsen: visibilidade do status, correspondência com o mundo real, controle e liberdade, consistência, prevenção de erros, reconhecimento em vez de memorização, flexibilidade, design minimalista, recuperação de erros e ajuda/documentação.
 
 Os principais pontos positivos identificados foram a navegação direta, a consistência visual entre telas, o uso de feedback por mensagens, a organização por cards e tabelas e a presença de estados de disponibilidade e status. Os principais pontos de melhoria foram a ausência de ajuda contextual, a simulação de relatórios sem explicar o limite da funcionalidade em todas as telas, a falta de persistência temporária dos formulários em caso de perda de conexão e a necessidade de reforçar o controle de acesso entre cliente e gerente.
 
