@@ -20,7 +20,7 @@ Eusébio, 82 anos, é aposentado. Mora com sua esposa e tem problemas no joelho.
 
 5. Ricardo Silva
    
-Ricardo, 42 anos, proprietário e gerente geral abriu sua confeitaria há 8 anos. Ele entende muito de panificação, mas hoje seu foco é manter o negócio lucrativo. Ele usa o celular para quase tudo, mas não tem paciência para relatórios extensos.
+Ricardo, 42 anos, proprietário e gerente geral, abriu sua confeitaria há 8 anos. Ele entende muito de panificação, mas hoje seu foco é manter o negócio lucrativo. Ele usa o celular para quase tudo, mas não tem paciência para relatórios extensos.
 
 ## 4.2 Mapa de Empatia
 
