@@ -170,12 +170,12 @@ As tarefas foram definidas para cobrir os principais RF e RNF demonstrados pelo 
 
 | Tarefa | Descrição para o participante | Fluxo esperado | Requisitos avaliados |
 |---|---|---|---|
-| Tarefa 1 - Cadastro e entrada no sistema | Criar um cadastro de cliente e acessar o sistema. | Início > Entre > Criar novo cadastro > preencher dados válidos > criar cadastro. | RF1, RNF1, RNF7 |
-| Tarefa 2 - Compra de produto do catálogo | Encontrar um produto disponível, adicioná-lo ao carrinho e revisar o pedido. | Catálogo > buscar/filtrar produto > adicionar > Carrinho > ajustar quantidade/remover se necessário. | RF2, RF3, RNF1, RNF2 |
-| Tarefa 3 - Encomenda personalizada | Montar uma encomenda de bolo personalizada com data e horário de retirada ou entrega. | Encomenda > selecionar opções > adicionar ao carrinho > Entrega/retirada > Pagamento simulado > Confirmação. | RF4, RF5, RF6, RF8 |
-| Tarefa 4 - Acompanhamento de pedido | Consultar o status de um pedido confirmado. | Status > visualizar linha do tempo do pedido e etapa atual. | RF9 |
-| Tarefa 5 - Gestão administrativa | Acessar a área gerencial, verificar estoque crítico e alterar o status de um pedido. | Gerente > Estoque/Pedidos > consultar informações > alterar status. | RF7, RF9, RNF3 |
-| Tarefa 6 - Relatórios simulados | Localizar os relatórios semanais previstos no sistema. | Relatórios > identificar pré-visualização de Excel e PDF. | RNF4, RNF5 |
+| Tarefa 1 - Cadastro e entrada no sistema | Criar um cadastro de cliente e acessar o sistema. | Início > Entre > Criar novo cadastro > Preencher dados válidos > Criar cadastro. | RF1, RNF1, RNF7 |
+| Tarefa 2 - Compra de produto do catálogo | Encontrar um produto disponível, adicioná-lo ao carrinho e revisar o pedido. | Catálogo > Buscar/filtrar produto > Adicionar > Carrinho > Ajustar quantidade/remover se necessário. | RF2, RF3, RNF1, RNF2 |
+| Tarefa 3 - Encomenda personalizada | Montar uma encomenda de bolo personalizada com data e horário de retirada ou entrega. | Encomenda > Selecionar opções > Adicionar ao carrinho > Entrega/retirada > Pagamento simulado > Confirmação. | RF4, RF5, RF6, RF8 |
+| Tarefa 4 - Pagamento e confirmação | Selecionar uma forma de pagamento e confirmar o pedido. | Pagamento > Escolher Pix, cartão de crédito ou dinheiro na retirada > Confirmar. | RF8 |
+| Tarefa 5 - Acompanhamento de status | Consultar o status de um pedido confirmado. | Status > localizar pedido > Interpretar etapas da linha do tempo. | RF9 |
+| Tarefa 6 - Gestão administrativa | Acessar a área gerencial, verificar estoque crítico e alterar o status de um pedido. | Gerente > Consultar métricas > Estoque > Verificar/alterar insumos críticos > Pedidos > Verificar/alterar status. | RF7, RF9, RNF3 |
 
 ### 4.4.4 Critérios de registro
 
