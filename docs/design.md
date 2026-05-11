@@ -23,6 +23,9 @@ Eusébio, 82 anos, é aposentado. Mora com sua esposa e tem problemas no joelho.
 
 Mapa de Empatia: Matheus Rodrigues
 
+<img width="1600" height="900" alt="WhatsApp Image 2026-05-10 at 22 22 33 (1)" src="https://github.com/user-attachments/assets/4f79c8c1-cb59-41ab-834d-44e898378167" />
+
+
 1. O que ele VÊ?
 
 - Descreve o ambiente e o mercado ao redor dele.
@@ -74,6 +77,9 @@ Mapa de Empatia: Matheus Rodrigues
 - Acolhimento: Ter um "pit stop" de confiança onde o atendimento é eficiente e amigável.
 
 Mapa de Empatia: Carla Perez
+
+<img width="1600" height="900" alt="WhatsApp Image 2026-05-10 at 22 22 33" src="https://github.com/user-attachments/assets/a7601466-5fbc-4dd9-8d54-bb130b54e1be" />
+
 
 1. O que ela VÊ?
 
@@ -203,6 +209,9 @@ Mapa de Empatia: Lúcio Costa
 - Previsibilidade: Saber exatamente quanto vai pagar, sem taxas escondidas de última hora.
 
 Mapa de Empatia: Eusébio Oliveira
+
+<img width="3780" height="1890" alt="2" src="https://github.com/user-attachments/assets/db3055ad-455f-43c4-8e0f-7b37abc88432" />
+
 
 1. O que ele VÊ?
 
