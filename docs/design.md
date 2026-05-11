@@ -139,6 +139,9 @@ Mapa de Empatia: Carla Perez
 
 Mapa de Empatia: Lúcio Costa
 
+<img width="3780" height="1890" alt="1" src="https://github.com/user-attachments/assets/514d41c2-4067-4344-9482-8aa793dac6da" />
+
+
 1. O que ele VÊ?
 
 - Instagram: Segue perfis de gastronomia e espera que o catálogo online da padaria tenha qualidade visual.
