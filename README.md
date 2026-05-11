@@ -36,6 +36,23 @@ Desenvolver um sistema digital para gestão de encomendas em panificadoras e con
 
 <li><a href="src/codigo.md"> Código Fonte</a></li>
 
+### Instruções para rodar o servidor
+
+Requisitos:
+
+- Ter o node.js baixado no PC:
+https://nodejs.org/en/download
+
+- Rodar o comando "npm start" enquanto dentro da pasta base do projeto.
+
+Em caso de erro Windows:
+"npm : File C:\******\nodejs\npm.ps1 cannot be loaded because running scripts is disabled on this system.":
+
+Abra o powershell e use o comando 
+- Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+	
+Isso faz com que seja possível rodar scripts locais, mas quaisquer script externo deve ser assinado por um publicador confiável.
+
 # Apresentação
 
 <li><a href="docs/apresentacao.md"> Apresentação da solução</a></li>
