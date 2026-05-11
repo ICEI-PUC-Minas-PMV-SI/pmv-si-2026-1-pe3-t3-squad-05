@@ -18,6 +18,9 @@ Lúcio, 34 anos, é arquiteto autônomo e trabalha em sistema de home office. Mo
 
 Eusébio, 82 anos, é aposentado. Mora com sua esposa e tem problemas no joelho. Mora nos arredores de Contagem, numa área mais distante de grandes centros comerciais. Não tem muita paciência para tecnologia atual. Devido a seu impedimento de mobilidade, distância e avançada idade, precisa de algo intuitivo e simples.
 
+5. Ricardo Silva
+   
+Ricardo, 42 anos, proprietário e gerente geral abriu sua confeitaria há 8 anos. Ele entende muito de panificação, mas hoje seu foco é manter o negócio lucrativo. Ele usa o celular para quase tudo, mas não tem paciência para relatórios extensos.
 
 ## 4.2 Mapa de Empatia
 
@@ -36,6 +39,10 @@ Mapa de Empatia: Lúcio Costa
 Mapa de Empatia: Eusébio Oliveira
 
 <img width="3780" height="1890" alt="2" src="https://github.com/user-attachments/assets/db3055ad-455f-43c4-8e0f-7b37abc88432" />
+
+Mapa de Empatia: Ricardo Silva
+
+<img width="3780" height="1890" alt="Lúcio Costa" src="https://github.com/user-attachments/assets/ad4d031a-9247-47bd-afbc-41941b4d318e" />
 
 ## 4.3 Protótipos das Interfaces
 
