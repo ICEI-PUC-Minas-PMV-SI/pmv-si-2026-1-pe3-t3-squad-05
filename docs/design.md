@@ -3,24 +3,179 @@
 ## 4.1 Personas
 
 1. Persona: Matheus, o "Correr é Dinheiro"
+Matheus Rodrigues tem 29 anos e trabalha como motoboy. Ele vive uma rotina corrida, em que cada minuto faz diferença no quanto ele consegue produzir ao longo do dia. Por isso, ele costuma resolver tudo pelo celular e prefere situações rápidas, sem complicação.
 
-Matheus Rodrigues, 29 anos, atua como motoboy. Ele busca otimizar sua rotina matinal para poupar tempo e maximizar seus ganhos ao longo do dia. Matheus procura um estabelecimento prático onde possa tomar um café da manhã rápido e nutritivo, garantindo um bom começo para sua jornada de trabalho. 
+Objetivos específicos
+* Ver rapidamente o que está disponível no catálogo;
+* Fazer pedidos antecipados antes de chegar ao local;
+* Agendar a retirada para evitar espera;
+* Repetir pedidos que já costuma fazer no dia a dia;
+* Evitar qualquer tipo de atraso na hora de se alimentar.
+
+Frustrações
+* Chegar no local e o produto já ter acabado;
+* Precisar enfrentar fila ou esperar atendimento;
+* Ter que passar por muitos passos para fazer um pedido simples;
+* Não saber se o pedido já está pronto ou não;
+* Perder tempo escolhendo tudo do zero toda vez.
+
+Cenário de uso
+* Durante pausas entre entregas, Matheus abre o sistema no celular, olha rapidamente o catálogo e escolhe o que quer. Ele já adiciona no carrinho, paga e combina o horário de retirada. Muitas vezes ele só passa no local, pega o pedido pronto e segue o trabalho sem precisar esperar. 
+
+Habilidades tecnológicas
+* Usa celular o tempo todo no trabalho;
+* Tem facilidade com aplicativos de entrega, mapas e pagamentos digitais;
+* Consegue usar sistemas novos com rapidez, desde que sejam simples.
+
+Hábitos de consumo
+* Compra principalmente itens rápidos como café e lanches;
+* Prefere praticidade em vez de variedade;
+* Costuma repetir os mesmos pedidos;
+*  Usa mais pagamento digital do que dinheiro.
+
+Necessidades em relação ao sistema
+* Catálogo sempre atualizado com disponibilidade real;
+* Processo de compra rápido e direto;
+* Agendamento de horário para buscar o pedido;
+* Função para repetir pedidos antigos com facilidade;
+* Confirmação simples de que o pedido está pronto para retirada.  
 
 2. Persona: Carla Perez, "trem bão demais"
-
 Carla Perez, 65 anos, é proprietária de uma confeitaria em Patos de Minas – MG. Com mais de 20 anos de experiência, construiu uma clientela fiel baseada na qualidade dos seus produtos. Hoje, seu principal desafio é organizar e acompanhar tudo sem perder vendas ou cometer erros.
 
-3. Persona: Lúcio Costa, o Detalhista
+Objetivos específicos 
+* Controlar encomendas sem erros; 
+* Gerenciar estoque de insumos; 
+* Acompanhar vendas e faturamento.; 
+* Organizar a produção diária. 
 
+Frustrações 
+* Uso de anotações manuais sujeitas a erro; 
+* Falta de integração entre atendimento e produção; 
+* Dificuldade para acompanhar múltiplos pedidos; 
+* Ausência de visão consolidada do negócio.
+
+Cenário de uso 
+* Utiliza o sistema ao longo do dia para gerenciar pedidos, consultar estoque, acompanhar produção e analisar relatórios do negócio. 
+
+Habilidades tecnológicas 
+* Conhecimento intermediário de informática;  
+* Usa celular e computador diariamente; 
+* Aprende bem sistemas simples e organizados.
+
+Hábitos de consumo 
+* Investe em ferramentas para gestão do negócio;  
+* Prefere soluções confiáveis e estáveis; 
+* Valoriza organização e controle. 
+
+Necessidades em relação ao sistema 
+* Painel gerencial com visão geral do negócio; 
+* Controle de estoque de insumos; 
+* Gestão de encomendas e produção;  
+* Relatórios de vendas simples; 
+* Atualização de status dos pedidos; 
+
+3. Persona: Lúcio Costa, o Detalhista
 Lúcio, 34 anos, é arquiteto autônomo e trabalha em sistema de home office. Morador de um bairro central, ele é o "organizador oficial" dos aniversários da família e dos happy hours entre amigos. Praticante de ciclismo urbano, ele preza pela estética e tem pavor de processos burocráticos ou analógicos.
 
-4. Persona: Eusébio Oliveira, o Chato.
+Objetivos específicos 
+* Personalizar bolos e produtos; 
+* Visualizar catálogo detalhado;
+* Garantir precisão em pedidos;
+* Acompanhar prazos e entregas. 
 
+Frustrações 
+* Falta de informações detalhadas sobre produtos;
+* Dificuldade em personalização;
+* Falta de clareza sobre status do pedido;  
+* Incerteza sobre prazos.
+
+Cenário de uso 
+* Utiliza o sistema ao planejar eventos, escolhendo produtos, personalizando pedidos e acompanhando a produção até a entrega. 
+
+Habilidades tecnológicas 
+* Alto domínio de tecnologia;
+* Uso frequente de plataformas digitais;  
+* Habituado a comparar opções online;
+
+Hábitos de consumo 
+* Compra para eventos e celebrações; 
+* Valoriza estética e qualidade;
+* Planeja compras com antecedência;
+* Necessidades em relação ao sistema;
+* Catálogo com imagens detalhadas.  
+
+Sistema de personalização de pedidos.  
+* Acompanhamento de status em tempo real;
+* Agendamento de retirada ou entrega. 
+
+4. Persona: Eusébio Oliveira, o Chato.
 Eusébio, 82 anos, é aposentado. Mora com sua esposa e tem problemas no joelho. Mora nos arredores de Contagem, numa área mais distante de grandes centros comerciais. Não tem muita paciência para tecnologia atual. Devido a seu impedimento de mobilidade, distância e avançada idade, precisa de algo intuitivo e simples.
 
-5. Ricardo Silva
-   
-Ricardo, 42 anos, proprietário e gerente geral, abriu sua confeitaria há 8 anos. Ele entende muito de panificação, mas hoje seu foco é manter o negócio lucrativo. Ele usa o celular para quase tudo, mas não tem paciência para relatórios extensos.
+Objetivos específicos 
+* Fazer pedidos sem sair de casa;
+* Receber informações claras;
+* Solicitar entregas com facilidade.  
+
+Frustrações 
+* Interfaces complexas;
+* Excesso de informações na tela; 
+* Processos longos e confusos;
+* Dificuldade de leitura.  
+
+Cenário de uso 
+* Utiliza o sistema ocasionalmente para encomendar produtos e receber em casa. 
+
+Habilidades tecnológicas 
+* Conhecimento básico de celular;
+* Usa principalmente chamadas e mensagens; 
+* Necessita de suporte quando aparece algo fora do normal.  
+
+Hábitos de consumo 
+* Compras simples e recorrentes; 
+* Prefere produtos tradicionais;
+* Valoriza atendimento humano.  
+
+Necessidades em relação ao sistema 
+* Interface simples e clara;
+* Fluxo de compra reduzido;
+* Entrega domiciliar;
+* Status básico do pedido;
+* Elementos visuais acessíveis. 
+
+5. Persona: Giselle Andrade, atendente malabarista. 
+Ana Paula Martins tem 27 anos e trabalha como atendente em uma panificadora. Ela é responsável pelo atendimento ao cliente, registro de pedidos e comunicação com a equipe de produção. 
+
+Objetivos específicos 
+* Registrar pedidos rapidamente;  
+* Consultar estoque em tempo real;  
+* Evitar erros de comunicação;
+* Atualizar status dos pedidos.  
+
+Frustrações 
+* Informações desatualizadas;
+* Retrabalho por erros de registro;
+* Uso de controles paralelos (papel/planilhas);
+* Falta de integração entre setores. 
+
+Cenário de uso 
+* Utiliza o sistema continuamente durante o atendimento para registrar pedidos, consultar produtos e acompanhar a produção. 
+
+Habilidades tecnológicas 
+* Boa familiaridade com sistemas de vendas;
+* Uso diário de ferramentas digitais;
+* Rápida adaptação a novos sistemas.  
+
+Hábitos de consumo 
+* Uso intensivo de tecnologia no trabalho;
+* Valoriza eficiência e agilidade;
+* Prefere sistemas práticos.  
+
+Necessidades em relação ao sistema 
+* Cadastro rápido de pedidos;
+* Consulta de estoque atualizada;
+* Atualização de status de encomendas;
+* Integração entre atendimento e produção. 
 
 ## 4.2 Mapa de Empatia
 
