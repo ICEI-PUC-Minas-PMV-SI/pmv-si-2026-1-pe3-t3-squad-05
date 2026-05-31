@@ -328,6 +328,18 @@ const Router = {
                         Endereço, se for entrega
                         <input type="text" name="endereco" placeholder="Rua, número, bairro">
                     </label>
+                    <label>
+                        <input type="checkbox" name="recorrente" value="sim">
+                        Marcar como recorrente
+                    </label>
+                    <label>
+                        Periodicidade
+                        <select name="frequenciaRecorrencia" disabled>
+                            <option value="Semanal">Semanal</option>
+                            <option value="Quinzenal">Quinzenal</option>
+                            <option value="Mensal">Mensal</option>
+                        </select>
+                    </label>
                     <button class="btn btn-primary full-width" type="submit">Continuar para pagamento</button>
                 </form>
             </section>
@@ -380,6 +392,7 @@ const Router = {
                     <dl class="summary-list">
                         <div><dt>Total</dt><dd>${formatCurrency(pedido ? pedido.total : 0)}</dd></div>
                         <div><dt>Recebimento</dt><dd>${pedido ? pedido.tipoEntrega : "Retirada"}</dd></div>
+                        <div><dt>Recorrencia</dt><dd>${recurrenceLabel(pedido)}</dd></div>
                         <div><dt>Status</dt><dd>Recebido</dd></div>
                     </dl>
                     <div class="hero-actions">
@@ -406,6 +419,7 @@ const Router = {
                     <div class="status-header">
                         <div>
                             <strong>${pedido.id}</strong>
+                            <small>${recurrenceLabel(pedido)}</small>
                             <span>${pedido.cliente || "Cliente do protótipo"}</span>
                         </div>
                         <span class="badge success">${pedido.status}</span>
@@ -584,7 +598,7 @@ function ordersTable(pedidos, editable = false) {
         <div class="table-wrap">
             <table>
                 <thead>
-                    <tr><th>Pedido</th><th>Cliente</th><th>Tipo</th><th>Total</th><th>Status</th>${editable ? "<th>Ação</th>" : ""}</tr>
+                    <tr><th>Pedido</th><th>Cliente</th><th>Tipo</th><th>Recorrencia</th><th>Total</th><th>Status</th>${editable ? "<th>Ação</th>" : ""}</tr>
                 </thead>
                 <tbody>
                     ${pedidos.map((pedido) => `
@@ -592,6 +606,7 @@ function ordersTable(pedidos, editable = false) {
                             <td>${pedido.id}</td>
                             <td>${pedido.cliente}</td>
                             <td>${pedido.tipo}</td>
+                            <td>${recurrenceLabel(pedido)}</td>
                             <td>${formatCurrency(pedido.total)}</td>
                             <td><span class="badge info">${pedido.status}</span></td>
                             ${editable ? `
@@ -614,6 +629,14 @@ function ordersTable(pedidos, editable = false) {
 function orderStatusSteps(pedido) {
     const finalizacao = pedido.tipoEntrega === "Entrega" ? "Saiu para entrega" : "Pronto para retirada";
     return ["Recebido", "Em preparo", finalizacao, "Finalizado"];
+}
+
+function recurrenceLabel(pedido) {
+    if (!pedido || !pedido.recorrencia || !pedido.recorrencia.ativa) {
+        return "Pedido unico";
+    }
+
+    return `Recorrente (${pedido.recorrencia.frequencia})`;
 }
 
 function stockRow(insumo, detailed = false) {

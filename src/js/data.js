@@ -111,6 +111,7 @@ const SGP_DATA = {
             total: 41.4,
             status: "Saiu para entrega",
             tipoEntrega: "Entrega",
+            recorrencia: { ativa: false, frequencia: null },
             itens: ["Bolo de Cenoura", "Brigadeiros Sortidos"]
         },
         {
@@ -123,6 +124,7 @@ const SGP_DATA = {
             total: 125.0,
             status: "Pronto para retirada",
             tipoEntrega: "Retirada",
+            recorrencia: { ativa: true, frequencia: "Semanal" },
             itens: ["Bolo redondo 2kg, recheio de brigadeiro"]
         },
         {
@@ -135,6 +137,7 @@ const SGP_DATA = {
             total: 59.9,
             status: "Pronto para retirada",
             tipoEntrega: "Retirada",
+            recorrencia: { ativa: false, frequencia: null },
             itens: ["Kit Café da Tarde"]
         }
     ],

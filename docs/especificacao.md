@@ -36,8 +36,8 @@ O sistema não contempla gestão financeira completa, folha de pagamento, contab
 | RF2 | Catálogo de produtos | Exibir produtos da panificadora com foto, descrição, preço, categoria e disponibilidade atualizada. |
 | RF3 | Carrinho de compra | Permitir adicionar, remover e alterar a quantidade de produtos antes da finalização do pedido. |
 | RF4 | Customização de produtos | Permitir que o cliente personalize produtos, informando formato, tamanho, recheio, cobertura, ingredientes, mensagem, imagem de referência e observações. |
-| RF5 | Cadastro de encomendas personalizadas | Registrar pedidos sob encomenda com data, horário, forma de retirada ou entrega e detalhes de produção. |
-| RF6 | Agendamento de entrega ou retirada | Permitir que o cliente selecione data e horário para entrega ou retirada no estabelecimento. |
+| RF5 | Cadastro de encomendas personalizadas | Registrar pedidos sob encomenda com data, horário, forma de retirada ou entrega, recorrência opcional e detalhes de produção. |
+| RF6 | Agendamento de entrega ou retirada | Permitir que o cliente selecione data, horário, recorrência opcional e forma de recebimento por entrega ou retirada no estabelecimento. |
 | RF7 | Gestão de estoque híbrido | Controlar o mesmo estoque para vendas físicas e encomendas online, atualizando reservas, baixas e reposições em tempo real. |
 | RF8 | Integração de pagamento | Permitir pagamento por cartão de crédito, Pix e dinheiro, sendo dinheiro permitido apenas para retirada na loja. |
 | RF9 | Notificação em tempo real | Enviar atualizações de status do pedido, como confirmado, em preparo, pronto para retirada, saiu para entrega ou cancelado. |
@@ -102,8 +102,9 @@ Pré-condições: O cliente deve ser validado pelo Sistema.
 
 Fluxo Principal:
 
-1) 	O cliente define o conteúdo da encomenda e o horário a ser entregue.
-2) 	Se o cliente desejar, ele pode definir que a recomenda seja recorrente neste mesmo horário.
+1) 	O cliente define o conteúdo da encomenda, a forma de recebimento, a data e o horário.
+2) 	Se o cliente desejar, ele marca a encomenda como recorrente e escolhe a periodicidade.
+3) 	O sistema registra a recorrência no pedido e exibe essa informação no acompanhamento e na gestão de pedidos.
 
    
 #### Pedir um kit pré-pronto (CSU03)

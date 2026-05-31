@@ -93,6 +93,11 @@ document.addEventListener("input", (event) => {
 });
 
 document.addEventListener("change", (event) => {
+    if (event.target.name === "recorrente") {
+        const recurrenceSelect = event.target.form.elements.frequenciaRecorrencia;
+        if (recurrenceSelect) recurrenceSelect.disabled = !event.target.checked;
+    }
+
     const statusSelect = event.target.closest("[data-action='status-change']");
     if (statusSelect) {
         const pedido = SGP_DATA.pedidos.find((item) => item.id === statusSelect.dataset.id);
@@ -372,6 +377,7 @@ function submitEntrega(form) {
     const formData = new FormData(form);
     const data = formData.get("data");
     const horario = formData.get("horario");
+    const recorrente = formData.get("recorrente") === "sim";
     let valid = true;
 
     if (!data) valid = setFieldError(form, "data", "Escolha uma data.");
@@ -386,7 +392,11 @@ function submitEntrega(form) {
         tipoEntrega: formData.get("tipoEntrega"),
         data,
         horario,
-        endereco: formData.get("endereco")
+        endereco: formData.get("endereco"),
+        recorrencia: {
+            ativa: recorrente,
+            frequencia: recorrente ? formData.get("frequenciaRecorrencia") || "Semanal" : null
+        }
     };
 
     showToast("Agendamento registrado no protótipo.", "success");
@@ -414,6 +424,9 @@ function submitPagamento(form) {
     }
 
     const usuarioLogado = getUsuarioLogado();
+    const recorrencia = AppState.entrega
+        ? AppState.entrega.recorrencia
+        : { ativa: false, frequencia: null };
     const pedido = {
         id: `PED-${Math.floor(3000 + Math.random() * 6000)}`,
         cliente: usuarioLogado ? usuarioLogado.nome : SGP_DATA.usuarioAtual.nome,
@@ -425,6 +438,7 @@ function submitPagamento(form) {
         status: "Recebido",
         tipoEntrega,
         pagamento,
+        recorrencia,
         itens: AppState.carrinho.map((item) => item.nome)
     };
 

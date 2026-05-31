@@ -63,11 +63,11 @@ As principais interfaces implementadas são:
 | Detalhe do produto | Mostra informações complementares do produto e permite adicioná-lo ao carrinho quando disponível. | RF2, RF3 |
 | Carrinho | Permite revisar produtos, alterar quantidades, remover itens e visualizar subtotal/total antes de avançar. | RF3 |
 | Encomenda personalizada | Permite configurar bolo com formato, tamanho, recheio, cobertura, mensagem, observações e imagem de referência simulada. | RF4, RF5 |
-| Entrega ou retirada | Permite selecionar retirada na loja ou entrega, além de informar data, horário e endereço quando necessário. | RF5, RF6 |
+| Entrega ou retirada | Permite selecionar retirada na loja ou entrega, além de informar data, horário, endereço quando necessário e recorrência opcional. | RF5, RF6 |
 | Pagamento simulado | Apresenta Pix, cartão de crédito e dinheiro na retirada como opções de pagamento. | RF8 |
-| Confirmação e status | Registra o pedido no estado do protótipo e permite acompanhar etapas como recebido, em preparo, pronto para retirada/saiu para entrega e finalizado. | RF9 |
+| Confirmação e status | Registra o pedido no estado do protótipo e permite acompanhar recorrência e etapas como recebido, em preparo, pronto para retirada/saiu para entrega e finalizado. | RF6, RF9 |
 | Painel do gerente | Mostra métricas de pedidos ativos, produtos disponíveis, alertas de estoque e receita simulada. | RF7, RNF3 |
-| Gestão de pedidos | Lista pedidos e permite alterar seu status, demonstrando o fluxo administrativo. | RF9 |
+| Gestão de pedidos | Lista pedidos, exibe recorrência e permite alterar seu status, demonstrando o fluxo administrativo. | RF6, RF9 |
 | Gestão de produtos | Permite ajustar preço, estoque e disponibilidade dos produtos cadastrados. | RF2, RF7, RNF3 |
 | Estoque de insumos | Exibe insumos, fornecedores, quantidade atual e indicação de nível crítico. | RF7, RNF3 |
 | Relatórios simulados | Representa relatórios semanais de estoque e encomendas, com pré-visualização simulada de Excel e PDF. | RNF4, RNF5 |
@@ -82,8 +82,8 @@ O protótipo demonstra os requisitos funcionais da seguinte forma:
 | RF2 - Catálogo de produtos | Catálogo com fotos, descrição, preço, categoria, disponibilidade, busca e filtros. |
 | RF3 - Carrinho de compra | Inclusão, remoção e alteração de quantidade de produtos antes da finalização. |
 | RF4 - Customização de produtos | Formulário de encomenda com formato, tamanho, recheio, cobertura, mensagem, imagem de referência e observações. |
-| RF5 - Cadastro de encomendas personalizadas | Encomenda personalizada é adicionada ao carrinho e, após confirmação, vira pedido no protótipo. |
-| RF6 - Agendamento de entrega ou retirada | Tela de entrega/retirada com data e horário. |
+| RF5 - Cadastro de encomendas personalizadas | Encomenda personalizada é adicionada ao carrinho e, após confirmação, vira pedido no protótipo com dados de recorrência quando marcada. |
+| RF6 - Agendamento de entrega ou retirada | Tela de entrega/retirada com data, horário e opção de marcar recorrência com periodicidade. |
 | RF7 - Gestão de estoque híbrido | Painel e tela de estoque permitem consultar e alterar quantidades de produtos e insumos. |
 | RF8 - Integração de pagamento | Tela de pagamento apresenta Pix, cartão de crédito e dinheiro na retirada. |
 | RF9 - Notificação em tempo real | Acompanhamento de status por linha do tempo e alteração de status no painel do gerente. |
@@ -172,7 +172,7 @@ As tarefas foram definidas para cobrir os principais RF e RNF demonstrados pelo 
 |---|---|---|---|
 | Tarefa 1 - Cadastro e entrada no sistema | Criar um cadastro de cliente e acessar o sistema. | Início > Entre > Criar novo cadastro > Preencher dados válidos > Criar cadastro. | RF1, RNF1, RNF7 |
 | Tarefa 2 - Compra de produto do catálogo | Encontrar um produto disponível, adicioná-lo ao carrinho e revisar o pedido. | Catálogo > Buscar/filtrar produto > Adicionar > Carrinho > Ajustar quantidade/remover se necessário. | RF2, RF3, RNF1, RNF2 |
-| Tarefa 3 - Encomenda personalizada | Montar uma encomenda de bolo personalizada com data e horário de retirada ou entrega. | Encomenda > Selecionar opções > Adicionar ao carrinho > Entrega/retirada > Pagamento simulado > Confirmação. | RF4, RF5, RF6, RF8 |
+| Tarefa 3 - Encomenda personalizada | Montar uma encomenda de bolo personalizada com data, horário, forma de recebimento e recorrência opcional. | Encomenda > Selecionar opções > Adicionar ao carrinho > Entrega/retirada > Marcar recorrência se necessário > Pagamento simulado > Confirmação. | RF4, RF5, RF6, RF8 |
 | Tarefa 4 - Pagamento e confirmação | Selecionar uma forma de pagamento e confirmar o pedido. | Pagamento > Escolher Pix, cartão de crédito ou dinheiro na retirada > Confirmar. | RF8 |
 | Tarefa 5 - Acompanhamento de status | Consultar o status de um pedido confirmado. | Status > localizar pedido > Interpretar etapas da linha do tempo. | RF9 |
 | Tarefa 6 - Gestão administrativa | Acessar a área gerencial, verificar estoque crítico e alterar o status de um pedido. | Gerente > Consultar métricas > Estoque > Verificar/alterar insumos críticos > Pedidos > Verificar/alterar status. | RF7, RF9, RNF3 |
