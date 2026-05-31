@@ -78,6 +78,10 @@ document.addEventListener("click", (event) => {
     if (action === "simulate-save") {
         showToast("Ação simulada registrada no protótipo.", "success");
     }
+
+    if (action === "report-download" || action === "report-preview") {
+        handleReportAction(action === "report-download" ? "download" : "preview");
+    }
 });
 
 document.addEventListener("input", (event) => {
@@ -258,6 +262,28 @@ function redirectAfterAuth(defaultRoute = "catalogo") {
     const redirect = AppState.redirectAfterAuth;
     AppState.redirectAfterAuth = null;
     navigateTo(redirect ? redirect.route : defaultRoute, redirect ? redirect.param : null);
+}
+
+function handleReportAction(mode) {
+    const form = document.getElementById("relatorio-form");
+    if (!form) return;
+
+    const filters = getReportFilters(form);
+    if (filters.dataInicio && filters.dataFim && filters.dataInicio > filters.dataFim) {
+        showToast("A data inicial deve ser anterior ou igual a data final.", "error");
+        return;
+    }
+
+    const output = mode === "preview" ? "html" : filters.tipo === "encomendas" ? "html" : "csv";
+    const report = generateReport(filters, output);
+    if (mode === "download") {
+        downloadReport(report);
+        showToast("Relatorio gerado para download.", "success");
+        return;
+    }
+
+    previewReport(report);
+    showToast("Relatorio aberto para visualizacao.", "success");
 }
 
 function restoreSearchFocus() {

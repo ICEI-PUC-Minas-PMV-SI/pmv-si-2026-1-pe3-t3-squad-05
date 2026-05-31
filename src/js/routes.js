@@ -43,7 +43,7 @@ const Router = {
                         ["Cadastro e catálogo", "Validação visual de dados e consulta de produtos com preço e disponibilidade."],
                         ["Compra e retirada", "Carrinho, agendamento, pagamento simulado e confirmação do pedido."],
                         ["Encomenda personalizada", "Configuração de bolo com formato, tamanho, recheio, cobertura e referência."],
-                        ["Painel gerencial", "Pedidos, produtos, estoque crítico e relatórios simulados para avaliação."]
+                        ["Painel gerencial", "Pedidos, produtos, estoque critico e relatorios gerados com dados atuais."]
                     ].map(([titulo, texto]) => `
                         <article class="feature-item">
                             <h3>${titulo}</h3>
@@ -562,24 +562,46 @@ const Router = {
     },
 
     relatorios() {
+        const dataFim = new Date().toISOString().slice(0, 10);
+        const dataInicioBase = new Date();
+        dataInicioBase.setDate(dataInicioBase.getDate() - 7);
+        const dataInicio = dataInicioBase.toISOString().slice(0, 10);
+
         return `
             <section class="page-layout">
                 <div class="section-heading">
-                    <h2>Relatórios simulados</h2>
-                    <p>Representação visual dos relatórios previstos na especificação, sem geração real de arquivos.</p>
+                    <h2>Relatorios</h2>
+                    <p>Gere arquivos com os dados atuais de estoque, produtos, pedidos e encomendas do prototipo.</p>
                 </div>
-                <div class="feature-grid">
-                    <article class="feature-item">
-                        <h3>Estoque semanal</h3>
-                        <p>Pré-visualização de relatório de insumos e produtos com saída Excel simulada.</p>
-                        <button class="btn btn-secondary" data-action="simulate-save">Pré-visualizar Excel</button>
-                    </article>
-                    <article class="feature-item">
-                        <h3>Encomendas personalizadas</h3>
-                        <p>Pré-visualização de pedidos personalizados para relatório PDF semanal.</p>
-                        <button class="btn btn-secondary" data-action="simulate-save">Pré-visualizar PDF</button>
-                    </article>
-                </div>
+                <form id="relatorio-form" class="form-card">
+                    <div class="form-grid">
+                        <label>
+                            Tipo de relatorio
+                            <select name="tipoRelatorio">
+                                <option value="estoque-vendas">Estoque, produtos e vendas (CSV)</option>
+                                <option value="encomendas">Encomendas personalizadas (HTML imprimivel)</option>
+                            </select>
+                        </label>
+                        <label>
+                            Data inicial
+                            <input type="date" name="dataInicio" value="${dataInicio}">
+                        </label>
+                        <label>
+                            Data final
+                            <input type="date" name="dataFim" value="${dataFim}">
+                        </label>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" type="button" data-action="report-download">
+                            <i class="fa-solid fa-download" aria-hidden="true"></i>
+                            Baixar relatorio
+                        </button>
+                        <button class="btn btn-secondary" type="button" data-action="report-preview">
+                            <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                            Visualizar
+                        </button>
+                    </div>
+                </form>
             </section>
         `;
     }

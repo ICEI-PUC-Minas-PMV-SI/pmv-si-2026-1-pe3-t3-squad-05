@@ -70,7 +70,7 @@ As principais interfaces implementadas são:
 | Gestão de pedidos | Lista pedidos, exibe recorrência e permite alterar seu status, demonstrando o fluxo administrativo. | RF6, RF9 |
 | Gestão de produtos | Permite ajustar preço, estoque e disponibilidade dos produtos cadastrados. | RF2, RF7, RNF3 |
 | Estoque de insumos | Exibe insumos, fornecedores, quantidade atual e indicação de nível crítico. | RF7, RNF3 |
-| Relatórios simulados | Representa relatórios semanais de estoque e encomendas, com pré-visualização simulada de Excel e PDF. | RNF4, RNF5 |
+| Relatórios | Gera CSV semanal de estoque, produtos, consumo de itens vendidos e média de vendas, além de HTML imprimível para encomendas personalizadas e status. | RNF4, RNF5 |
 
 ### 4.3.2 Demonstração dos Requisitos Funcionais
 
@@ -97,8 +97,8 @@ Os requisitos não funcionais também foram considerados no protótipo, principa
 | RNF1 - Multiplataforma e interface intuitiva | Aplicação web responsiva, com navegação por menus, botões claros, filtros, cards e formulários organizados. |
 | RNF2 - Bom desempenho | O protótipo usa páginas renderizadas em JavaScript, dados locais e navegação por hash, o que reduz atrasos percebidos durante os testes. |
 | RNF3 - Consulta de estoque em tempo real | Estoque de produtos e insumos é exibido e atualizado imediatamente na interface. |
-| RNF4 - Relatório semanal em Excel | Tela de relatórios contém a opção de pré-visualização de Excel para estoque e consumo. |
-| RNF5 - Relatório semanal em PDF | Tela de relatórios contém a opção de pré-visualização de PDF para encomendas personalizadas. |
+| RNF4 - Relatório semanal em Excel | Tela de relatórios gera arquivo CSV compatível com Excel para estoque, produtos, consumo de itens vendidos e média de vendas. |
+| RNF5 - Relatório semanal em PDF | Tela de relatórios gera HTML imprimível para encomendas personalizadas e status, permitindo imprimir ou salvar em PDF pelo navegador. |
 | RNF6 - LGPD e transações criptografadas | A tela de pagamento informa que segurança e criptografia são requisitos previstos. |
 | RNF7 - Validação de e-mail e CPF | O cadastro bloqueia envio com e-mail ou CPF inválido e exibe mensagens de erro. |
 | RNF8 - Manutenção temporária de dados em perda de conexão |  A arquitetura final contará com armazenamento temporário em `localStorage` ou mecanismo equivalente. |
@@ -134,7 +134,7 @@ As 8 regras de ouro de Shneiderman foram consideradas da seguinte forma:
 
 Também foram aplicadas recomendações ergonômicas de legibilidade, reconhecimento e prevenção de sobrecarga: os textos são curtos, os ícones reforçam ações principais, os estados vazios explicam o que aconteceu, as tabelas organizam dados administrativos e os indicadores coloridos ajudam a diferenciar itens disponíveis, esgotados, críticos ou adequados.
 
-Assim, o protótipo de alta fidelidade está adequado para a etapa seguinte de testes com usuários. Ele permite observar se clientes conseguem encontrar produtos, montar pedidos, personalizar encomendas e acompanhar status, além de permitir avaliar se o gerente compreende a gestão de pedidos, produtos e estoque. As limitações identificadas, como persistência real, relatórios efetivos, segurança/LGPD e controle transacional de estoque, devem ser tratadas em versões posteriores do sistema.
+Assim, o protótipo de alta fidelidade está adequado para a etapa seguinte de testes com usuários. Ele permite observar se clientes conseguem encontrar produtos, montar pedidos, personalizar encomendas e acompanhar status, além de permitir avaliar se o gerente compreende a gestão de pedidos, produtos, estoque e relatórios gerados. As limitações identificadas, como persistência real, segurança/LGPD e controle transacional de estoque, devem ser tratadas em versões posteriores do sistema.
 
 ## 4.4 Testes com Protótipos
 
@@ -203,7 +203,7 @@ As melhorias recomendadas para a próxima versão são:
 
 - diferenciar permissões de cliente e gerente;
 - implementar persistência temporária para dados digitados, conforme RNF8;
-- transformar relatórios simulados em geração real de Excel e PDF;
+- evoluir os relatórios gerados para exportação nativa XLSX/PDF no servidor;
 - reforçar mensagens de ajuda nas telas de pagamento, relatórios e área gerencial;
 - implementar persistência real de pedidos, produtos, estoque e encomendas;
 - melhorar segurança técnica com HTTPS, criptografia adequada e proteção de dados pessoais, conforme RNF6.
