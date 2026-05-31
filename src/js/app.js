@@ -298,7 +298,7 @@ async function submitLogin(form) {
             return;
         }
 
-        setUsuarioLogado({ nome: email, email, perfil: "Cliente" });
+        setUsuarioLogado(result.user || { nome: email, email, perfil: "Cliente" });
         updateHeader();
         showToast(result.message || "Login realizado com sucesso.", "success");
         redirectAfterAuth();
@@ -312,16 +312,20 @@ async function submitCadastro(form) {
     const formData = new FormData(form);
     const nome = formData.get("nome").trim();
     const cpf = formData.get("cpf").trim();
+    const dataNascimento = formData.get("dataNascimento");
     const email = formData.get("email").trim();
     const telefone = formData.get("telefone").trim();
     const senha = formData.get("senha").trim();
+    const perfil = formData.get("perfil");
     let valid = true;
 
     if (nome.length < 3) valid = setFieldError(form, "nome", "Informe o nome completo.");
     if (!isValidCpf(cpf)) valid = setFieldError(form, "cpf", "Informe um CPF valido no formato 000.000.000-00.");
+    if (!isValidBirthDate(dataNascimento)) valid = setFieldError(form, "dataNascimento", "Informe uma data de nascimento valida.");
     if (!isValidEmail(email)) valid = setFieldError(form, "email", "Informe um e-mail válido.");
     if (telefone.length < 10) valid = setFieldError(form, "telefone", "Informe um telefone para contato.");
     if (senha.length < 4) valid = setFieldError(form, "senha", "Informe uma senha com pelo menos 4 caracteres.");
+    if (!isValidProfile(perfil)) valid = setFieldError(form, "perfil", "Selecione um perfil valido.");
 
     if (!valid) {
         showToast("Revise os campos destacados.", "error");
@@ -332,7 +336,7 @@ async function submitCadastro(form) {
         const response = await fetch(`${API_BASE_URL}/signup`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nome, cpf, email, telefone, senha })
+            body: JSON.stringify({ nome, cpf, dataNascimento, email, telefone, senha, perfil })
         });
         const result = await response.json();
 
@@ -341,7 +345,7 @@ async function submitCadastro(form) {
             return;
         }
 
-        setUsuarioLogado({ nome, email, perfil: "Cliente" });
+        setUsuarioLogado({ nome, email, perfil });
         updateHeader();
         showToast(result.message || "Cadastro criado com sucesso.", "success");
         redirectAfterAuth();
@@ -624,6 +628,22 @@ function clearFormErrors(form) {
 
 function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function isValidBirthDate(dataNascimento) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(dataNascimento)) return false;
+
+    const [year, month, day] = dataNascimento.split("-").map(Number);
+    const birthDate = new Date(year, month - 1, day);
+    if (birthDate.getFullYear() !== year || birthDate.getMonth() !== month - 1 || birthDate.getDate() !== day) return false;
+
+    const today = new Date();
+    const oldestAllowed = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
+    return birthDate <= today && birthDate >= oldestAllowed;
+}
+
+function isValidProfile(perfil) {
+    return ["Cliente", "Gerente"].includes(perfil);
 }
 
 function isValidCpf(cpf) {

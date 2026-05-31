@@ -32,7 +32,7 @@ O sistema não contempla gestão financeira completa, folha de pagamento, contab
 
 | Código | Requisito Funcional | Descrição |
 |---|---|---|
-| RF1 | Cadastro de usuário | Permitir o cadastro de clientes e funcionários com nome completo, CPF, data de nascimento, e-mail e telefone. |
+| RF1 | Cadastro de usuário | Permitir o cadastro de clientes e funcionários com nome completo, CPF, data de nascimento, e-mail, telefone, senha e perfil. |
 | RF2 | Catálogo de produtos | Exibir produtos da panificadora com foto, descrição, preço, categoria e disponibilidade atualizada. |
 | RF3 | Carrinho de compra | Permitir adicionar, remover e alterar a quantidade de produtos antes da finalização do pedido. |
 | RF4 | Customização de produtos | Permitir que o cliente personalize produtos, informando formato, tamanho, recheio, cobertura, ingredientes, mensagem, imagem de referência e observações. |

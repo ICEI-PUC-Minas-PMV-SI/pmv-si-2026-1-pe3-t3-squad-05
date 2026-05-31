@@ -91,7 +91,7 @@ const Router = {
             <section class="page-layout narrow">
                 <div class="section-heading">
                     <h2>Cadastro de usuário</h2>
-                    <p>Preencha os dados para simular a entrada no sistema. Os campos validam formato de e-mail e CPF.</p>
+                    <p>Preencha os dados para simular a entrada no sistema. Os campos validam e-mail, CPF e data de nascimento.</p>
                 </div>
 
                 <form id="cadastro-form" class="form-card" novalidate>
@@ -104,6 +104,11 @@ const Router = {
                         CPF
                         <input type="text" name="cpf" placeholder="000.000.000-00" required>
                         <small data-error-for="cpf"></small>
+                    </label>
+                    <label>
+                        Data de nascimento
+                        <input type="date" name="dataNascimento" required>
+                        <small data-error-for="dataNascimento"></small>
                     </label>
                     <label>
                         E-mail
@@ -119,6 +124,14 @@ const Router = {
                         Senha
                         <input type="password" name="senha" placeholder="Mínimo de 4 caracteres" required>
                         <small data-error-for="senha"></small>
+                    </label>
+                    <label>
+                        Perfil
+                        <select name="perfil" required>
+                            <option value="Cliente">Cliente</option>
+                            <option value="Gerente">Gerente</option>
+                        </select>
+                        <small data-error-for="perfil"></small>
                     </label>
                     <button class="btn btn-primary full-width" type="submit">
                         <i class="fa-solid fa-check" aria-hidden="true"></i>

@@ -58,7 +58,7 @@ As principais interfaces implementadas são:
 |---|---|---|
 | Início | Apresenta o objetivo do sistema, atalhos para catálogo e área gerencial, além de indicadores de produtos disponíveis, pedidos simulados e alertas de estoque. | RNF1, RNF2 |
 | Login | Permite acesso por e-mail e senha, consumindo a rota `/login` do servidor local. | RF1, RNF6 |
-| Cadastro de usuário | Permite cadastrar nome completo, CPF, e-mail, telefone e senha, com validações visuais antes do envio. | RF1, RNF7 |
+| Cadastro de usuário | Permite cadastrar nome completo, CPF, data de nascimento, e-mail, telefone, senha e perfil, com validações visuais antes do envio. | RF1, RNF7 |
 | Catálogo de produtos | Exibe produtos com imagem, descrição, preço, categoria, disponibilidade, busca textual e filtro por categoria. | RF2, RNF1 |
 | Detalhe do produto | Mostra informações complementares do produto e permite adicioná-lo ao carrinho quando disponível. | RF2, RF3 |
 | Carrinho | Permite revisar produtos, alterar quantidades, remover itens e visualizar subtotal/total antes de avançar. | RF3 |
@@ -78,7 +78,7 @@ O protótipo demonstra os requisitos funcionais da seguinte forma:
 
 | Requisito | Como aparece no protótipo |
 |---|---|
-| RF1 - Cadastro de usuário | Tela de cadastro com nome, CPF, e-mail, telefone e senha; login com e-mail e senha. |
+| RF1 - Cadastro de usuário | Tela de cadastro com nome, CPF, data de nascimento, e-mail, telefone, senha e perfil; login com e-mail e senha. |
 | RF2 - Catálogo de produtos | Catálogo com fotos, descrição, preço, categoria, disponibilidade, busca e filtros. |
 | RF3 - Carrinho de compra | Inclusão, remoção e alteração de quantidade de produtos antes da finalização. |
 | RF4 - Customização de produtos | Formulário de encomenda com formato, tamanho, recheio, cobertura, mensagem, imagem de referência e observações. |
@@ -201,7 +201,6 @@ Com base na inspeção do protótipo e nos fluxos previstos, espera-se que os us
 
 As melhorias recomendadas para a próxima versão são:
 
-- incluir data de nascimento e perfil no cadastro, conforme RF1;
 - diferenciar permissões de cliente e gerente;
 - implementar persistência temporária para dados digitados, conforme RNF8;
 - transformar relatórios simulados em geração real de Excel e PDF;

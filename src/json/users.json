@@ -1,60 +1,32 @@
 [
 	{
+		"id": 1,
 		"nome": "Cliente Teste",
+		"cpf": "123.456.789-09",
+		"dataNascimento": "1990-05-12",
 		"email": "cliente@sgp.com",
-		"senha": "1234"
-	},
-	{
-		"nome": "teste",
-		"email": "teste.com.br",
-		"senha": 1
-	},
-	{
-		"nome": "teste",
-		"email": "testa.com.br",
-		"senha": 1
-	},
-	{
-		"nome": "teste",
-		"email": "teseta.com.br",
-		"senha": 1
-	},
-	{
-		"nome": "teste",
-		"email": "tesesdadta.com.br",
-		"senha": 1
-	},
-	{
-		"nome": "teste",
-		"email": "tesaesdadta.com.br",
-		"senha": 1
-	},
-	{
-		"nome": "teste",
-		"email": "tedsasaesdadta.com.br",
-		"senha": 1
-	},
-	{
-		"nome": "teste",
-		"email": "tedsasaesdaedta.com.br",
-		"senha": 1
-	},
-	{
-		"cpf": "1",
-		"nome": "aaa Testea",
-		"email": "aaaaaa.com",
+		"telefone": "(31) 99999-0001",
 		"senha": "1234",
-		"telefone": "1"
+		"perfil": "Cliente"
 	},
 	{
-		"nome": "testestestestestes",
-		"email": "asdsasaas.com",
-		"senha": "1234"
-	},
-	{
-		"nome": "testestestestestes",
-		"email": "asdsasasdsaaas.com",
+		"id": 2,
+		"nome": "Marina Duarte",
+		"cpf": "529.982.247-25",
+		"dataNascimento": "1988-08-23",
+		"email": "marina@email.com",
+		"telefone": "(31) 99999-0101",
 		"senha": "1234",
-		"id": 0
+		"perfil": "Cliente"
+	},
+	{
+		"id": 3,
+		"nome": "Gerente SGP",
+		"cpf": "111.444.777-35",
+		"dataNascimento": "1982-11-04",
+		"email": "gerente@sgp.com",
+		"telefone": "(31) 98888-0202",
+		"senha": "1234",
+		"perfil": "Gerente"
 	}
 ]

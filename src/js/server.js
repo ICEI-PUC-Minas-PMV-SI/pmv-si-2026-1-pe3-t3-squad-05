@@ -26,15 +26,50 @@ const server = http.createServer(async (req, res) => {
             });
             req.on('end', async () => {
                 const users = await carregaUsers()
+                const requestData = JSON.parse(body);
                 const input = {
-                        ...JSON.parse(body),
-                        id: gerarId(users)
+                        id: gerarId(users),
+                        nome: typeof requestData.nome === "string" ? requestData.nome.trim() : "",
+                        cpf: typeof requestData.cpf === "string" ? requestData.cpf.trim() : "",
+                        dataNascimento: typeof requestData.dataNascimento === "string" ? requestData.dataNascimento : "",
+                        email: typeof requestData.email === "string" ? requestData.email.trim() : "",
+                        telefone: typeof requestData.telefone === "string" ? requestData.telefone.trim() : "",
+                        senha: typeof requestData.senha === "string" ? requestData.senha.trim() : "",
+                        perfil: typeof requestData.perfil === "string" ? requestData.perfil : ""
                 }
-                if(!isValidCpf(input.cpf)){
+                if(!isValidRequiredUserFields(input)){
+                    res.writeHead(400, { "Content-Type": "application/json" });
+                    res.end(JSON.stringify({
+                            success: false,
+                            message: "Preencha todos os campos obrigatorios do cadastro."
+                    }));
+                }
+                else if(!isValidCpf(input.cpf)){
                     res.writeHead(400, { "Content-Type": "application/json" });
                     res.end(JSON.stringify({
                             success: false,
                             message: "Informe um CPF valido no formato 000.000.000-00."
+                    }));
+                }
+                else if(!isValidBirthDate(input.dataNascimento)){
+                    res.writeHead(400, { "Content-Type": "application/json" });
+                    res.end(JSON.stringify({
+                            success: false,
+                            message: "Informe uma data de nascimento valida."
+                    }));
+                }
+                else if(!isValidProfile(input.perfil)){
+                    res.writeHead(400, { "Content-Type": "application/json" });
+                    res.end(JSON.stringify({
+                            success: false,
+                            message: "Selecione um perfil valido."
+                    }));
+                }
+                else if(!isValidEmail(input.email)){
+                    res.writeHead(400, { "Content-Type": "application/json" });
+                    res.end(JSON.stringify({
+                            success: false,
+                            message: "Informe um e-mail valido."
                     }));
                 }
                 else if(verificaUserEmail(input.email,users) !== -1){
@@ -75,11 +110,17 @@ const server = http.createServer(async (req, res) => {
                 try {
                     const users = await carregaUsers()
                     const input = JSON.parse(body)
-                    if(fazerLogin(input,users)){
+                    const user = fazerLogin(input,users);
+                    if(user){
                         res.writeHead(200, { "Content-Type": "application/json" });
                         res.end(JSON.stringify({
                             success: true,
-                            message: "Login aprovado"
+                            message: "Login aprovado",
+                            user: {
+                                nome: user.nome,
+                                email: user.email,
+                                perfil: user.perfil || "Cliente"
+                            }
                         }));
                     }
                     else {
@@ -344,11 +385,11 @@ function fazerLogin(input,users){
     let i = verificaUserEmail(input.email, users)
     if(i !== -1){
         if(String(input.senha) === String(users[i].senha)){
-            return true;
+            return users[i];
         }
-        else return false;
+        else return null;
     }
-    else return false;
+    else return null;
 }
 
 function verificaUserEmail(email, vetorUsers) {
@@ -358,6 +399,33 @@ function verificaUserEmail(email, vetorUsers) {
         }
     }
     return -1;
+}
+
+function isValidRequiredUserFields(input) {
+    return input.nome.length >= 3
+        && input.email.length > 0
+        && input.telefone.length >= 10
+        && input.senha.length >= 4;
+}
+
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function isValidBirthDate(dataNascimento) {
+    if (typeof dataNascimento !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(dataNascimento)) return false;
+
+    const [year, month, day] = dataNascimento.split("-").map(Number);
+    const birthDate = new Date(year, month - 1, day);
+    if (birthDate.getFullYear() !== year || birthDate.getMonth() !== month - 1 || birthDate.getDate() !== day) return false;
+
+    const today = new Date();
+    const oldestAllowed = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
+    return birthDate <= today && birthDate >= oldestAllowed;
+}
+
+function isValidProfile(perfil) {
+    return ["Cliente", "Gerente"].includes(perfil);
 }
 
 function isValidCpf(cpf) {
