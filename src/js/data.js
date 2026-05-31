@@ -104,31 +104,37 @@ const SGP_DATA = {
         {
             id: "PED-2401",
             cliente: "Marina Duarte",
+            clienteEmail: "marina@email.com",
             tipo: "Compra comum",
             data: "05/05/2026",
             horario: "10:30",
             total: 41.4,
-            status: "Em preparo",
+            status: "Saiu para entrega",
+            tipoEntrega: "Entrega",
             itens: ["Bolo de Cenoura", "Brigadeiros Sortidos"]
         },
         {
             id: "PED-2402",
             cliente: "Rafael Nogueira",
+            clienteEmail: "rafael@email.com",
             tipo: "Encomenda personalizada",
             data: "06/05/2026",
             horario: "16:00",
             total: 125.0,
-            status: "Recebido",
+            status: "Pronto para retirada",
+            tipoEntrega: "Retirada",
             itens: ["Bolo redondo 2kg, recheio de brigadeiro"]
         },
         {
             id: "PED-2403",
             cliente: "Fernanda Reis",
-            tipo: "Retirada",
+            clienteEmail: "fernanda@email.com",
+            tipo: "Compra comum",
             data: "05/05/2026",
             horario: "17:30",
             total: 59.9,
             status: "Pronto para retirada",
+            tipoEntrega: "Retirada",
             itens: ["Kit Café da Tarde"]
         }
     ],
