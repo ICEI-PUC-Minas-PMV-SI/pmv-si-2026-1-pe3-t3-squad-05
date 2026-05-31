@@ -30,7 +30,14 @@ const server = http.createServer(async (req, res) => {
                         ...JSON.parse(body),
                         id: gerarId(users)
                 }
-                if(verificaUserEmail(input.email,users) !== -1){
+                if(!isValidCpf(input.cpf)){
+                    res.writeHead(400, { "Content-Type": "application/json" });
+                    res.end(JSON.stringify({
+                            success: false,
+                            message: "Informe um CPF valido no formato 000.000.000-00."
+                    }));
+                }
+                else if(verificaUserEmail(input.email,users) !== -1){
                     res.writeHead(401, { "Content-Type": "application/json" });
                     res.end(JSON.stringify({
                             success: false,
@@ -351,4 +358,23 @@ function verificaUserEmail(email, vetorUsers) {
         }
     }
     return -1;
+}
+
+function isValidCpf(cpf) {
+    if (typeof cpf !== "string" || !/^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(cpf)) return false;
+
+    const digits = cpf.replace(/\D/g, "");
+    if (/^(\d)\1{10}$/.test(digits)) return false;
+
+    const calculateDigit = (baseLength) => {
+        let sum = 0;
+        for (let index = 0; index < baseLength; index++) {
+            sum += Number(digits[index]) * (baseLength + 1 - index);
+        }
+
+        const remainder = (sum * 10) % 11;
+        return remainder === 10 ? 0 : remainder;
+    };
+
+    return calculateDigit(9) === Number(digits[9]) && calculateDigit(10) === Number(digits[10]);
 }

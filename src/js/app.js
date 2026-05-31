@@ -313,7 +313,7 @@ async function submitCadastro(form) {
     let valid = true;
 
     if (nome.length < 3) valid = setFieldError(form, "nome", "Informe o nome completo.");
-    if (!isValidCpf(cpf)) valid = setFieldError(form, "cpf", "Use o formato 000.000.000-00.");
+    if (!isValidCpf(cpf)) valid = setFieldError(form, "cpf", "Informe um CPF valido no formato 000.000.000-00.");
     if (!isValidEmail(email)) valid = setFieldError(form, "email", "Informe um e-mail válido.");
     if (telefone.length < 10) valid = setFieldError(form, "telefone", "Informe um telefone para contato.");
     if (senha.length < 4) valid = setFieldError(form, "senha", "Informe uma senha com pelo menos 4 caracteres.");
@@ -605,7 +605,22 @@ function isValidEmail(email) {
 }
 
 function isValidCpf(cpf) {
-    return /^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(cpf);
+    if (!/^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(cpf)) return false;
+
+    const digits = cpf.replace(/\D/g, "");
+    if (/^(\d)\1{10}$/.test(digits)) return false;
+
+    const calculateDigit = (baseLength) => {
+        let sum = 0;
+        for (let index = 0; index < baseLength; index++) {
+            sum += Number(digits[index]) * (baseLength + 1 - index);
+        }
+
+        const remainder = (sum * 10) % 11;
+        return remainder === 10 ? 0 : remainder;
+    };
+
+    return calculateDigit(9) === Number(digits[9]) && calculateDigit(10) === Number(digits[10]);
 }
 
 function createKey(prefix) {
