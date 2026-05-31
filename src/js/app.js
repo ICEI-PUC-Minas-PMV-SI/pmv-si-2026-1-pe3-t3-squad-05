@@ -405,6 +405,14 @@ function submitPagamento(form) {
     }
 
     const formData = new FormData(form);
+    const pagamento = formData.get("pagamento");
+    const tipoEntrega = AppState.entrega ? AppState.entrega.tipoEntrega : "Retirada";
+
+    if (tipoEntrega === "Entrega" && pagamento === "Dinheiro na retirada") {
+        showToast("Dinheiro na retirada so e permitido para pedidos com retirada na loja.", "error");
+        return;
+    }
+
     const usuarioLogado = getUsuarioLogado();
     const pedido = {
         id: `PED-${Math.floor(3000 + Math.random() * 6000)}`,
@@ -415,8 +423,8 @@ function submitPagamento(form) {
         horario: AppState.entrega ? AppState.entrega.horario : "--:--",
         total: cartTotal(),
         status: "Recebido",
-        tipoEntrega: AppState.entrega ? AppState.entrega.tipoEntrega : "Retirada",
-        pagamento: formData.get("pagamento"),
+        tipoEntrega,
+        pagamento,
         itens: AppState.carrinho.map((item) => item.nome)
     };
 

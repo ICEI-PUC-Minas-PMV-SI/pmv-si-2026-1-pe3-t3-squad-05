@@ -335,6 +335,7 @@ const Router = {
     },
 
     pagamento() {
+        const isEntrega = AppState.entrega && AppState.entrega.tipoEntrega === "Entrega";
         return `
             <section class="page-layout narrow">
                 <div class="section-heading">
@@ -345,11 +346,17 @@ const Router = {
                     <div class="payment-options">
                         ${["Pix", "Cartão de crédito", "Dinheiro na retirada"].map((opcao, index) => `
                             <label>
-                                <input type="radio" name="pagamento" value="${opcao}" ${index === 0 ? "checked" : ""}>
+                                <input type="radio" name="pagamento" value="${opcao}" ${index === 0 ? "checked" : ""} ${isEntrega && opcao === "Dinheiro na retirada" ? "disabled" : ""}>
                                 <span>${opcao}</span>
                             </label>
                         `).join("")}
                     </div>
+                    ${isEntrega ? `
+                        <div class="notice">
+                            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                            <span>Dinheiro na retirada so esta disponivel para pedidos com retirada na loja.</span>
+                        </div>
+                    ` : ""}
                     <div class="notice">
                         <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
                         <span>Ambiente visual de demonstração. Segurança e criptografia são registradas como requisito, não implementadas neste protótipo.</span>
