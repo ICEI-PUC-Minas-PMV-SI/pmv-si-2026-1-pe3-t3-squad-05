@@ -11,10 +11,10 @@ const Router = {
                             <i class="fa-solid fa-bread-slice" aria-hidden="true"></i>
                             Ver catálogo
                         </button>
-                        <button class="btn btn-secondary" data-action="go" data-route="dashboard">
+                        ${canAccessRoute("dashboard") ? `<button class="btn btn-secondary" data-action="go" data-route="dashboard">
                             <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
                             Área do gerente
-                        </button>
+                        </button>` : ""}
                     </div>
                 </div>
                 <div class="hero-panel" aria-label="Resumo do sistema">
@@ -86,6 +86,23 @@ const Router = {
         `;
     },
 
+    acessoNegado() {
+        return `
+            <section class="page-layout narrow">
+                <div class="confirmation-panel">
+                    <span class="status-icon"><i class="fa-solid fa-lock" aria-hidden="true"></i></span>
+                    <span class="eyebrow">Acesso restrito</span>
+                    <h2>Seu perfil nao tem acesso a esta area</h2>
+                    <p>As telas administrativas sao liberadas conforme o perfil do usuario no sistema.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" data-action="go" data-route="home">Voltar ao inicio</button>
+                        <button class="btn btn-secondary" data-action="go" data-route="login">Entrar com outro usuario</button>
+                    </div>
+                </div>
+            </section>
+        `;
+    },
+
     cadastro() {
         return `
             <section class="page-layout narrow">
@@ -130,6 +147,8 @@ const Router = {
                         <select name="perfil" required>
                             <option value="Cliente">Cliente</option>
                             <option value="Gerente">Gerente</option>
+                            <option value="Atendente">Atendente</option>
+                            <option value="Confeiteiro/Padeiro">Confeiteiro/Padeiro</option>
                         </select>
                         <small data-error-for="perfil"></small>
                     </label>

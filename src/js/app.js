@@ -12,6 +12,14 @@ const AppState = {
 };
 
 const API_BASE_URL = "http://localhost:3000";
+const USER_PROFILES = ["Visitante", "Cliente", "Gerente", "Atendente", "Confeiteiro/Padeiro"];
+const ROUTE_PERMISSIONS = {
+    dashboard: ["Gerente"],
+    produtos: ["Gerente"],
+    pedidos: ["Gerente", "Atendente", "Confeiteiro/Padeiro"],
+    estoque: ["Gerente", "Confeiteiro/Padeiro"],
+    relatorios: ["Gerente", "Atendente", "Confeiteiro/Padeiro"]
+};
 
 document.addEventListener("DOMContentLoaded", () => {
     const hashRoute = normalizeRoute(window.location.hash);
@@ -60,10 +68,12 @@ document.addEventListener("click", (event) => {
     }
 
     if (action === "toggle-product") {
+        if (!ensureActionAllowed("produtos")) return;
         toggleProduct(Number(target.dataset.id));
     }
 
     if (action === "inventory-step") {
+        if (!ensureActionAllowed("estoque")) return;
         updateInventoryQuantity(target.dataset.kind, Number(target.dataset.id), Number(target.dataset.delta));
     }
 
@@ -72,6 +82,7 @@ document.addEventListener("click", (event) => {
     }
 
     if (action === "price-change") {
+        if (!ensureActionAllowed("produtos")) return;
         target.select();
     }
 
@@ -80,6 +91,7 @@ document.addEventListener("click", (event) => {
     }
 
     if (action === "report-download" || action === "report-preview") {
+        if (!ensureActionAllowed("relatorios")) return;
         handleReportAction(action === "report-download" ? "download" : "preview");
     }
 });
@@ -104,6 +116,7 @@ document.addEventListener("change", (event) => {
 
     const statusSelect = event.target.closest("[data-action='status-change']");
     if (statusSelect) {
+        if (!ensureActionAllowed("pedidos")) return;
         const pedido = SGP_DATA.pedidos.find((item) => item.id === statusSelect.dataset.id);
         pedido.status = statusSelect.value;
         if (AppState.ultimoPedido && AppState.ultimoPedido.id === pedido.id) {
@@ -124,11 +137,13 @@ document.addEventListener("change", (event) => {
 
     const inventoryInput = event.target.closest("[data-action='inventory-change']");
     if (inventoryInput) {
+        if (!ensureActionAllowed("estoque")) return;
         setInventoryQuantity(inventoryInput.dataset.kind, Number(inventoryInput.dataset.id), Number(inventoryInput.value));
     }
 
     const priceInput = event.target.closest("[data-action='price-change']");
     if (priceInput) {
+        if (!ensureActionAllowed("produtos")) return;
         setProductPrice(Number(priceInput.dataset.id), Number(priceInput.value));
     }
 });
@@ -161,11 +176,18 @@ document.addEventListener("submit", (event) => {
 });
 
 function navigateTo(route, param = null, updateHash = true) {
-    AppState.route = route && Router[route] ? route : "home";
-    AppState.routeParam = param;
+    const requestedRoute = route && Router[route] ? route : "home";
+    AppState.route = getAuthorizedRoute(requestedRoute, param);
+    AppState.routeParam = AppState.route === requestedRoute ? param : null;
 
     if (updateHash) {
         const hash = param ? `#${AppState.route}/${param}` : `#${AppState.route}`;
+        if (window.location.hash !== hash) {
+            window.location.hash = hash;
+            return;
+        }
+    } else if (AppState.route !== requestedRoute) {
+        const hash = AppState.routeParam ? `#${AppState.route}/${AppState.routeParam}` : `#${AppState.route}`;
         if (window.location.hash !== hash) {
             window.location.hash = hash;
             return;
@@ -198,10 +220,64 @@ function normalizeRoute(hash) {
     return { route, param: param || null };
 }
 
+function getAuthorizedRoute(route, param = null) {
+    if (canAccessRoute(route)) return route;
+
+    if (!getUsuarioLogado()) {
+        AppState.redirectAfterAuth = { route, param };
+        showToast("Entre com um perfil autorizado para acessar esta area.", "error");
+        return "login";
+    }
+
+    showToast("Seu perfil nao tem permissao para acessar esta area.", "error");
+    return "acessoNegado";
+}
+
+function canAccessRoute(route) {
+    const allowedProfiles = ROUTE_PERMISSIONS[route];
+    if (!allowedProfiles) return true;
+    return allowedProfiles.includes(getCurrentProfile());
+}
+
+function ensureActionAllowed(route) {
+    if (canAccessRoute(route)) return true;
+    showToast("Seu perfil nao tem permissao para esta acao.", "error");
+    return false;
+}
+
+function getCurrentProfile() {
+    const usuarioLogado = getUsuarioLogado();
+    return usuarioLogado && USER_PROFILES.includes(usuarioLogado.perfil)
+        ? usuarioLogado.perfil
+        : "Visitante";
+}
+
 function markActiveRoute() {
     document.querySelectorAll("[data-route]").forEach((link) => {
         link.classList.toggle("active", link.dataset.route === AppState.route);
     });
+}
+
+function updateNavigationAccess() {
+    let hasVisibleAdminLink = false;
+
+    document.querySelectorAll(".app-nav [data-route]").forEach((link) => {
+        const route = link.dataset.route;
+        const isAdminRoute = Boolean(ROUTE_PERMISSIONS[route]);
+        const isAllowed = canAccessRoute(route);
+
+        link.hidden = isAdminRoute && !isAllowed;
+        link.style.display = link.hidden ? "none" : "";
+        if (isAdminRoute && isAllowed) {
+            hasVisibleAdminLink = true;
+        }
+    });
+
+    const separator = document.querySelector("[data-admin-separator]");
+    if (separator) {
+        separator.hidden = !hasVisibleAdminLink;
+        separator.style.display = separator.hidden ? "none" : "";
+    }
 }
 
 function updateHeader() {
@@ -237,6 +313,8 @@ function updateHeader() {
     if (count) {
         count.textContent = cartQuantity();
     }
+
+    updateNavigationAccess();
 }
 
 function getUsuarioLogado() {
@@ -245,7 +323,7 @@ function getUsuarioLogado() {
 
 function setUsuarioLogado(usuario) {
     AppState.usuarioLogado = usuario;
-    SGP_DATA.usuarioAtual = usuario || { nome: "Visitante", perfil: "Cliente" };
+    SGP_DATA.usuarioAtual = usuario || { nome: "Visitante", perfil: "Visitante" };
 }
 
 function logout() {
@@ -669,7 +747,7 @@ function isValidBirthDate(dataNascimento) {
 }
 
 function isValidProfile(perfil) {
-    return ["Cliente", "Gerente"].includes(perfil);
+    return USER_PROFILES.filter((profile) => profile !== "Visitante").includes(perfil);
 }
 
 function isValidCpf(cpf) {

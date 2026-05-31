@@ -425,7 +425,7 @@ function isValidBirthDate(dataNascimento) {
 }
 
 function isValidProfile(perfil) {
-    return ["Cliente", "Gerente"].includes(perfil);
+    return ["Cliente", "Gerente", "Atendente", "Confeiteiro/Padeiro"].includes(perfil);
 }
 
 function isValidCpf(cpf) {

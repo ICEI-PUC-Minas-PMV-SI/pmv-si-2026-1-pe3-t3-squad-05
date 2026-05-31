@@ -1,7 +1,7 @@
 const SGP_DATA = {
     usuarioAtual: {
         nome: "Visitante",
-        perfil: "Cliente"
+        perfil: "Visitante"
     },
 
     usuarios: [
@@ -9,17 +9,41 @@ const SGP_DATA = {
             id: 1,
             nome: "Marina Duarte",
             cpf: "123.456.789-09",
+            dataNascimento: "1990-05-12",
             email: "marina@email.com",
             telefone: "(31) 99999-0101",
+            senha: "1234",
             perfil: "Cliente"
         },
         {
             id: 2,
             nome: "Carlos Menezes",
-            cpf: "987.654.321-00",
+            cpf: "529.982.247-25",
+            dataNascimento: "1982-11-04",
             email: "gerente@sgp.com",
             telefone: "(31) 98888-0202",
+            senha: "1234",
             perfil: "Gerente"
+        },
+        {
+            id: 3,
+            nome: "Atendente SGP",
+            cpf: "935.411.347-80",
+            dataNascimento: "1995-03-18",
+            email: "atendente@sgp.com",
+            telefone: "(31) 97777-0303",
+            senha: "1234",
+            perfil: "Atendente"
+        },
+        {
+            id: 4,
+            nome: "Confeiteiro SGP",
+            cpf: "222.333.444-05",
+            dataNascimento: "1991-09-10",
+            email: "confeiteiro@sgp.com",
+            telefone: "(31) 96666-0404",
+            senha: "1234",
+            perfil: "Confeiteiro/Padeiro"
         }
     ],
 

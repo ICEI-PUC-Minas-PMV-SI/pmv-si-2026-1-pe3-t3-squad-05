@@ -12,7 +12,7 @@
 	{
 		"id": 2,
 		"nome": "Marina Duarte",
-		"cpf": "529.982.247-25",
+		"cpf": "222.333.444-05",
 		"dataNascimento": "1988-08-23",
 		"email": "marina@email.com",
 		"telefone": "(31) 99999-0101",
@@ -28,5 +28,25 @@
 		"telefone": "(31) 98888-0202",
 		"senha": "1234",
 		"perfil": "Gerente"
+	},
+	{
+		"id": 4,
+		"nome": "Atendente SGP",
+		"cpf": "935.411.347-80",
+		"dataNascimento": "1995-03-18",
+		"email": "atendente@sgp.com",
+		"telefone": "(31) 97777-0303",
+		"senha": "1234",
+		"perfil": "Atendente"
+	},
+	{
+		"id": 5,
+		"nome": "Confeiteiro SGP",
+		"cpf": "529.982.247-25",
+		"dataNascimento": "1991-09-10",
+		"email": "confeiteiro@sgp.com",
+		"telefone": "(31) 96666-0404",
+		"senha": "1234",
+		"perfil": "Confeiteiro/Padeiro"
 	}
 ]
