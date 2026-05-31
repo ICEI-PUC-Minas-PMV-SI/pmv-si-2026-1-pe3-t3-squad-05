@@ -31,7 +31,7 @@ Hábitos de consumo
 * Compra principalmente itens rápidos como café e lanches;
 * Prefere praticidade em vez de variedade;
 * Costuma repetir os mesmos pedidos;
-*  Usa mais pagamento digital do que dinheiro.
+* Usa mais pagamento digital do que dinheiro.
 
 Necessidades em relação ao sistema
 * Catálogo sempre atualizado com disponibilidade real;
