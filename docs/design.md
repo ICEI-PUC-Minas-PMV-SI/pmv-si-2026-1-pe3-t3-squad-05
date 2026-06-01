@@ -276,6 +276,8 @@ Além dos princípios gestálticos, o protótipo considera as necessidades das p
 
 As recomendações ergonômicas foram incorporadas por meio de uma interface orientada a tarefas, com linguagem simples, agrupamento visual, feedback imediato e redução de passos desnecessários. Os formulários usam campos específicos para data, horário, e-mail, telefone, arquivo e senha, o que ajuda o navegador a oferecer controles adequados em computadores e celulares. A navegação principal permanece disponível durante todo o uso, permitindo que o usuário retorne rapidamente a qualquer área do sistema.
 
+Para acessibilidade ergonômica, o protótipo também oferece preferências visuais persistidas no navegador: tamanho de fonte normal, grande e muito grande, além de tema de alto contraste. Botões, links e campos exibem foco visível, e estados visuais como badges, botões e textos secundários usam variáveis de cor revisadas para manter contraste adequado nos temas padrão e alto contraste.
+
 As 8 regras de ouro de Shneiderman foram consideradas da seguinte forma:
 
 1. Buscar consistência: o protótipo usa o mesmo padrão visual para botões, cards, tabelas, formulários, badges de status e mensagens em todas as telas.

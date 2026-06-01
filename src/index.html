@@ -20,6 +20,16 @@
 
             <div class="header-actions">
                 <span id="user-greeting" class="user-greeting">Visitante</span>
+                <div class="visual-controls" aria-label="Preferências visuais">
+                    <span class="visual-label">Fonte</span>
+                    <button class="visual-button" type="button" data-action="font-size" data-value="normal" aria-label="Fonte normal" aria-pressed="true">A</button>
+                    <button class="visual-button large" type="button" data-action="font-size" data-value="large" aria-label="Fonte grande" aria-pressed="false">A</button>
+                    <button class="visual-button xlarge" type="button" data-action="font-size" data-value="xlarge" aria-label="Fonte muito grande" aria-pressed="false">A</button>
+                    <button class="visual-button contrast-toggle" type="button" data-action="contrast-toggle" aria-label="Ativar alto contraste" aria-pressed="false">
+                        <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+                        <span>Alto contraste</span>
+                    </button>
+                </div>
                 <a id="auth-action" class="cart-pill" href="#login" data-action="go" data-route="login" aria-label="Entrar no sistema">
                     <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>
                     <span>Entre</span>

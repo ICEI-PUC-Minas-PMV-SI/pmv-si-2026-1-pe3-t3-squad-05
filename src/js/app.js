@@ -12,10 +12,16 @@ const AppState = {
     entrega: null,
     ultimoPedido: null,
     usuarioLogado: null,
-    redirectAfterAuth: null
+    redirectAfterAuth: null,
+    preferenciasVisuais: {
+        fonte: "normal",
+        altoContraste: false
+    }
 };
 
 const API_BASE_URL = "http://localhost:3000";
+const VISUAL_PREFERENCES_KEY = "sgpPreferenciasVisuais";
+const FONT_SIZE_OPTIONS = ["normal", "large", "xlarge"];
 const USER_PROFILES = ["Visitante", "Cliente", "Gerente", "Atendente", "Confeiteiro/Padeiro"];
 const ROUTE_PERMISSIONS = {
     dashboard: ["Gerente"],
@@ -26,6 +32,8 @@ const ROUTE_PERMISSIONS = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+    loadVisualPreferences();
+    applyVisualPreferences();
     const hashRoute = normalizeRoute(window.location.hash);
     navigateTo(hashRoute.route, hashRoute.param, false);
     updateHeader();
@@ -44,6 +52,14 @@ document.addEventListener("click", (event) => {
 
     if (action === "go") {
         navigateTo(target.dataset.route, target.dataset.id);
+    }
+
+    if (action === "font-size") {
+        setFontSizePreference(target.dataset.value);
+    }
+
+    if (action === "contrast-toggle") {
+        setHighContrastPreference(!AppState.preferenciasVisuais.altoContraste);
     }
 
     if (action === "logout") {
@@ -316,6 +332,64 @@ function markActiveRoute() {
     });
 }
 
+function loadVisualPreferences() {
+    try {
+        const stored = JSON.parse(localStorage.getItem(VISUAL_PREFERENCES_KEY));
+        if (!stored || typeof stored !== "object") return;
+
+        AppState.preferenciasVisuais = {
+            fonte: FONT_SIZE_OPTIONS.includes(stored.fonte) ? stored.fonte : "normal",
+            altoContraste: Boolean(stored.altoContraste)
+        };
+    } catch (error) {
+        AppState.preferenciasVisuais = { fonte: "normal", altoContraste: false };
+    }
+}
+
+function saveVisualPreferences() {
+    try {
+        localStorage.setItem(VISUAL_PREFERENCES_KEY, JSON.stringify(AppState.preferenciasVisuais));
+    } catch (error) {
+        showToast("Nao foi possivel salvar a preferencia visual neste navegador.", "error");
+    }
+}
+
+function setFontSizePreference(value) {
+    AppState.preferenciasVisuais.fonte = FONT_SIZE_OPTIONS.includes(value) ? value : "normal";
+    applyVisualPreferences();
+    saveVisualPreferences();
+}
+
+function setHighContrastPreference(enabled) {
+    AppState.preferenciasVisuais.altoContraste = Boolean(enabled);
+    applyVisualPreferences();
+    saveVisualPreferences();
+}
+
+function applyVisualPreferences() {
+    const root = document.documentElement;
+    root.classList.toggle("font-large", AppState.preferenciasVisuais.fonte === "large");
+    root.classList.toggle("font-xlarge", AppState.preferenciasVisuais.fonte === "xlarge");
+    root.classList.toggle("theme-high-contrast", AppState.preferenciasVisuais.altoContraste);
+    updateVisualPreferenceControls();
+}
+
+function updateVisualPreferenceControls() {
+    document.querySelectorAll("[data-action='font-size']").forEach((button) => {
+        const isActive = button.dataset.value === AppState.preferenciasVisuais.fonte;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+    });
+
+    const contrastButton = document.querySelector("[data-action='contrast-toggle']");
+    if (contrastButton) {
+        const isActive = AppState.preferenciasVisuais.altoContraste;
+        contrastButton.classList.toggle("active", isActive);
+        contrastButton.setAttribute("aria-pressed", String(isActive));
+        contrastButton.setAttribute("aria-label", isActive ? "Desativar alto contraste" : "Ativar alto contraste");
+    }
+}
+
 function updateNavigationAccess() {
     let hasVisibleAdminLink = false;
 
@@ -372,6 +446,7 @@ function updateHeader() {
         count.textContent = cartQuantity();
     }
 
+    updateVisualPreferenceControls();
     updateNavigationAccess();
 }
 
