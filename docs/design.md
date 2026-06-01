@@ -279,7 +279,7 @@ As recomendações ergonômicas foram incorporadas por meio de uma interface ori
 As 8 regras de ouro de Shneiderman foram consideradas da seguinte forma:
 
 1. Buscar consistência: o protótipo usa o mesmo padrão visual para botões, cards, tabelas, formulários, badges de status e mensagens em todas as telas.
-2. Permitir atalhos para usuários frequentes: a navegação fixa oferece acesso direto a catálogo, encomenda, status, gerente, pedidos, produtos, estoque e relatórios; o catálogo também possui busca e filtros por categoria.
+2. Permitir atalhos para usuários frequentes: além da navegação fixa, o protótipo oferece ações rápidas para repetir o último pedido, abrir pedidos pendentes no painel gerencial, filtrar estoque crítico, buscar pedido pelo número, iniciar novo pedido ou encomenda a partir do painel e preencher o endereço de entrega com o endereço salvo no cadastro.
 3. Oferecer feedback informativo: ações como adicionar item ao carrinho, remover produto, alterar status, atualizar estoque, criar cadastro e confirmar pedido exibem mensagens de retorno por toast.
 4. Projetar diálogos com início, meio e fim: os fluxos de compra e encomenda seguem etapas claras: escolha do produto, carrinho, entrega/retirada, pagamento e confirmação.
 5. Prevenir erros: produtos indisponíveis têm botão desabilitado; campos obrigatórios são validados; CPF e e-mail inválidos bloqueiam o cadastro; quantidades de estoque são ajustadas para não ficarem negativas.

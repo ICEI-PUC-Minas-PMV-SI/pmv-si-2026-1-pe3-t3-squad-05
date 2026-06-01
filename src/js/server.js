@@ -34,6 +34,7 @@ const server = http.createServer(async (req, res) => {
                         dataNascimento: typeof requestData.dataNascimento === "string" ? requestData.dataNascimento : "",
                         email: typeof requestData.email === "string" ? requestData.email.trim() : "",
                         telefone: typeof requestData.telefone === "string" ? requestData.telefone.trim() : "",
+                        endereco: typeof requestData.endereco === "string" ? requestData.endereco.trim() : "",
                         senha: typeof requestData.senha === "string" ? requestData.senha.trim() : "",
                         perfil: typeof requestData.perfil === "string" ? requestData.perfil : ""
                 }
@@ -119,7 +120,8 @@ const server = http.createServer(async (req, res) => {
                             user: {
                                 nome: user.nome,
                                 email: user.email,
-                                perfil: user.perfil || "Cliente"
+                                perfil: user.perfil || "Cliente",
+                                endereco: user.endereco || ""
                             }
                         }));
                     }

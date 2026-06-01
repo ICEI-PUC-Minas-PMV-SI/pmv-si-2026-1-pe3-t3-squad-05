@@ -5,6 +5,10 @@ const AppState = {
     filtroCategoria: "Todos",
     busca: "",
     restoreSearchFocus: false,
+    filtroPedidos: "todos",
+    buscaPedido: "",
+    restoreOrderSearchFocus: false,
+    somenteEstoqueCritico: false,
     entrega: null,
     ultimoPedido: null,
     usuarioLogado: null,
@@ -49,6 +53,37 @@ document.addEventListener("click", (event) => {
     if (action === "filter") {
         AppState.filtroCategoria = target.dataset.category;
         render();
+    }
+
+    if (action === "order-filter") {
+        AppState.filtroPedidos = target.dataset.filter || "todos";
+        render();
+    }
+
+    if (action === "stock-filter") {
+        AppState.somenteEstoqueCritico = target.dataset.filter === "critical";
+        render();
+    }
+
+    if (action === "quick-pending-orders") {
+        if (!ensureActionAllowed("pedidos")) return;
+        AppState.filtroPedidos = "pendentes";
+        AppState.buscaPedido = "";
+        navigateTo("pedidos");
+    }
+
+    if (action === "quick-critical-stock") {
+        if (!ensureActionAllowed("estoque")) return;
+        AppState.somenteEstoqueCritico = true;
+        navigateTo("estoque");
+    }
+
+    if (action === "repeat-last-order") {
+        repeatLastOrder();
+    }
+
+    if (action === "use-profile-address") {
+        useProfileAddress();
     }
 
     if (action === "add-cart") {
@@ -105,6 +140,12 @@ document.addEventListener("input", (event) => {
     if (event.target.id === "catalog-search") {
         AppState.busca = event.target.value;
         AppState.restoreSearchFocus = true;
+        render();
+    }
+
+    if (event.target.id === "order-search") {
+        AppState.buscaPedido = event.target.value;
+        AppState.restoreOrderSearchFocus = true;
         render();
     }
 
@@ -226,6 +267,7 @@ function render() {
         updateHeader();
         updateCustomOrderEstimate();
         restoreSearchFocus();
+        restoreOrderSearchFocus();
     }, 80);
 }
 
@@ -348,6 +390,9 @@ function logout() {
     AppState.entrega = null;
     AppState.ultimoPedido = null;
     AppState.redirectAfterAuth = null;
+    AppState.filtroPedidos = "todos";
+    AppState.buscaPedido = "";
+    AppState.somenteEstoqueCritico = false;
     showToast("Sessão encerrada.", "success");
     navigateTo("home");
 }
@@ -388,6 +433,16 @@ function restoreSearchFocus() {
     search.focus();
     search.setSelectionRange(length, length);
     AppState.restoreSearchFocus = false;
+}
+
+function restoreOrderSearchFocus() {
+    if (!AppState.restoreOrderSearchFocus) return;
+    const search = document.getElementById("order-search");
+    if (!search) return;
+    const length = search.value.length;
+    search.focus();
+    search.setSelectionRange(length, length);
+    AppState.restoreOrderSearchFocus = false;
 }
 
 async function submitLogin(form) {
@@ -435,6 +490,7 @@ async function submitCadastro(form) {
     const dataNascimento = formData.get("dataNascimento");
     const email = formData.get("email").trim();
     const telefone = formData.get("telefone").trim();
+    const endereco = formData.get("endereco") ? formData.get("endereco").trim() : "";
     const senha = formData.get("senha").trim();
     const perfil = formData.get("perfil");
     let valid = true;
@@ -456,7 +512,7 @@ async function submitCadastro(form) {
         const response = await fetch(`${API_BASE_URL}/signup`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nome, cpf, dataNascimento, email, telefone, senha, perfil })
+            body: JSON.stringify({ nome, cpf, dataNascimento, email, telefone, endereco, senha, perfil })
         });
         const result = await response.json();
 
@@ -465,7 +521,7 @@ async function submitCadastro(form) {
             return;
         }
 
-        setUsuarioLogado({ nome, email, perfil });
+        setUsuarioLogado({ nome, email, perfil, endereco });
         updateHeader();
         showToast(result.message || "Cadastro criado com sucesso.", "success");
         redirectAfterAuth();
@@ -531,6 +587,11 @@ function submitEntrega(form) {
             frequencia: recorrente ? formData.get("frequenciaRecorrencia") || "Semanal" : null
         }
     };
+
+    const usuarioLogado = getUsuarioLogado();
+    if (usuarioLogado && tipoEntrega === "Entrega" && endereco) {
+        usuarioLogado.endereco = endereco;
+    }
 
     showToast("Agendamento registrado no protótipo.", "success");
     navigateTo("pagamento");
@@ -682,6 +743,123 @@ function removeFromCart(key) {
     render();
 }
 
+function repeatLastOrder() {
+    const usuarioLogado = getUsuarioLogado();
+    if (!usuarioLogado) {
+        AppState.redirectAfterAuth = { route: AppState.route, param: AppState.routeParam };
+        showToast("Entre com sua conta para repetir um pedido.", "error");
+        navigateTo("login");
+        return;
+    }
+
+    const pedido = getLastOrderForCurrentUser();
+    if (!pedido) {
+        showToast("Nenhum pedido anterior encontrado para este usuario.", "error");
+        return;
+    }
+
+    const repeatedItems = createCartItemsFromOrder(pedido);
+    if (!repeatedItems.length) {
+        showToast("Nao foi possivel repetir os itens deste pedido com o estoque atual.", "error");
+        return;
+    }
+
+    AppState.carrinho = repeatedItems;
+    AppState.entrega = null;
+    updateHeader();
+    showToast(`Pedido ${pedido.id} copiado para o carrinho.`, "success");
+    navigateTo("carrinho");
+}
+
+function getLastOrderForCurrentUser() {
+    const usuarioLogado = getUsuarioLogado();
+    if (!usuarioLogado) return null;
+
+    if (AppState.ultimoPedido && AppState.ultimoPedido.clienteEmail === usuarioLogado.email) {
+        return AppState.ultimoPedido;
+    }
+
+    return SGP_DATA.pedidos.find((pedido) => pedido.clienteEmail === usuarioLogado.email) || null;
+}
+
+function createCartItemsFromOrder(pedido) {
+    const itens = Array.isArray(pedido.itens) ? pedido.itens : [];
+    const unitPriceFallback = itens.length ? pedido.total / itens.length : pedido.total;
+
+    return itens.reduce((cartItems, itemName) => {
+        const produto = SGP_DATA.produtos.find((item) => item.nome === itemName);
+
+        if (produto) {
+            const existing = cartItems.find((item) => item.id === produto.id);
+            const nextQuantity = existing ? existing.quantidade + 1 : 1;
+            if (!produto.disponibilidade || produto.estoque < nextQuantity) {
+                return cartItems;
+            }
+
+            if (existing) {
+                existing.quantidade = nextQuantity;
+                return cartItems;
+            }
+
+            cartItems.push({
+                key: createKey(produto.id),
+                id: produto.id,
+                nome: produto.nome,
+                descricao: produto.descricao,
+                preco: produto.preco,
+                quantidade: 1,
+                tipo: "Produto"
+            });
+            return cartItems;
+        }
+
+        cartItems.push({
+            key: createKey("custom"),
+            id: "custom",
+            nome: "Encomenda personalizada",
+            descricao: itemName,
+            personalizacao: `Repetida do pedido ${pedido.id}`,
+            preco: Math.max(0, unitPriceFallback),
+            quantidade: 1,
+            tipo: "Encomenda personalizada"
+        });
+        return cartItems;
+    }, []);
+}
+
+function useProfileAddress() {
+    const usuarioLogado = getUsuarioLogado();
+    if (!usuarioLogado) {
+        showToast("Entre para usar o endereco salvo no cadastro.", "error");
+        navigateTo("login");
+        return;
+    }
+
+    const endereco = getProfileAddress();
+    if (!endereco) {
+        showToast("Nenhum endereco salvo no cadastro deste usuario.", "error");
+        return;
+    }
+
+    const form = document.getElementById("entrega-form");
+    if (!form) return;
+
+    form.elements.endereco.value = endereco;
+    const entregaOption = form.querySelector("input[name='tipoEntrega'][value='Entrega']");
+    if (entregaOption) entregaOption.checked = true;
+    showToast("Endereco do cadastro aplicado ao pedido.", "success");
+}
+
+function getProfileAddress() {
+    const usuarioLogado = getUsuarioLogado();
+    if (!usuarioLogado) return "";
+
+    if (usuarioLogado.endereco) return usuarioLogado.endereco;
+
+    const cadastro = SGP_DATA.usuarios.find((usuario) => usuario.email === usuarioLogado.email);
+    return cadastro && cadastro.endereco ? cadastro.endereco : "";
+}
+
 function updateOrderStatus(pedido, newStatus, oldStatus = pedido.status) {
     pedido.status = newStatus;
     if (AppState.ultimoPedido && AppState.ultimoPedido.id === pedido.id) {
@@ -780,6 +958,22 @@ function filtrarProdutos() {
             || produto.descricao.toLowerCase().includes(AppState.busca.toLowerCase());
         return categoryMatch && searchMatch;
     });
+}
+
+function filtrarPedidosAdministrativos() {
+    const termo = AppState.buscaPedido.trim().toLowerCase();
+    return SGP_DATA.pedidos.filter((pedido) => {
+        const statusMatch = AppState.filtroPedidos === "pendentes"
+            ? !["Finalizado", "Cancelado"].includes(pedido.status)
+            : true;
+        const searchMatch = !termo || pedido.id.toLowerCase().includes(termo);
+        return statusMatch && searchMatch;
+    });
+}
+
+function filtrarInsumos() {
+    if (!AppState.somenteEstoqueCritico) return SGP_DATA.insumos;
+    return SGP_DATA.insumos.filter((insumo) => insumo.quantidade <= insumo.nivelCritico);
 }
 
 function updateCustomOrderEstimate() {

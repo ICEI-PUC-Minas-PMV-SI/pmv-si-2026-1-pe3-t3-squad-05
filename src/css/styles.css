@@ -84,6 +84,7 @@ a {
 .brand,
 .cart-pill,
 .hero-actions,
+.shortcut-bar,
 .card-actions,
 .panel-heading,
 .status-header,
@@ -368,6 +369,15 @@ a {
     justify-content: space-between;
     gap: 16px;
     flex-wrap: wrap;
+}
+
+.shortcut-bar {
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.shortcut-bar.compact {
+    margin-left: auto;
 }
 
 .chip-group {
@@ -962,6 +972,16 @@ th {
     text-align: center;
 }
 
+.inline-empty-state {
+    padding: 18px 0;
+    text-align: center;
+}
+
+.inline-empty-state p {
+    margin: 6px 0 0;
+    color: var(--muted);
+}
+
 .toast-region {
     position: fixed;
     right: 18px;
@@ -1099,6 +1119,7 @@ th {
     }
 
     .card-actions,
+    .shortcut-bar,
     .hero-actions {
         align-items: stretch;
         flex-direction: column;

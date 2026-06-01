@@ -11,6 +11,10 @@ const Router = {
                             <i class="fa-solid fa-bread-slice" aria-hidden="true"></i>
                             Ver catálogo
                         </button>
+                        ${getUsuarioLogado() ? `<button class="btn btn-secondary" data-action="repeat-last-order">
+                            <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+                            Repetir último pedido
+                        </button>` : ""}
                         ${canAccessRoute("dashboard") ? `<button class="btn btn-secondary" data-action="go" data-route="dashboard">
                             <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
                             Área do gerente
@@ -136,6 +140,11 @@ const Router = {
                         Telefone
                         <input type="tel" name="telefone" placeholder="(31) 99999-9999" required>
                         <small data-error-for="telefone"></small>
+                    </label>
+                    <label>
+                        Endereço padrão
+                        <input type="text" name="endereco" placeholder="Rua, número, bairro">
+                        <small>Opcional para agilizar pedidos com entrega.</small>
                     </label>
                     <label>
                         Senha
@@ -361,6 +370,10 @@ const Router = {
                         <input type="text" name="endereco" placeholder="Rua, número, bairro">
                         <small data-error-for="endereco"></small>
                     </label>
+                    <button class="btn btn-ghost full-width" type="button" data-action="use-profile-address">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        Usar endereço do cadastro
+                    </button>
                     <label>
                         <input type="checkbox" name="recorrente" value="sim">
                         Marcar como recorrente
@@ -475,6 +488,20 @@ const Router = {
                     <h2>Status dos pedidos</h2>
                     <p>Acompanhe apenas os pedidos vinculados ao usuário logado.</p>
                 </div>
+                ${usuarioLogado ? `<div class="shortcut-bar">
+                    <button class="btn btn-secondary" type="button" data-action="repeat-last-order">
+                        <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+                        Repetir último pedido
+                    </button>
+                    <button class="btn btn-ghost" type="button" data-action="go" data-route="catalogo">
+                        <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                        Novo pedido
+                    </button>
+                    <button class="btn btn-ghost" type="button" data-action="go" data-route="encomenda">
+                        <i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
+                        Nova encomenda
+                    </button>
+                </div>` : ""}
                 ${usuarioLogado
                     ? statusCards || emptyState("Nenhum pedido encontrado.", "Faça uma compra ou encomenda para acompanhar o status por aqui.")
                     : emptyState("Entre para acompanhar seus pedidos.", "O status mostra somente os pedidos do usuário logado.")}
@@ -498,18 +525,36 @@ const Router = {
                     ${metricCard("Alertas de estoque", estoqueCritico.length, "fa-triangle-exclamation")}
                     ${metricCard("Receita simulada", formatCurrency(SGP_DATA.pedidos.reduce((total, pedido) => total + pedido.total, 0)), "fa-chart-simple")}
                 </div>
+                <div class="shortcut-bar">
+                    <button class="btn btn-primary" type="button" data-action="quick-pending-orders">
+                        <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                        Pedidos pendentes
+                    </button>
+                    <button class="btn btn-secondary" type="button" data-action="quick-critical-stock">
+                        <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+                        Estoque crítico
+                    </button>
+                    <button class="btn btn-ghost" type="button" data-action="go" data-route="catalogo">
+                        <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                        Novo pedido
+                    </button>
+                    <button class="btn btn-ghost" type="button" data-action="go" data-route="encomenda">
+                        <i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
+                        Nova encomenda
+                    </button>
+                </div>
                 <div class="admin-grid">
                     <section class="admin-panel">
                         <div class="panel-heading">
                             <h3>Pedidos recentes</h3>
-                            <button class="btn btn-ghost" data-action="go" data-route="pedidos">Ver todos</button>
+                            <button class="btn btn-ghost" data-action="quick-pending-orders">Pendentes</button>
                         </div>
                         ${ordersTable(SGP_DATA.pedidos.slice(0, 3))}
                     </section>
                     <section class="admin-panel">
                         <div class="panel-heading">
                             <h3>Insumos críticos</h3>
-                            <button class="btn btn-ghost" data-action="go" data-route="estoque">Abrir estoque</button>
+                            <button class="btn btn-ghost" data-action="quick-critical-stock">Críticos</button>
                         </div>
                         ${estoqueCritico.length ? estoqueCritico.map((insumo) => stockRow(insumo)).join("") : emptyState("Sem alertas.", "Todos os insumos estão acima do nível crítico.")}
                     </section>
@@ -519,13 +564,35 @@ const Router = {
     },
 
     pedidos() {
+        const pedidosFiltrados = filtrarPedidosAdministrativos();
+
         return `
             <section class="page-layout">
                 <div class="section-heading">
                     <h2>Gestão de pedidos</h2>
                     <p>Visualize pedidos e altere o status para demonstrar o fluxo administrativo.</p>
                 </div>
-                <section class="admin-panel">${ordersTable(SGP_DATA.pedidos, true)}</section>
+                <div class="toolbar">
+                    <div class="chip-group" aria-label="Filtros de pedidos">
+                        <button class="chip ${AppState.filtroPedidos === "todos" ? "active" : ""}" type="button" data-action="order-filter" data-filter="todos">Todos</button>
+                        <button class="chip ${AppState.filtroPedidos === "pendentes" ? "active" : ""}" type="button" data-action="order-filter" data-filter="pendentes">Pendentes</button>
+                    </div>
+                    <label class="search-field">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                        <input id="order-search" type="search" value="${AppState.buscaPedido}" placeholder="Buscar nº do pedido">
+                    </label>
+                    <div class="shortcut-bar compact">
+                        <button class="btn btn-ghost" type="button" data-action="go" data-route="catalogo">
+                            <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                            Novo pedido
+                        </button>
+                        <button class="btn btn-ghost" type="button" data-action="go" data-route="encomenda">
+                            <i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
+                            Nova encomenda
+                        </button>
+                    </div>
+                </div>
+                <section class="admin-panel">${pedidosFiltrados.length ? ordersTable(pedidosFiltrados, true) : inlineEmptyState("Nenhum pedido encontrado.", "Ajuste a busca ou os filtros rápidos.")}</section>
             </section>
         `;
     },
@@ -568,14 +635,22 @@ const Router = {
     },
 
     estoque() {
+        const insumos = filtrarInsumos();
+
         return `
             <section class="page-layout">
                 <div class="section-heading">
                     <h2>Estoque de insumos</h2>
                     <p>Itens abaixo do nível crítico são destacados para apoiar a gestão da panificadora.</p>
                 </div>
+                <div class="toolbar">
+                    <div class="chip-group" aria-label="Filtros de estoque">
+                        <button class="chip ${!AppState.somenteEstoqueCritico ? "active" : ""}" type="button" data-action="stock-filter" data-filter="all">Todos</button>
+                        <button class="chip ${AppState.somenteEstoqueCritico ? "active" : ""}" type="button" data-action="stock-filter" data-filter="critical">Crítico</button>
+                    </div>
+                </div>
                 <div class="admin-panel">
-                    ${SGP_DATA.insumos.map((insumo) => stockRow(insumo, true)).join("")}
+                    ${insumos.length ? insumos.map((insumo) => stockRow(insumo, true)).join("") : inlineEmptyState("Sem estoque crítico.", "Todos os insumos estão acima do nível crítico.")}
                 </div>
             </section>
         `;
@@ -764,6 +839,15 @@ function priceControl(id, value, label) {
 function emptyState(title, text) {
     return `
         <div class="empty-state">
+            <strong>${title}</strong>
+            <p>${text}</p>
+        </div>
+    `;
+}
+
+function inlineEmptyState(title, text) {
+    return `
+        <div class="inline-empty-state">
             <strong>${title}</strong>
             <p>${text}</p>
         </div>
