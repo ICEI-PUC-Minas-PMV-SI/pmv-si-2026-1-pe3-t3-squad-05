@@ -359,6 +359,7 @@ const Router = {
                     <label>
                         Endereço, se for entrega
                         <input type="text" name="endereco" placeholder="Rua, número, bairro">
+                        <small data-error-for="endereco"></small>
                     </label>
                     <label>
                         <input type="checkbox" name="recorrente" value="sim">
@@ -691,7 +692,9 @@ function orderStatusSteps(pedido) {
     }
 
     const finalizacao = pedido.tipoEntrega === "Entrega" ? "Saiu para entrega" : "Pronto para retirada";
-    return ["Recebido", "Em preparo", finalizacao, "Finalizado"];
+    return canCancelOrder(pedido)
+        ? ["Recebido", "Em preparo", finalizacao, "Finalizado", "Cancelado"]
+        : ["Recebido", "Em preparo", finalizacao, "Finalizado"];
 }
 
 function canCancelOrder(pedido) {

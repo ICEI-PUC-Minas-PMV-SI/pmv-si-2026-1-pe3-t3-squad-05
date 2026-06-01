@@ -134,6 +134,11 @@ document.addEventListener("change", (event) => {
             return;
         }
 
+        if (newStatus === "Cancelado" && !window.confirm(`Cancelar o pedido ${pedido.id}? O pedido deixara de seguir o fluxo de atendimento.`)) {
+            statusSelect.value = oldStatus;
+            return;
+        }
+
         updateOrderStatus(pedido, newStatus, oldStatus);
     }
 
@@ -496,22 +501,31 @@ function submitEntrega(form) {
     const formData = new FormData(form);
     const data = formData.get("data");
     const horario = formData.get("horario");
+    const tipoEntrega = formData.get("tipoEntrega");
+    const endereco = formData.get("endereco").trim();
     const recorrente = formData.get("recorrente") === "sim";
     let valid = true;
 
     if (!data) valid = setFieldError(form, "data", "Escolha uma data.");
     if (!horario) valid = setFieldError(form, "horario", "Escolha um horário.");
+    if (data && horario && !isFutureSchedule(data, horario)) {
+        valid = setFieldError(form, "data", "Escolha uma data e horario futuros.");
+        setFieldError(form, "horario", "Escolha uma data e horario futuros.");
+    }
+    if (tipoEntrega === "Entrega" && endereco.length < 5) {
+        valid = setFieldError(form, "endereco", "Informe o endereco para entrega.");
+    }
 
     if (!valid) {
-        showToast("Informe data e horário para continuar.", "error");
+        showToast("Revise os dados de entrega antes de continuar.", "error");
         return;
     }
 
     AppState.entrega = {
-        tipoEntrega: formData.get("tipoEntrega"),
+        tipoEntrega,
         data,
         horario,
-        endereco: formData.get("endereco"),
+        endereco,
         recorrencia: {
             ativa: recorrente,
             frequencia: recorrente ? formData.get("frequenciaRecorrencia") || "Semanal" : null
@@ -542,6 +556,12 @@ function submitPagamento(form) {
         return;
     }
 
+    const stockValidation = validateCartStock();
+    if (!stockValidation.valid) {
+        showToast(stockValidation.message, "error");
+        return;
+    }
+
     const usuarioLogado = getUsuarioLogado();
     const recorrencia = AppState.entrega
         ? AppState.entrega.recorrencia
@@ -569,6 +589,29 @@ function submitPagamento(form) {
     navigateTo("confirmacao");
 }
 
+function validateCartStock() {
+    for (const item of AppState.carrinho) {
+        if (item.id === "custom") continue;
+
+        const produto = SGP_DATA.produtos.find((produtoItem) => produtoItem.id === item.id);
+        if (!produto || !produto.disponibilidade) {
+            return {
+                valid: false,
+                message: `${item.nome} esta indisponivel. Remova o item para continuar.`
+            };
+        }
+
+        if (item.quantidade > produto.estoque) {
+            return {
+                valid: false,
+                message: `Estoque insuficiente para ${item.nome}. Disponivel: ${produto.estoque}.`
+            };
+        }
+    }
+
+    return { valid: true };
+}
+
 function addToCart(produtoId) {
     const produto = SGP_DATA.produtos.find((item) => item.id === produtoId);
 
@@ -578,6 +621,12 @@ function addToCart(produtoId) {
     }
 
     const itemExistente = AppState.carrinho.find((item) => item.id === produto.id);
+    const quantidadeNoCarrinho = itemExistente ? itemExistente.quantidade : 0;
+    if (quantidadeNoCarrinho + 1 > produto.estoque) {
+        showToast(`Estoque insuficiente para ${produto.nome}. Disponivel: ${produto.estoque}.`, "error");
+        return;
+    }
+
     if (itemExistente) {
         itemExistente.quantidade += 1;
     } else {
@@ -599,6 +648,14 @@ function addToCart(produtoId) {
 function changeCartQuantity(key, delta) {
     const item = AppState.carrinho.find((cartItem) => cartItem.key === key);
     if (!item) return;
+    if (delta > 0 && item.id !== "custom") {
+        const produto = SGP_DATA.produtos.find((produtoItem) => produtoItem.id === item.id);
+        if (!produto || item.quantidade + delta > produto.estoque) {
+            showToast(`Estoque insuficiente para ${item.nome}.`, "error");
+            return;
+        }
+    }
+
     item.quantidade += delta;
 
     if (item.quantidade <= 0) {
@@ -649,6 +706,8 @@ function cancelOrder(id) {
     const pedido = SGP_DATA.pedidos.find((item) => item.id === id);
     if (!pedido || !canCancelOrder(pedido)) return;
 
+    if (!window.confirm(`Cancelar o pedido ${pedido.id}? O pedido deixara de seguir o fluxo de atendimento.`)) return;
+
     const oldStatus = pedido.status;
     updateOrderStatus(pedido, "Cancelado", oldStatus);
 }
@@ -656,6 +715,8 @@ function cancelOrder(id) {
 function toggleProduct(id) {
     const produto = SGP_DATA.produtos.find((item) => item.id === id);
     if (!produto) return;
+    if (produto.disponibilidade && !window.confirm(`Indisponibilizar ${produto.nome}? Clientes nao poderao adicionar este produto ao carrinho.`)) return;
+
     produto.disponibilidade = !produto.disponibilidade;
     showToast("Disponibilidade do produto alterada.", "success");
     render();
@@ -806,6 +867,11 @@ function isValidBirthDate(dataNascimento) {
     const today = new Date();
     const oldestAllowed = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
     return birthDate <= today && birthDate >= oldestAllowed;
+}
+
+function isFutureSchedule(data, horario) {
+    const scheduledDate = new Date(`${data}T${horario}`);
+    return !Number.isNaN(scheduledDate.getTime()) && scheduledDate > new Date();
 }
 
 function isValidProfile(perfil) {
