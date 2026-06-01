@@ -67,6 +67,11 @@ document.addEventListener("click", (event) => {
         removeFromCart(target.dataset.key);
     }
 
+    if (action === "cancel-order") {
+        if (!ensureActionAllowed("pedidos")) return;
+        cancelOrder(target.dataset.id);
+    }
+
     if (action === "toggle-product") {
         if (!ensureActionAllowed("produtos")) return;
         toggleProduct(Number(target.dataset.id));
@@ -118,12 +123,18 @@ document.addEventListener("change", (event) => {
     if (statusSelect) {
         if (!ensureActionAllowed("pedidos")) return;
         const pedido = SGP_DATA.pedidos.find((item) => item.id === statusSelect.dataset.id);
-        pedido.status = statusSelect.value;
-        if (AppState.ultimoPedido && AppState.ultimoPedido.id === pedido.id) {
-            AppState.ultimoPedido.status = statusSelect.value;
+        if (!pedido) return;
+
+        const oldStatus = pedido.status;
+        const newStatus = statusSelect.value;
+        if (oldStatus === newStatus) return;
+
+        if (newStatus === "Finalizado" && !window.confirm(`Finalizar o pedido ${pedido.id}? Esta acao encerra o atendimento.`)) {
+            statusSelect.value = oldStatus;
+            return;
         }
-        showToast(`Status do pedido ${pedido.id} atualizado.`, "success");
-        render();
+
+        updateOrderStatus(pedido, newStatus, oldStatus);
     }
 
     if (event.target.name === "referencia") {
@@ -599,9 +610,47 @@ function changeCartQuantity(key, delta) {
 }
 
 function removeFromCart(key) {
-    AppState.carrinho = AppState.carrinho.filter((item) => item.key !== key);
-    showToast("Item removido do carrinho.", "success");
+    const itemIndex = AppState.carrinho.findIndex((item) => item.key === key);
+    if (itemIndex === -1) return;
+
+    const [removedItem] = AppState.carrinho.splice(itemIndex, 1);
+    showToast("Item removido do carrinho.", "success", {
+        label: "Desfazer",
+        onClick: () => {
+            AppState.carrinho.splice(itemIndex, 0, removedItem);
+            showToast("Remocao desfeita.", "success");
+            render();
+        }
+    });
     render();
+}
+
+function updateOrderStatus(pedido, newStatus, oldStatus = pedido.status) {
+    pedido.status = newStatus;
+    if (AppState.ultimoPedido && AppState.ultimoPedido.id === pedido.id) {
+        AppState.ultimoPedido.status = newStatus;
+    }
+
+    showToast(`Status do pedido ${pedido.id} atualizado.`, "success", {
+        label: "Desfazer",
+        onClick: () => {
+            pedido.status = oldStatus;
+            if (AppState.ultimoPedido && AppState.ultimoPedido.id === pedido.id) {
+                AppState.ultimoPedido.status = oldStatus;
+            }
+            showToast("Alteracao de status desfeita.", "success");
+            render();
+        }
+    });
+    render();
+}
+
+function cancelOrder(id) {
+    const pedido = SGP_DATA.pedidos.find((item) => item.id === id);
+    if (!pedido || !canCancelOrder(pedido)) return;
+
+    const oldStatus = pedido.status;
+    updateOrderStatus(pedido, "Cancelado", oldStatus);
 }
 
 function toggleProduct(id) {
@@ -699,7 +748,7 @@ function formatCurrency(value) {
     });
 }
 
-function showToast(message, type = "success") {
+function showToast(message, type = "success", action = null) {
     const region = document.getElementById("toast-region");
     const toast = document.createElement("div");
     toast.className = `toast ${type}`;
@@ -707,12 +756,25 @@ function showToast(message, type = "success") {
         <i class="fa-solid ${type === "success" ? "fa-check" : "fa-triangle-exclamation"}" aria-hidden="true"></i>
         <span>${message}</span>
     `;
+
+    if (action) {
+        const actionButton = document.createElement("button");
+        actionButton.className = "toast-action";
+        actionButton.type = "button";
+        actionButton.textContent = action.label;
+        actionButton.addEventListener("click", () => {
+            action.onClick();
+            toast.remove();
+        });
+        toast.appendChild(actionButton);
+    }
+
     region.appendChild(toast);
 
     window.setTimeout(() => {
         toast.classList.add("leaving");
         window.setTimeout(() => toast.remove(), 250);
-    }, 2800);
+    }, action ? 6000 : 2800);
 }
 
 function setFieldError(form, fieldName, message) {

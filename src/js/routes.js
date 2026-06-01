@@ -483,7 +483,7 @@ const Router = {
 
     dashboard() {
         const estoqueCritico = SGP_DATA.insumos.filter((insumo) => insumo.quantidade <= insumo.nivelCritico);
-        const pedidosPendentes = SGP_DATA.pedidos.filter((pedido) => pedido.status !== "Finalizado");
+        const pedidosPendentes = SGP_DATA.pedidos.filter((pedido) => !["Finalizado", "Cancelado"].includes(pedido.status));
 
         return `
             <section class="page-layout">
@@ -670,6 +670,11 @@ function ordersTable(pedidos, editable = false) {
                                             <option value="${status}" ${pedido.status === status ? "selected" : ""}>${status}</option>
                                         `).join("")}
                                     </select>
+                                    ${canCancelOrder(pedido) ? `
+                                        <button class="btn btn-ghost danger" type="button" data-action="cancel-order" data-id="${pedido.id}">
+                                            Cancelar
+                                        </button>
+                                    ` : ""}
                                 </td>
                             ` : ""}
                         </tr>
@@ -681,8 +686,16 @@ function ordersTable(pedidos, editable = false) {
 }
 
 function orderStatusSteps(pedido) {
+    if (pedido.status === "Cancelado") {
+        return ["Recebido", "Cancelado"];
+    }
+
     const finalizacao = pedido.tipoEntrega === "Entrega" ? "Saiu para entrega" : "Pronto para retirada";
     return ["Recebido", "Em preparo", finalizacao, "Finalizado"];
+}
+
+function canCancelOrder(pedido) {
+    return ["Recebido", "Em preparo"].includes(pedido.status);
 }
 
 function recurrenceLabel(pedido) {
