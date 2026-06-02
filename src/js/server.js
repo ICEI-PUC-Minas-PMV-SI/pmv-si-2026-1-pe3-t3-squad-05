@@ -1,10 +1,19 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 const { URL } = require('url');
 
 const usersFilePath = path.join(__dirname, "..", "json", "users.json");
 const produtosFilePath = path.join(__dirname, "..", "json", "produtos.json");
+const PASSWORD_HASH_ALGORITHM = "scrypt";
+const PASSWORD_KEY_LENGTH = 64;
+const PASSWORD_SCRYPT_OPTIONS = {
+    N: 16384,
+    r: 8,
+    p: 1,
+    maxmem: 64 * 1024 * 1024
+};
 
 const server = http.createServer(async (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -360,7 +369,13 @@ async function atualizarUsers(vetorUsers) {
 }
 
 async function criaNovoUser(novoUser,vetorUsers){
-    vetorUsers.push(novoUser)
+    const userToSave = {
+        ...novoUser,
+        senhaHash: hashPassword(novoUser.senha)
+    };
+    delete userToSave.senha;
+
+    vetorUsers.push(userToSave)
     return atualizarUsers(vetorUsers)
         .then(()=>{
             return true
@@ -386,12 +401,37 @@ async function criaNovoProduto(novoProduto,vetorProdutos){
 function fazerLogin(input,users){
     let i = verificaUserEmail(input.email, users)
     if(i !== -1){
-        if(String(input.senha) === String(users[i].senha)){
+        if(verifyPassword(input.senha, users[i].senhaHash)){
             return users[i];
         }
         else return null;
     }
     else return null;
+}
+
+function hashPassword(password) {
+    const salt = crypto.randomBytes(16).toString("hex");
+    const hash = crypto.scryptSync(String(password), salt, PASSWORD_KEY_LENGTH, PASSWORD_SCRYPT_OPTIONS).toString("hex");
+    return `${PASSWORD_HASH_ALGORITHM}$${PASSWORD_SCRYPT_OPTIONS.N}$${PASSWORD_SCRYPT_OPTIONS.r}$${PASSWORD_SCRYPT_OPTIONS.p}$${salt}$${hash}`;
+}
+
+function verifyPassword(password, storedHash) {
+    if (typeof storedHash !== "string") return false;
+
+    const [algorithm, n, r, p, salt, hash] = storedHash.split("$");
+    if (algorithm !== PASSWORD_HASH_ALGORITHM || !salt || !hash) return false;
+
+    const expectedHash = Buffer.from(hash, "hex");
+    if (!expectedHash.length) return false;
+
+    const calculatedHash = crypto.scryptSync(String(password), salt, expectedHash.length, {
+        N: Number(n),
+        r: Number(r),
+        p: Number(p),
+        maxmem: PASSWORD_SCRYPT_OPTIONS.maxmem
+    });
+
+    return calculatedHash.length === expectedHash.length && crypto.timingSafeEqual(calculatedHash, expectedHash);
 }
 
 function verificaUserEmail(email, vetorUsers) {

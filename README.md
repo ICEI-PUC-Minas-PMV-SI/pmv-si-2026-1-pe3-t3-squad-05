@@ -53,6 +53,12 @@ Abra o powershell e use o comando
 	
 Isso faz com que seja possível rodar scripts locais, mas quaisquer script externo deve ser assinado por um publicador confiável.
 
+### Estratégia de segurança de senhas
+
+O cadastro não grava novas senhas em texto puro. Como o projeto permanece sem dependências externas, o servidor usa `crypto.scryptSync` do Node.js com salt aleatório por usuário e compara o hash no login com `crypto.timingSafeEqual`.
+
+O arquivo `src/json/users.json` deve armazenar apenas `senhaHash`, no formato `scrypt$N$r$p$salt$hash`. Antes de qualquer uso fora do protótipo acadêmico, as credenciais de exemplo devem ser substituídas por contas reais criadas pelo fluxo de cadastro ou por uma rotina de seed segura. Caso o projeto passe a aceitar dependências externas, a migração para uma biblioteca consolidada como `bcrypt` ou `argon2` deve ser tratada como obrigatória antes da entrega final em produção.
+
 # Apresentação
 
 <li><a href="docs/apresentacao.md"> Apresentação da solução</a></li>

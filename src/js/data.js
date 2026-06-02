@@ -13,7 +13,6 @@ const SGP_DATA = {
             email: "marina@email.com",
             telefone: "(31) 99999-0101",
             endereco: "Rua das Flores, 120, Savassi",
-            senha: "1234",
             perfil: "Cliente"
         },
         {
@@ -24,7 +23,6 @@ const SGP_DATA = {
             email: "gerente@sgp.com",
             telefone: "(31) 98888-0202",
             endereco: "Avenida Central, 450, Centro",
-            senha: "1234",
             perfil: "Gerente"
         },
         {
@@ -35,7 +33,6 @@ const SGP_DATA = {
             email: "atendente@sgp.com",
             telefone: "(31) 97777-0303",
             endereco: "Rua do Atendimento, 88, Centro",
-            senha: "1234",
             perfil: "Atendente"
         },
         {
@@ -46,7 +43,6 @@ const SGP_DATA = {
             email: "confeiteiro@sgp.com",
             telefone: "(31) 96666-0404",
             endereco: "Rua da Confeitaria, 42, Funcionarios",
-            senha: "1234",
             perfil: "Confeiteiro/Padeiro"
         }
     ],

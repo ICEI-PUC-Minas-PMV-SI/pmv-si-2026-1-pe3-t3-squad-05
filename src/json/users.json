@@ -7,7 +7,7 @@
 		"email": "cliente@sgp.com",
 		"telefone": "(31) 99999-0001",
 		"endereco": "Rua dos Clientes, 100, Centro",
-		"senha": "1234",
+		"senhaHash": "scrypt$16384$8$1$ef3bddc6cf395c8c1e62b8a11a4679dd$4c667863bb39996bd0807139e8a73e0fc625635525b59dfc80a5f645269994cc71581e34b2ee2ab5e5aa9477790e00d7136d647c4e832d03dbaadc7a18f82f12",
 		"perfil": "Cliente"
 	},
 	{
@@ -18,7 +18,7 @@
 		"email": "marina@email.com",
 		"telefone": "(31) 99999-0101",
 		"endereco": "Rua das Flores, 120, Savassi",
-		"senha": "1234",
+		"senhaHash": "scrypt$16384$8$1$cc9723e31dd62803e0230305afb3b61d$f6ea6438c43e7a88167ce49d37ee214a6060a57c17fc95df6f6e64d9ae6f5be0211b88acb44581d90f59a0bab74a2d5cddd56abe90273c17508d95e960843c3c",
 		"perfil": "Cliente"
 	},
 	{
@@ -29,7 +29,7 @@
 		"email": "gerente@sgp.com",
 		"telefone": "(31) 98888-0202",
 		"endereco": "Avenida Central, 450, Centro",
-		"senha": "1234",
+		"senhaHash": "scrypt$16384$8$1$479f78547236c6edf8d9e72bf171212c$ff9f21bb1f184cc12b9958c69b7af1a6447d4963fbb606b845ee34f53ff9dcdb94df4fbd84dc7d0b44e4ff3d255714afe7250ea1d1b5bbac2a1aeef523181202",
 		"perfil": "Gerente"
 	},
 	{
@@ -40,7 +40,7 @@
 		"email": "atendente@sgp.com",
 		"telefone": "(31) 97777-0303",
 		"endereco": "Rua do Atendimento, 88, Centro",
-		"senha": "1234",
+		"senhaHash": "scrypt$16384$8$1$6d90f6b1143516516d6a14ded7e7e566$4832dd2cb59ca09a9c3fe627872cae95f220c405c76727d9e48c8545a8e452d8d9aa1afe65a4b8c4465a12fa9b14379a714e896e787f2f13b6a0977d84c07490",
 		"perfil": "Atendente"
 	},
 	{
@@ -51,7 +51,7 @@
 		"email": "confeiteiro@sgp.com",
 		"telefone": "(31) 96666-0404",
 		"endereco": "Rua da Confeitaria, 42, Funcionarios",
-		"senha": "1234",
+		"senhaHash": "scrypt$16384$8$1$cc10df7cfa673af98adfc2aa570e53ca$ff41babd6c634447f527ffc02b5a56f8e368e5fb9d3db4fbe10ab4db0a754e4c93e2d8c827c96db5864adf8171bf7bf0a67c94606ba58784ad3ee736cec4cfc4",
 		"perfil": "Confeiteiro/Padeiro"
 	}
 ]
