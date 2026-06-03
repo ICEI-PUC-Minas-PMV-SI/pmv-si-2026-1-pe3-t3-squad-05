@@ -62,17 +62,20 @@ O sistema não contempla gestão financeira completa, folha de pagamento, contab
 |---|---|
 | Cliente | Usuário que consulta produtos, realiza pedidos, personaliza encomendas, agenda retirada ou entrega e acompanha o status. |
 | Gerente | Usuário responsável por cadastrar produtos, opções de customização, insumos, fornecedores e regras de estoque. |
-| ... |	... |	... |
+| Atendente | Funcionário que apoia o atendimento, registra pedidos, consulta produtos e atualiza status conforme o fluxo operacional. |
+| Confeiteiro/Padeiro | Funcionário responsável pela produção dos pedidos, acompanhando encomendas personalizadas e atualizando etapas de preparo. |
 
 ## 3.4 Modelagem do Sistema
 
 ### 3.4.1 Diagrama de Casos de Uso
 
-O diagrama de casos de uso representa as interações entre clientes e equipe da panificadora. O cliente pode consultar o catálogo, montar carrinho, customizar produtos, programar encomendas, escolher kits prontos e acompanhar pedidos. O gerente mantém produtos, kits, opções de customização e regras de estoque. O atendente registra vendas presenciais e o confeiteiro ou padeiro acompanha a produção dos pedidos personalizados.
+O diagrama de casos de uso representa as interações entre Cliente, Gerente, Atendente e Confeiteiro/Padeiro. O Cliente consulta o catálogo de produtos, visualiza detalhes, monta o carrinho, registra encomendas personalizadas, agenda entrega ou retirada, realiza pagamento e acompanha o status do pedido. O Gerente gera relatórios, gere estoque e atualiza status administrativos. O Atendente apoia a montagem/registro de pedidos e também atualiza status. O Confeiteiro/Padeiro acompanha a produção e atualiza o status do pedido conforme o preparo.
+
+As relações `include` e `extend` refletem os requisitos RF2, RF3, RF6, RF7, RF8 e RF9. A montagem do carrinho inclui o pagamento no fluxo de finalização, a encomenda personalizada inclui a customização do produto e o agendamento de entrega ou retirada, e a recorrência aparece como extensão opcional do agendamento. A visualização de detalhes do produto é tratada como extensão da consulta ao catálogo.
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 
-![dcu](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-squad-05/blob/main/src/DiagCasosDeUso.png)
+![dcu](../src/DiagCasosDeUso.png)
  
 ### 3.4.2 Descrições de Casos de Uso
 

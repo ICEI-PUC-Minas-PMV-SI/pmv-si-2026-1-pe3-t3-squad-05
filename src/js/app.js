@@ -386,7 +386,7 @@ function updateVisualPreferenceControls() {
         const isActive = AppState.preferenciasVisuais.altoContraste;
         contrastButton.classList.toggle("active", isActive);
         contrastButton.setAttribute("aria-pressed", String(isActive));
-        contrastButton.setAttribute("aria-label", isActive ? "Desativar alto contraste" : "Ativar alto contraste");
+        contrastButton.setAttribute("aria-label", isActive ? "Desativar modo escuro" : "Ativar modo escuro");
     }
 }
 
