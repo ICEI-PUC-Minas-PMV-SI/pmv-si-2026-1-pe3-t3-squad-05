@@ -166,11 +166,11 @@ Fluxo Principal:
 
 ### 3.4.3 Diagrama de Classes 
 
-A Figura 2 mostra o diagrama de classes do sistema. O Pedido deve conter a identificação do Cliente responsável pela solicitação e do Funcionário que o gerencia. Utilizamos a classe ItemPedido para criar uma distinção no fluxo do sistema: se o produto for padrão, ele deverá constar no estoque geral e será referenciado diretamente na compra; se for uma Encomenda Personalizada, ela utilizará uma Receita específica que consome Insumos, e estes insumos devem constar no estoque. Se houver falta no estoque de qualquer um dos lados (produtos ou insumos), acionamos o fornecedor correspondente através das entidades de fornecimento.
+A Figura 2 mostra o diagrama de classes do sistema. O Pedido deve conter a identificação do Cliente responsável pela solicitação e do Funcionário que o gerencia. Utilizamos a classe ItemPedido para criar uma distinção no fluxo do sistema: se o produto for padrão, ele deverá ser referenciado diretamente no item do pedido; se for uma Encomenda Personalizada, ela utilizará uma Receita específica que consome Insumos. Produtos e insumos são controlados pela classe Estoque, que registra saldo disponível, saldo reservado e estoque mínimo. As classes ReservaEstoque e MovimentoEstoque representam, respectivamente, as quantidades comprometidas por pedidos ou encomendas e o histórico de entradas, saídas, ajustes, reservas e baixas. Se houver falta no estoque de qualquer um dos lados, acionamos o fornecedor correspondente através das entidades de fornecimento.
 
 #### Figura 2: Diagrama de Classes do Sistema.
  
-![dcu](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t3-squad-05/blob/main/src/DiagramaDeClasses.png)
+![Diagrama de Classes do Sistema](../src/DiagramaDeClasses.png)
 
 ### 3.4.4 Descrições das Classes 
 
