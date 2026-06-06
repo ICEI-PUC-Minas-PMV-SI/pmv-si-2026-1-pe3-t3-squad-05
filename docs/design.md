@@ -181,23 +181,23 @@ Necessidades em relação ao sistema
 
 Mapa de Empatia: Matheus Rodrigues
 
-<img width="1600" height="900" alt="WhatsApp Image 2026-05-10 at 22 22 33 (1)" src="https://github.com/user-attachments/assets/4f79c8c1-cb59-41ab-834d-44e898378167" />
+<img width="1600" height="900" alt="Mapa de empatia de Matheus Rodrigues" src="./assets/empatia/mapa-empatia-matheus.png" />
 
 Mapa de Empatia: Carla Perez
 
-<img width="1600" height="900" alt="WhatsApp Image 2026-05-10 at 22 22 33" src="https://github.com/user-attachments/assets/a7601466-5fbc-4dd9-8d54-bb130b54e1be" />
+<img width="1600" height="900" alt="Mapa de empatia de Carla Perez" src="./assets/empatia/mapa-empatia-carla.png" />
 
 Mapa de Empatia: Lúcio Costa
 
-<img width="3780" height="1890" alt="1" src="https://github.com/user-attachments/assets/514d41c2-4067-4344-9482-8aa793dac6da" />
+<img width="3780" height="1890" alt="Mapa de empatia de Lúcio Costa" src="./assets/empatia/mapa-empatia-lucio.png" />
 
 Mapa de Empatia: Eusébio Oliveira
 
-<img width="3780" height="1890" alt="2" src="https://github.com/user-attachments/assets/db3055ad-455f-43c4-8e0f-7b37abc88432" />
+<img width="3780" height="1890" alt="Mapa de empatia de Eusébio Oliveira" src="./assets/empatia/mapa-empatia-eusebio.png" />
 
 Mapa de Empatia: Ricardo Silva
 
-<img width="3780" height="1890" alt="Lúcio Costa" src="https://github.com/user-attachments/assets/ad4d031a-9247-47bd-afbc-41941b4d318e" />
+<img width="3780" height="1890" alt="Mapa de empatia de Ricardo Silva" src="./assets/empatia/mapa-empatia-ricardo.png" />
 
 ## 4.3 Protótipos das Interfaces
 
