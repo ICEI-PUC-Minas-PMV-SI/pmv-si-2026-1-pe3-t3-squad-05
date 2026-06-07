@@ -3,7 +3,7 @@
 ## 4.1 Personas
 
 1. Persona: Matheus, o "Correr é Dinheiro"
-Matheus Rodrigues, 29 anos, atua como motoboy. Para ele, tempo é dinheiro. Com uma rotina acelerada, Matheus precisa otimizar sua manhã para maximizar os ganhos do dia. Ele busca um aplicativo que permita fazer pedidos antecipados e ver a disponibilidade do catálogo, garantindo seu café da manhã sem o risco de enfrentar filas ou encontrar produtos esgotados. Sua prioridade é agendar a retirada para apenas pegar o pedido ou comer rapidamente no local, iniciando sua jornada de trabalho com energia e sem nenhum atraso. 
+Matheus Rodrigues, 29 anos, atua como motoboy. Ele busca otimizar sua rotina matinal para poupar tempo e maximizar seus ganhos ao longo do dia. Matheus procura um aplicativo que permita fazer pedidos e pagamento online e ver a disponibilidade do catálogo, garantindo seu café da manhã sem o risco de enfrentar filas ou encontrar produtos esgotados. Sua prioridade é agendar a retirada para apenas pegar o pedido ou comer rapidamente no local, iniciando sua jornada de trabalho com energia e sem nenhum atraso. 
 
 Objetivos específicos
 * Ver rapidamente o que está disponível no catálogo;
