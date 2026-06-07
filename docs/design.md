@@ -144,7 +144,7 @@ Necessidades em relação ao sistema
 * Elementos visuais acessíveis. 
 
 5. Persona: Giselle Andrade, atendente malabarista. 
-Ana Paula Martins tem 27 anos e trabalha como atendente em uma panificadora. Ela é responsável pelo atendimento ao cliente, registro de pedidos e comunicação com a equipe de produção. 
+Giselle Andrade tem 27 anos e trabalha como atendente em uma panificadora. Ela é responsável pelo atendimento ao cliente, registro de pedidos e comunicação com a equipe de produção. 
 
 Objetivos específicos 
 * Registrar pedidos rapidamente;  
