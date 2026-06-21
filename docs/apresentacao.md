@@ -1,36 +1,36 @@
 # 6. Apresentação do Projeto
 
-[PDF da apresentação](../testes/Apresentacao_entrega_5_grupo_5.pdf)
+[PDF da apresentação](./Apresentacao_entrega_5_grupo_5.pdf)
 
-<img width="1600" height="900" src="./Apresentacao_entrega_5_grupo_5/Slide1.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide2.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide3.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide4.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide5.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide6.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide7.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide8.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide9.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide10.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide11.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide12.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide13.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide14.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide15.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide16.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide17.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide18.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide19.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide20.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide21.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide22.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide23.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide24.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide25.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide26.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide27.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide28.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide29.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide30.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide31.png" />
-<img width="1600" height="900"  src="./Apresentacao_entrega_5_grupo_5/Slide32.png" />
+![Slide 1 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide1.PNG)
+![Slide 2 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide2.PNG)
+![Slide 3 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide3.PNG)
+![Slide 4 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide4.PNG)
+![Slide 5 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide5.PNG)
+![Slide 6 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide6.PNG)
+![Slide 7 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide7.PNG)
+![Slide 8 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide8.PNG)
+![Slide 9 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide9.PNG)
+![Slide 10 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide10.PNG)
+![Slide 11 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide11.PNG)
+![Slide 12 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide12.PNG)
+![Slide 13 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide13.PNG)
+![Slide 14 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide14.PNG)
+![Slide 15 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide15.PNG)
+![Slide 16 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide16.PNG)
+![Slide 17 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide17.PNG)
+![Slide 18 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide18.PNG)
+![Slide 19 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide19.PNG)
+![Slide 20 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide20.PNG)
+![Slide 21 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide21.PNG)
+![Slide 22 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide22.PNG)
+![Slide 23 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide23.PNG)
+![Slide 24 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide24.PNG)
+![Slide 25 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide25.PNG)
+![Slide 26 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide26.PNG)
+![Slide 27 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide27.PNG)
+![Slide 28 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide28.PNG)
+![Slide 29 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide29.PNG)
+![Slide 30 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide30.PNG)
+![Slide 31 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide31.PNG)
+![Slide 32 da apresentação do projeto](./Apresentacao_entrega_5_grupo_5/Slide32.PNG)
